@@ -1,0 +1,234 @@
+body {
+  cursor: default;
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 0;
+}
+
+button {
+  font-size: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  height: 30px;
+  width: 160px;
+  line-height: 30px;
+  border-radius: 0%;
+  border: 1px solid #eeeeee;
+  background: #f8f8f8;
+}
+  button:nth-of-type(1) {
+    margin: 18px 20px 9px 42px;
+  }
+  button:nth-of-type(2) {
+    margin: 18px 42px 9px 20px;
+  }
+  button:nth-of-type(3) {
+    margin: 9px 20px 18px 42px;
+  }
+  button:nth-of-type(4) {
+    margin: 9px 42px 18px 20px;
+  }
+  button:focus {
+    outline: none;
+  } 
+  button:hover {
+    border: 1px solid #ee0000;
+  }
+
+#outer {
+  height: 720px;
+  width: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -360px 0 0 -240px;
+}
+
+#inner {
+  height: 680px;
+  width: 450px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin: -340px 0 0 -225px;
+  border: 1px solid black;
+}
+
+#title {
+  font-size: 32px;
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  background: #ee0000;
+  color: #f8f8f8;
+  text-shadow: 1px 1px 2px #121212; 
+  -webkit-box-shadow: 0px 6px 8px #d0d0d0;
+     -moz-box-shadow: 0px 6px 8px #d0d0d0;
+         -box-shadow: 0px 6px 8px #d0d0d0;
+}
+
+#answer {
+  font-size: 56px;
+  text-align: center;
+  height: 80px;
+  line-height: 80px;  
+  border-top: 1px solid black;
+}
+
+#feedback {
+  font-size: 22px;
+  text-align: center;
+  line-height: 24px;
+  height: 22px;
+  border-top: 1px solid black;
+  background: #eeeeee;
+  padding: 14px 0;
+}
+
+#squares {
+  height: 278px;
+  position: relative;
+  border-top: 1px solid black;
+  background: #cc0000;
+}
+
+#options {
+  height: 118px;
+  border-top: 1px solid black;
+  background: #121212;
+}
+
+#title, #answer, #squares {
+  padding: 20px 0;
+}
+
+.square {
+  float: left;
+  font-size: 34px;
+  line-height: 120px;
+  text-align: center;
+  height: 120px;
+  width: 120px;
+  opacity: 1;
+  border: 1px solid black;
+  background: #fff;
+  -webkit-box-shadow: 1px 2px 4px #121212;
+     -moz-box-shadow: 1px 2px 4px #121212;
+         -box-shadow: 1px 2px 4px #121212;
+  -webkit-transition: opacity 0.25s;
+     -moz-transition: opacity 0.25s;
+          transition: opacity 0.25s;
+}
+  .square:nth-of-type(1), .square:nth-of-type(4) {
+    margin: 8px 8px 8px 24px;
+  }
+  .square:nth-of-type(2), .square:nth-of-type(5) {
+    margin: 8px 8px 8px 8px;
+  }
+  .square:nth-of-type(3), .square:nth-of-type(6) {
+    margin: 8px 24px 8px 8px;
+  }
+
+.fade {
+  opacity: 0;
+}
+
+.active {
+  color: #eee;
+  text-shadow: 1px 1px 2px #121212; 
+  background: #ee0000;
+  border-top: 1px solid #980000;
+  border-right: 1px solid #ff7c7c;
+  border-bottom: 1px solid #ff7c7c;
+  border-left: 1px solid #980000;
+}
+
+.inactive {
+  background: #bbb;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #eee;
+}
+  .inactive:hover {
+    background: #f8f8f8;
+  }
+
+.gameover-feedback {
+  background: #ffeb3b !important;
+}
+
+.gameover-button {
+  background: #ffeb3b !important;
+  border-top: 1px solid #9c8c00 !important;
+  border-right: 1px solid #fff283 !important;
+  border-bottom: 1px solid #fff283 !important;
+  border-left: 1px solid #9c8c00 !important;
+}
+
+@media all and (max-width: 575px) {
+  button {
+    width: 125px;
+    font-size: 14px;
+    padding: 0;
+  }
+  button:nth-of-type(1) {
+    margin: 12px 6px 6px 16px;
+  }
+  button:nth-of-type(2) {
+    margin: 12px 16px 6px 6px;
+  }
+  button:nth-of-type(3) {
+    margin: 6px 6px 12px 16px;
+  }
+  button:nth-of-type(4) {
+    margin: 6px 16px 12px 6px;
+  } 
+  #outer {
+    height: 568px;
+    width: 320px;
+    margin: -284px 0 0 -160px;
+  }
+  #inner {
+    height: 556px;
+    width: 300px;
+    margin: -280px 0 0 -150px;
+  }
+  #title {
+    font-size: 22px;
+    width: 100%;
+    height: 22px;
+  }  
+  #answer {
+    font-size: 50px;
+    height: 64px;
+  }
+  #feedback {
+    font-size: 18px;
+    line-height: 18px;
+    height: 18px;
+    padding: 12px 0;
+  }
+  #squares {
+    height: 194px;
+  }
+  #options {
+    height: 98px;
+  }
+  #title, #answer, #squares {
+    padding: 22px 0;
+  }
+  .square {
+    font-size: 28px;
+    line-height: 86px;
+    height: 86px;
+    width: 86px;
+  }
+  .square:nth-of-type(1), .square:nth-of-type(4) {
+    margin: 4px 4px 4px 10px;
+  }
+  .square:nth-of-type(2), .square:nth-of-type(5) {
+    margin: 4px 4px 4px 4px;
+  }
+  .square:nth-of-type(3), .square:nth-of-type(6) {
+    margin: 4px 10px 4px 4px;
+  }
+}
