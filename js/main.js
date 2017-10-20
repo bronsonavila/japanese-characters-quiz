@@ -28,7 +28,7 @@ function shuffle(a) {
   return a;
 }
 
-/* Generate Square Text*/
+/* Generate Square Text Content */
 function randomizer(a) {
   var tempArr = [];
   for(i = 0; i < squares.length; i++) {
