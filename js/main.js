@@ -88,7 +88,7 @@ function allButtons() {
 /* Correct Answer Transition*/
 function correctAnswer() {
   for(i = 0; i < squares.length; i++) {
-    /*Romaji > Japanese*/ 
+    /* Romaji > Japanese */ 
     if(jpnToEng === true) {
       squares[i].textContent = characters[0].romaji;
     }
@@ -119,7 +119,7 @@ function victorySequence() {
 /* Squares */
 for(i = 0; i < squares.length; i++) {
   squares[i].addEventListener("click", function() {
-    /*Romaji > Japanese*/ 
+    /* Romaji > Japanese */ 
     if(jpnToEng === true && this.textContent === characters[0].romaji) {
       victorySequence();
     }
