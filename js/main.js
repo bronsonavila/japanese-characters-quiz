@@ -28,6 +28,7 @@ function shuffle(a) {
   return a;
 }
 
+/* Generate Square Text*/
 function randomizer(a) {
   var tempArr = [];
   for(i = 0; i < 6; i++) {
