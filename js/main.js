@@ -31,11 +31,11 @@ function shuffle(a) {
 /* Generate Square Text*/
 function randomizer(a) {
   var tempArr = [];
-  for(i = 0; i < 6; i++) {
+  for(i = 0; i < squares.length; i++) {
     tempArr.push(a[i]);
   }
   shuffle(tempArr);
-  for(i = 0; i < 6; i++) {
+  for(i = 0; i < squares.length; i++) {
     /* Romaji > Japanese */
     if(jpnToEng === true) {
       squares[i].textContent = tempArr[i].romaji;
