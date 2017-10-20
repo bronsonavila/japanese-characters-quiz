@@ -81,7 +81,7 @@ function restoreSquares() {
 function allButtons() {
   restoreSquares();
   feedback.textContent = "";
-  buttonReset.textContent = "New Character"
+  buttonReset.textContent = "New Character";
   feedback.classList.remove("gameover-feedback");
   buttonReset.classList.remove("gameover-button");
 }
@@ -109,7 +109,7 @@ function victorySequence() {
   feedback.classList.add("gameover-feedback");
   buttonReset.classList.add("gameover-button");
   feedback.textContent = "Correct!";
-  buttonReset.textContent = "Play Again?"
+  buttonReset.textContent = "Play Again?";
   restoreSquares();
   correctAnswer();
   gameOver = true;
@@ -158,7 +158,7 @@ buttonHiragana.addEventListener("click", function() {
     reset();
   }
   allButtons();
-})
+});
 
 /* Katakana Button */
 buttonKatakana.addEventListener("click", function() {
@@ -171,7 +171,7 @@ buttonKatakana.addEventListener("click", function() {
     reset();
   }
   allButtons();
-})
+});
 
 /* Mode Button */
 buttonMode.addEventListener("click", function() {
@@ -180,7 +180,7 @@ buttonMode.addEventListener("click", function() {
     jpnToEng = false;
   }
   else {
-    buttonMode.textContent = "JPN // ENG"
+    buttonMode.textContent = "JPN // ENG";
     jpnToEng = true;
   }
   reset();
