@@ -152,6 +152,12 @@ button {
     background: #f8f8f8;
   }
 
+.gameover-feedback, .gameover-button {
+  -webkit-transition: background 0.125s;
+     -moz-transition: background 0.125s;
+          transition: background 0.125s;
+}
+
 .gameover-feedback {
   background: #ffeb3b !important;
 }
