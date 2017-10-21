@@ -171,11 +171,11 @@ button {
 }
 
 .gameover-button {
-  background: #fff282 !important;
-  border-top: 1px solid #ab9800!important;
-  border-right: 1px solid #fff7af !important;
-  border-bottom: 1px solid #fff7af !important;
-  border-left: 1px solid #ab9800 !important;
+  background: #ffeb3b !important;
+  border-top: 1px solid #9c8c00 !important;
+  border-right: 1px solid #fff283 !important;
+  border-bottom: 1px solid #fff283 !important;
+  border-left: 1px solid #9c8c00 !important;
   -webkit-transition: background 0.125s;
      -moz-transition: background 0.125s;
        -o-transition: background 0.125s;
