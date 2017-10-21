@@ -73,7 +73,7 @@ function reset() {
   previousAnswer = characters[0];
   shuffle(characters);
     /* Consecutive Reptition Killer */
-    for(i = 0; i < squares.length; i++) {
+    for(i = 0; i < characters.length; i++) {
       if(characters[0] === previousAnswer) {
         shuffle(characters);
       }
