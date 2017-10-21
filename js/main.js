@@ -4,8 +4,8 @@ var characters = [{romaji:"a",hiragana:"あ",katakana:"ア"},{romaji:"i",hiragan
 var answer = document.getElementById("answer");
 var feedback = document.getElementById("feedback");
 var squares = document.getElementsByClassName("square");
-var buttonHiragana = document.getElementById("hiragana");
 var buttonReset = document.getElementById("reset");
+var buttonHiragana = document.getElementById("hiragana");
 var buttonKatakana = document.getElementById("katakana");
 var buttonMode = document.getElementById("mode");
 var displayHiragana = true;
@@ -15,24 +15,24 @@ var gameOver = false;
 /*** Functions ***/
 
 /* Fisher-Yates Shuffle */
-function shuffle(a) {
-  var i = a.length,
+function shuffle(arr) {
+  var i = arr.length,
       j = 0,
-      t;
+      temp;
   while (i--) {
       j = Math.floor(Math.random() * (i + 1));
-      t = a[i];
-      a[i] = a[j];
-      a[j] = t;
+      temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
   }
-  return a;
+  return arr;
 }
 
-/* Generate Square Text Content */
-function randomizer(a) {
+/* Generate Squares Text Content */
+function randomizer(arr) {
   var tempArr = [];
   for(i = 0; i < squares.length; i++) {
-    tempArr.push(a[i]);
+    tempArr.push(arr[i]);
   }
   shuffle(tempArr);
   for(i = 0; i < squares.length; i++) {
@@ -70,15 +70,25 @@ function reset() {
   gameOver = false;
 }
 
-/* Restore Squares */
+/* Change Squares */
+function changeSquares() {
+  for(i = 0; i < squares.length; i++) {
+    squares[i].classList.add("inactive-div");
+  }
+}
+
+/* Restore Square Visibility */
 function restoreSquares() {
   for(i = 0; i < squares.length; i++) {
     squares[i].classList.remove("fade");
   }
 }
 
-/* All Buttons */
+/* All Button Operations */
 function allButtons() {
+  for(i = 0; i < squares.length; i++) {
+    squares[i].classList.remove("inactive-div");
+  }
   restoreSquares();
   feedback.textContent = "";
   buttonReset.textContent = "New Character";
@@ -104,12 +114,26 @@ function correctAnswer() {
   }
 }
 
+/* Expand-Contract Animation */
+function animate(i) {
+  i.classList.add("expand");
+  setTimeout(function() {
+    i.classList.add("contract")
+  }, 125);
+  setTimeout(function() {
+    i.classList.remove("expand");
+    i.classList.remove("contract");
+  }, 250);
+}
+
 /* Victory Sequence */
 function victorySequence() {
   feedback.classList.add("gameover-feedback");
   buttonReset.classList.add("gameover-button");
   feedback.textContent = "Correct!";
+  animate(feedback);
   buttonReset.textContent = "Play Again?";
+  changeSquares();
   restoreSquares();
   correctAnswer();
   gameOver = true;
@@ -121,22 +145,24 @@ function victorySequence() {
 for(i = 0; i < squares.length; i++) {
   squares[i].addEventListener("click", function() {
     /* Romaji > Japanese */ 
-    if(jpnToEng === true && this.textContent === characters[0].romaji) {
+    if(jpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
       victorySequence();
     }
     /* Hiragana > Romaji */
-    else if(displayHiragana === true && this.textContent === characters[0].hiragana) {
+    else if(displayHiragana === true && this.textContent === characters[0].hiragana && gameOver === false) {
       victorySequence();
     }
     /* Katakana > Romaji */
-    else if(this.textContent === characters[0].katakana) {
+    else if(this.textContent === characters[0].katakana && gameOver === false) {
       victorySequence();
     }
+    else if(gameOver === false) {
+      feedback.textContent = "Try Again";
+      this.classList.add("fade");
+    }
     else {
-      if(gameOver === false) {
-        feedback.textContent = "Try Again";
-        this.classList.add("fade");
-      }
+      reset();
+      allButtons();
     }
   });
 }
@@ -187,6 +213,6 @@ buttonMode.addEventListener("click", function() {
   allButtons();
 });
 
-/*** Execution ***/
+/*** Initialize ***/
 
 reset();
