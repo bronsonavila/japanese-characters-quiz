@@ -178,10 +178,10 @@ buttonReset.addEventListener("click", function() {
 /* Hiragana Button */
 buttonHiragana.addEventListener("click", function() {
   if(displayHiragana === false) {
-    this.classList.toggle("active");
-    this.classList.toggle("inactive");
-    buttonKatakana.classList.toggle("active");
-    buttonKatakana.classList.toggle("inactive");
+    this.classList.toggle("active-button");
+    this.classList.toggle("inactive-button");
+    buttonKatakana.classList.toggle("active-button");
+    buttonKatakana.classList.toggle("inactive-button");
     displayHiragana = true;
     reset();
   }
@@ -191,10 +191,10 @@ buttonHiragana.addEventListener("click", function() {
 /* Katakana Button */
 buttonKatakana.addEventListener("click", function() {
   if(displayHiragana === true) {
-    this.classList.toggle("active");
-    this.classList.toggle("inactive");
-    buttonHiragana.classList.toggle("active");
-    buttonHiragana.classList.toggle("inactive");
+    this.classList.toggle("active-button");
+    this.classList.toggle("inactive-button");
+    buttonHiragana.classList.toggle("active-button");
+    buttonHiragana.classList.toggle("inactive-button");
     displayHiragana = false;
     reset();
   }
