@@ -96,7 +96,7 @@ function allButtons() {
   buttonReset.classList.remove("gameover-button");
 }
 
-/* Correct Answer Transition*/
+/* Correct Answer Transition */
 function correctAnswer() {
   for(i = 0; i < squares.length; i++) {
     /* Romaji > Japanese */ 
@@ -156,10 +156,12 @@ for(i = 0; i < squares.length; i++) {
     else if(this.textContent === characters[0].katakana && gameOver === false) {
       victorySequence();
     }
+    /* Wrong Answer */
     else if(gameOver === false) {
       feedback.textContent = "Try Again";
       this.classList.add("fade");
     }
+    /* Lazy Reset */
     else {
       reset();
       allButtons();
