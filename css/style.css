@@ -1,6 +1,7 @@
 body {
   cursor: default;
   font-family: 'Josefin Sans', sans-serif;
+  background: #eee;
   margin: 0;
 }
 
@@ -51,6 +52,9 @@ button {
   margin: -340px 0 0 -225px;
   border: 1px solid black;
   overflow: hidden;
+  -webkit-box-shadow: 2px 4px 16px #bbb;
+     -moz-box-shadow: 2px 4px 16px #bbb;
+         -box-shadow: 2px 4px 16px #bbb;
 }
 
 #title {
@@ -62,9 +66,6 @@ button {
   background: #ee0000;
   color: #f8f8f8;
   text-shadow: 1px 1px 2px #121212; 
-  -webkit-box-shadow: 0px 6px 8px #d0d0d0;
-     -moz-box-shadow: 0px 6px 8px #d0d0d0;
-         -box-shadow: 0px 6px 8px #d0d0d0;
 }
 
 #answer {
@@ -73,6 +74,7 @@ button {
   height: 80px;
   line-height: 80px;  
   border-top: 1px solid black;
+  background: #fff;
 }
 
 #feedback {
