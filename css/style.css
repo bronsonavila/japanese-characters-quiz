@@ -206,7 +206,7 @@ button {
          -transition-timing-function: ease-in;
 }
 
-@media all and (max-width: 575px) {
+@media all and (max-width: 576px) {
   button {
     width: 125px;
     font-size: 14px;
@@ -225,14 +225,14 @@ button {
     margin: 6px 16px 12px 6px;
   }
   #outer {
-    height: 568px;
+    height: 560px;
     width: 320px;
-    margin: -284px 0 0 -160px;
+    margin: -280px 0 0 -160px;
   }
   #inner {
-    height: 556px;
+    height: 540px;
     width: 300px;
-    margin: -280px 0 0 -150px;
+    margin: -270px 0 0 -150px;
   }
   #title {
     font-size: 22px;
@@ -255,10 +255,10 @@ button {
     height: 194px;
   }
   #options {
-    height: 99px;
+    height: 95px;
   }
   #title, #answer, #squares {
-    padding: 22px 0;
+    padding: 20px 0;
   }
   .square {
     font-size: 28px;
