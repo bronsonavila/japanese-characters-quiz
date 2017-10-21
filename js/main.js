@@ -11,6 +11,7 @@ var buttonMode = document.getElementById("mode");
 var displayHiragana = true;
 var jpnToEng = true;
 var gameOver = false;
+var previousAnswer;
 
 /*** Functions ***/
 
@@ -51,9 +52,8 @@ function randomizer(arr) {
   }
 }
 
-/* Reset Function */
-function reset() {
-  shuffle(characters);
+/* Create Answer */
+function createAnswer() {
   /* Romaji > Japanese */
   if(jpnToEng === false) {
     answer.textContent = characters[0].romaji;
@@ -66,6 +66,19 @@ function reset() {
   else {
     answer.textContent = characters[0].katakana;    
   }
+}
+
+/* Reset Function */
+function reset() {
+  previousAnswer = characters[0];
+  shuffle(characters);
+    /* Consecutive Reptition Killer */
+    for(i = 0; i < squares.length; i++) {
+      if(characters[0] === previousAnswer) {
+        shuffle(characters);
+      }
+    }
+  createAnswer();
   randomizer(characters);
   gameOver = false;
 }
