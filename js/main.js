@@ -70,8 +70,8 @@ function createAnswer() {
   }
 }
 
-/* Reset Function */
-function reset() {
+/* Initializer */
+function init() {
   previousAnswer = characters[0];
   shuffle(characters);
     /* Consecutive Repetition Killer */
@@ -223,7 +223,7 @@ for(i = 0; i < squares.length; i++) {
       }
       /* Lazy Reset */
       else {
-        reset();
+        init();
         allButtons();
       }
   });
@@ -232,32 +232,38 @@ for(i = 0; i < squares.length; i++) {
 
 /* Reset Button */
 buttonReset.addEventListener("click", function() {
-  reset();
+  init();
   allButtons();
 });
 
 /* Hiragana Button */
 buttonHiragana.addEventListener("click", function() {
-  if((gameOver === false && displayHiragana === false) || gameOver === true) {
+  if(gameOver === false && displayHiragana === false) {
     this.classList.toggle("active-button");
     this.classList.toggle("inactive-button");
     buttonKatakana.classList.toggle("active-button");
     buttonKatakana.classList.toggle("inactive-button");
     displayHiragana = true;
-    reset();
+    init();
+  }
+  if(gameOver === true) {
+    init();
   }
   allButtons();
 });
 
 /* Katakana Button */
 buttonKatakana.addEventListener("click", function() {
-  if((gameOver === false && displayHiragana === true) || gameOver === true) {
+  if(gameOver === false && displayHiragana === true) {
     this.classList.toggle("active-button");
     this.classList.toggle("inactive-button");
     buttonHiragana.classList.toggle("active-button");
     buttonHiragana.classList.toggle("inactive-button");
     displayHiragana = false;
-    reset();
+    init();
+  }
+  if(gameOver === true) {
+    init();
   }
   allButtons();
 });
@@ -272,10 +278,10 @@ buttonMode.addEventListener("click", function() {
     buttonMode.textContent = "JPN // ENG";
     jpnToEng = true;
   }
-  reset();
+  init();
   allButtons();
 });
 
 /*** Initialize ***/
 
-reset();
+init();
