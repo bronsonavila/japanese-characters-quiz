@@ -238,7 +238,7 @@ buttonReset.addEventListener("click", function() {
 
 /* Hiragana Button */
 buttonHiragana.addEventListener("click", function() {
-  if(gameOver === false && displayHiragana === false) {
+  if((gameOver === false && displayHiragana === false) || gameOver === true) {
     this.classList.toggle("active-button");
     this.classList.toggle("inactive-button");
     buttonKatakana.classList.toggle("active-button");
@@ -246,23 +246,17 @@ buttonHiragana.addEventListener("click", function() {
     displayHiragana = true;
     reset();
   }
-  if(gameOver === true) {
-    reset();
-  }
   allButtons();
 });
 
 /* Katakana Button */
 buttonKatakana.addEventListener("click", function() {
-  if(gameOver === false && displayHiragana === true) {
+  if((gameOver === false && displayHiragana === true) || gameOver === true) {
     this.classList.toggle("active-button");
     this.classList.toggle("inactive-button");
     buttonHiragana.classList.toggle("active-button");
     buttonHiragana.classList.toggle("inactive-button");
     displayHiragana = false;
-    reset();
-  }
-  if(gameOver === true) {
     reset();
   }
   allButtons();
