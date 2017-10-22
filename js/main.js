@@ -92,7 +92,7 @@ function changeSquares() {
   }
 }
 
-/* Restore Square Visibility */
+/* Restore Squares */
 function restoreSquares() {
   for(i = 0; i < squares.length; i++) {
     squares[i].classList.remove("wrong-answer");
