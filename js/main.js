@@ -46,7 +46,7 @@ function randomizer(arr) {
     else if(displayHiragana === true) {
       squares[i].textContent = tempArr[i].hiragana;
     }
-    /* Romaji > Katanaka */
+    /* Romaji > Katakana */
     else {
       squares[i].textContent = tempArr[i].katakana; 
     }
@@ -64,7 +64,7 @@ function createAnswer() {
   else if(displayHiragana === true) {
     answer.textContent = characters[0].hiragana;
   }
-  /* Romaji > Katanaka */
+  /* Romaji > Katakana */
   else {
     answer.textContent = characters[0].katakana;    
   }
@@ -74,7 +74,7 @@ function createAnswer() {
 function reset() {
   previousAnswer = characters[0];
   shuffle(characters);
-    /* Consecutive Reptition Killer */
+    /* Consecutive Repetition Killer */
     for(i = 0; i < characters.length; i++) {
       if(characters[0] === previousAnswer) {
         shuffle(characters);
@@ -122,7 +122,7 @@ function correctAnswer() {
     else if(displayHiragana === true) {
       squares[i].textContent = characters[0].hiragana;
     }
-    /* Romaji > Katanaka */
+    /* Romaji > Katakana */
     else {
       squares[i].textContent = characters[0].katakana;
     }
@@ -169,7 +169,7 @@ for(i = 0; i < squares.length; i++) {
       else if(displayHiragana === true && this.textContent === characters[0].hiragana && gameOver === false) {
         victorySequence();
       }
-      /* Correct Answer - Romaji > Katanaka */
+      /* Correct Answer - Romaji > Katakana */
       else if(this.textContent === characters[0].katakana && gameOver === false) {
         victorySequence();
       }
