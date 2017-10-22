@@ -246,7 +246,7 @@ buttonHiragana.addEventListener("click", function() {
     displayHiragana = true;
     init();
   }
-  if(gameOver === true) {
+  else if(gameOver === true) {
     init();
   }
   allButtons();
@@ -262,7 +262,7 @@ buttonKatakana.addEventListener("click", function() {
     displayHiragana = false;
     init();
   }
-  if(gameOver === true) {
+  else if(gameOver === true) {
     init();
   }
   allButtons();
