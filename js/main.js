@@ -12,6 +12,7 @@ var displayHiragana = true;
 var jpnToEng = true;
 var gameOver = false;
 var previousAnswer;
+var sixCards;
 
 /*** Functions ***/
 
@@ -37,32 +38,33 @@ function randomizer(arr) {
   }
   shuffle(tempArr);
   for(i = 0; i < squares.length; i++) {
-    /* Romaji > Japanese */
+    /* Japanese > Romaji */
     if(jpnToEng === true) {
       squares[i].textContent = tempArr[i].romaji;
     }
-    /* Hiragana > Romaji */
+    /* Romaji > Hiragana */
     else if(displayHiragana === true) {
       squares[i].textContent = tempArr[i].hiragana;
     }
-    /* Katakana > Romaji */
+    /* Romaji > Katanaka */
     else {
       squares[i].textContent = tempArr[i].katakana; 
     }
   }
+  sixCards = tempArr;
 }
 
 /* Create Answer */
 function createAnswer() {
-  /* Romaji > Japanese */
+  /* Japanese > Romaji */
   if(jpnToEng === false) {
     answer.textContent = characters[0].romaji;
   }
-  /* Hiragana > Romaji */
+  /* Romaji > Hiragana */
   else if(displayHiragana === true) {
     answer.textContent = characters[0].hiragana;
   }
-  /* Katakana > Romaji */
+  /* Romaji > Katanaka */
   else {
     answer.textContent = characters[0].katakana;    
   }
@@ -93,7 +95,7 @@ function changeSquares() {
 /* Restore Square Visibility */
 function restoreSquares() {
   for(i = 0; i < squares.length; i++) {
-    squares[i].classList.remove("fade");
+    squares[i].classList.remove("wrong-answer");
   }
 }
 
@@ -112,15 +114,15 @@ function allButtons() {
 /* Correct Answer Transition */
 function correctAnswer() {
   for(i = 0; i < squares.length; i++) {
-    /* Romaji > Japanese */ 
+    /* Japanese > Romaji */ 
     if(jpnToEng === true) {
       squares[i].textContent = characters[0].romaji;
     }
-    /* Hiragana > Romaji */
+    /* Romaji > Hiragana */
     else if(displayHiragana === true) {
       squares[i].textContent = characters[0].hiragana;
     }
-    /* Katakana > Romaji */
+    /* Romaji > Katanaka */
     else {
       squares[i].textContent = characters[0].katakana;
     }
@@ -156,30 +158,76 @@ function victorySequence() {
 
 /* Squares */
 for(i = 0; i < squares.length; i++) {
-  squares[i].addEventListener("click", function() {
-    /* Romaji > Japanese */ 
-    if(jpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
-      victorySequence();
-    }
-    /* Hiragana > Romaji */
-    else if(displayHiragana === true && this.textContent === characters[0].hiragana && gameOver === false) {
-      victorySequence();
-    }
-    /* Katakana > Romaji */
-    else if(this.textContent === characters[0].katakana && gameOver === false) {
-      victorySequence();
-    }
-    /* Wrong Answer */
-    else if(gameOver === false) {
-      feedback.textContent = "Try Again";
-      this.classList.add("fade");
-    }
-    /* Lazy Reset */
-    else {
-      reset();
-      allButtons();
-    }
+  try{throw i}
+  catch(ii) {
+    squares[i].addEventListener("click", function() {
+      /* Correct Answer - Japanese > Romaji */ 
+      if(jpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
+        victorySequence();
+      }
+      /* Correct Answer - Romaji > Hiragana */
+      else if(displayHiragana === true && this.textContent === characters[0].hiragana && gameOver === false) {
+        victorySequence();
+      }
+      /* Correct Answer - Romaji > Katanaka */
+      else if(this.textContent === characters[0].katakana && gameOver === false) {
+        victorySequence();
+      }
+      /* Wrong Answer - Hiragana > Romaji */
+      else if(jpnToEng === true && displayHiragana === true && this.textContent !== characters[0].romaji && gameOver === false) {
+        feedback.textContent = "Try Again";
+        if(this.textContent === sixCards[ii].romaji) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].hiragana;
+        }
+        else if(this.textContent === sixCards[ii].hiragana) {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        }        
+      }    
+      /* Wrong Answer - Romaji > Hiragana */
+      else if(displayHiragana === true && this.textContent !== characters[0].hiragana && gameOver === false) {
+        feedback.textContent = "Try Again";
+        if(this.textContent === sixCards[ii].hiragana) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        }
+        else if(this.textContent === sixCards[ii].romaji) {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].hiragana;
+        } 
+      }    
+      /* Wrong Answer - Katakana > Romaji */
+      else if(jpnToEng === true && displayHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
+        feedback.textContent = "Try Again";
+        if(this.textContent === sixCards[ii].romaji) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].katakana;
+        }
+        else if(this.textContent === sixCards[ii].katakana) {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        } 
+      }
+      /* Wrong Answer - Romaji > Katakana */
+      else if(displayHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
+        feedback.textContent = "Try Again";
+        if(this.textContent === sixCards[ii].katakana) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        }
+        else if(this.textContent === sixCards[ii].romaji) {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].katakana;
+        } 
+      }
+      /* Lazy Reset */
+      else {
+        reset();
+        allButtons();
+      }
   });
+  }
 }
 
 /* Reset Button */
@@ -196,8 +244,8 @@ buttonHiragana.addEventListener("click", function() {
     buttonKatakana.classList.toggle("active-button");
     buttonKatakana.classList.toggle("inactive-button");
     displayHiragana = true;
-    reset();
   }
+  reset();
   allButtons();
 });
 
@@ -209,8 +257,8 @@ buttonKatakana.addEventListener("click", function() {
     buttonHiragana.classList.toggle("active-button");
     buttonHiragana.classList.toggle("inactive-button");
     displayHiragana = false;
-    reset();
   }
+  reset();
   allButtons();
 });
 
