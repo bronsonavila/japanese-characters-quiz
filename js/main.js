@@ -238,7 +238,7 @@ buttonReset.addEventListener("click", function() {
 
 /* Hiragana Button */
 buttonHiragana.addEventListener("click", function() {
-  if(gameOver === false && displayHiragana === false) {
+  if(displayHiragana === false) {
     this.classList.toggle("active-button");
     this.classList.toggle("inactive-button");
     buttonKatakana.classList.toggle("active-button");
@@ -254,7 +254,7 @@ buttonHiragana.addEventListener("click", function() {
 
 /* Katakana Button */
 buttonKatakana.addEventListener("click", function() {
-  if(gameOver === false && displayHiragana === true) {
+  if(displayHiragana === true) {
     this.classList.toggle("active-button");
     this.classList.toggle("inactive-button");
     buttonHiragana.classList.toggle("active-button");
