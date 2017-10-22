@@ -180,7 +180,7 @@ for(i = 0; i < squares.length; i++) {
           this.classList.add("wrong-answer");
           this.textContent = sixCards[ii].hiragana;
         }
-        else if(this.textContent === sixCards[ii].hiragana) {
+        else {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].romaji;
         }        
@@ -192,7 +192,7 @@ for(i = 0; i < squares.length; i++) {
           this.classList.add("wrong-answer");
           this.textContent = sixCards[ii].romaji;
         }
-        else if(this.textContent === sixCards[ii].romaji) {
+        else {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].hiragana;
         } 
@@ -204,7 +204,7 @@ for(i = 0; i < squares.length; i++) {
           this.classList.add("wrong-answer");
           this.textContent = sixCards[ii].katakana;
         }
-        else if(this.textContent === sixCards[ii].katakana) {
+        else {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].romaji;
         } 
@@ -216,7 +216,7 @@ for(i = 0; i < squares.length; i++) {
           this.classList.add("wrong-answer");
           this.textContent = sixCards[ii].romaji;
         }
-        else if(this.textContent === sixCards[ii].romaji) {
+        else {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].katakana;
         } 
