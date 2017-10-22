@@ -1,360 +1,281 @@
-body {
-  cursor: default;
-  font-family: 'Josefin Sans', sans-serif;
-  background: #eee;
-  margin: 0;
-  -webkit-touch-callout: none;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+/*** Variables ***/
+
+var characters = [{romaji:"a",hiragana:"あ",katakana:"ア"},{romaji:"i",hiragana:"い",katakana:"イ"},{romaji:"u",hiragana:"う",katakana:"ウ"},{romaji:"e",hiragana:"え",katakana:"エ"},{romaji:"o",hiragana:"お",katakana:"オ"},{romaji:"ka",hiragana:"か",katakana:"カ"},{romaji:"ki",hiragana:"き",katakana:"キ"},{romaji:"ku",hiragana:"く",katakana:"ク"},{romaji:"ke",hiragana:"け",katakana:"ケ"},{romaji:"ko",hiragana:"こ",katakana:"コ"},{romaji:"sa",hiragana:"さ",katakana:"サ"},{romaji:"shi",hiragana:"し",katakana:"シ"},{romaji:"su",hiragana:"す",katakana:"ス"},{romaji:"se",hiragana:"せ",katakana:"セ"},{romaji:"so",hiragana:"そ",katakana:"ソ"},{romaji:"ta",hiragana:"た",katakana:"タ"},{romaji:"chi",hiragana:"ち",katakana:"チ"},{romaji:"tsu",hiragana:"つ",katakana:"ツ"},{romaji:"te",hiragana:"て",katakana:"テ"},{romaji:"to",hiragana:"と",katakana:"ト"},{romaji:"na",hiragana:"な",katakana:"ナ"},{romaji:"ni",hiragana:"に",katakana:"ニ"},{romaji:"nu",hiragana:"ぬ",katakana:"ヌ"},{romaji:"ne",hiragana:"ね",katakana:"ネ"},{romaji:"no",hiragana:"の",katakana:"ノ"},{romaji:"ha",hiragana:"は",katakana:"ハ"},{romaji:"hi",hiragana:"ひ",katakana:"ヒ"},{romaji:"fu",hiragana:"ふ",katakana:"フ"},{romaji:"he",hiragana:"へ",katakana:"ヘ"},{romaji:"ho",hiragana:"ほ",katakana:"ホ"},{romaji:"ma",hiragana:"ま",katakana:"マ"},{romaji:"mi",hiragana:"み",katakana:"ミ"},{romaji:"mu",hiragana:"む",katakana:"ム"},{romaji:"me",hiragana:"め",katakana:"メ"},{romaji:"mo",hiragana:"も",katakana:"モ"},{romaji:"ya",hiragana:"や",katakana:"ヤ"},{romaji:"yu",hiragana:"ゆ",katakana:"ユ"},{romaji:"yo",hiragana:"よ",katakana:"ヨ"},{romaji:"ra",hiragana:"ら",katakana:"ラ"},{romaji:"ri",hiragana:"り",katakana:"リ"},{romaji:"ru",hiragana:"る",katakana:"ル"},{romaji:"re",hiragana:"れ",katakana:"レ"},{romaji:"ro",hiragana:"ろ",katakana:"ロ"},{romaji:"wa",hiragana:"わ",katakana:"ワ"},{romaji:"wo",hiragana:"を",katakana:"ヲ"},{romaji:"n",hiragana:"ん",katakana:"ン"}];
+var answer = document.getElementById("answer");
+var feedback = document.getElementById("feedback");
+var squares = document.getElementsByClassName("square");
+var buttonReset = document.getElementById("reset");
+var buttonHiragana = document.getElementById("hiragana");
+var buttonKatakana = document.getElementById("katakana");
+var buttonMode = document.getElementById("mode");
+var displayHiragana = true;
+var jpnToEng = true;
+var gameOver = false;
+var previousAnswer;
+var sixCards;
+
+/*** Functions ***/
+
+/* Fisher-Yates Shuffle */
+function shuffle(arr) {
+  var i = arr.length,
+      j = 0,
+      temp;
+  while (i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+  }
+  return arr;
 }
 
-button {
-  font-size: 16px;
-  font-family: 'Josefin Sans', sans-serif;
-  height: 30px;
-  width: 160px;
-  line-height: 30px;
-  border-radius: 0%;
-  border: 1px solid #eee;
-  background: #f8f8f8;
-}
-  button:nth-of-type(1) {
-    margin: 18px 20px 9px 42px;
+/* Generate Squares Text Content */
+function randomizer(arr) {
+  var tempArr = [];
+  for(i = 0; i < squares.length; i++) {
+    tempArr.push(arr[i]);
   }
-  button:nth-of-type(2) {
-    margin: 18px 42px 9px 20px;
+  shuffle(tempArr);
+  for(i = 0; i < squares.length; i++) {
+    /* Japanese > Romaji */
+    if(jpnToEng === true) {
+      squares[i].textContent = tempArr[i].romaji;
+    }
+    /* Romaji > Hiragana */
+    else if(displayHiragana === true) {
+      squares[i].textContent = tempArr[i].hiragana;
+    }
+    /* Romaji > Katakana */
+    else {
+      squares[i].textContent = tempArr[i].katakana; 
+    }
   }
-  button:nth-of-type(3) {
-    margin: 9px 20px 18px 42px;
-  }
-  button:nth-of-type(4) {
-    margin: 9px 42px 18px 20px;
-  }
-  button:focus {
-    outline: none;
-  } 
-  button:hover {
-    border: 1px solid #ee0000;
-  }
-
-#outer {
-  height: 700px;
-  width: 480px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -350px 0 0 -240px;
+  sixCards = tempArr;
 }
 
-#inner {
-  height: 680px;
-  width: 450px;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  margin: -340px 0 0 -225px;
-  border: 1px solid black;
-  overflow: hidden;
-  -webkit-box-shadow: 2px 4px 16px #bbb;
-     -moz-box-shadow: 2px 4px 16px #bbb;
-         -box-shadow: 2px 4px 16px #bbb;
-}
-
-#title {
-  font-size: 32px;
-  text-align: center;
-  width: 100%;
-  height: 30px;
-  line-height: 30px;
-  background: #ee0000;
-  color: #f8f8f8;
-  text-shadow: 1px 1px 2px #121212; 
-}
-
-#answer {
-  font-size: 56px;
-  text-align: center;
-  height: 80px;
-  line-height: 80px;  
-  border-top: 1px solid black;
-  background: #fff;
-}
-
-#feedback {
-  font-size: 22px;
-  text-align: center;
-  line-height: 24px;
-  height: 22px;
-  border-top: 1px solid black;
-  background: #eee;
-  padding: 14px 0;
-  -webkit-transition: background 0.125s, transform 0.25s;
-     -moz-transition: background 0.125s, transform 0.25s;
-       -o-transition: background 0.125s, transform 0.25s;
-         -transition: background 0.125s, transform 0.25s;
-}
-
-#squares {
-  height: 278px;
-  position: relative;
-  border-top: 1px solid black;
-  background: #cc0000;
-}
-
-#options {
-  height: 118px;
-  border-top: 1px solid black;
-  background: #121212;
-}
-
-#title, #answer, #squares {
-  padding: 20px 0;
-}
-
-.square {
-  float: left;
-  font-size: 34px;
-  line-height: 120px;
-  text-align: center;
-  height: 120px;
-  width: 120px;
-  border: 1px solid #121212;
-  background: #fff;
-  -webkit-box-shadow: 1px 2px 4px #121212;
-     -moz-box-shadow: 1px 2px 4px #121212;
-         -box-shadow: 1px 2px 4px #121212;
-  -webkit-transition: 0.25s;
-     -moz-transition: 0.25s;
-       -o-transition: 0.25s;
-          transition: 0.25s;
-}
-  .square:nth-of-type(1), .square:nth-of-type(4) {
-    margin: 8px 8px 8px 24px;
+/* Create Answer */
+function createAnswer() {
+  /* Japanese > Romaji */
+  if(jpnToEng === false) {
+    answer.textContent = characters[0].romaji;
   }
-  .square:nth-of-type(2), .square:nth-of-type(5) {
-    margin: 8px 8px 8px 8px;
+  /* Romaji > Hiragana */
+  else if(displayHiragana === true) {
+    answer.textContent = characters[0].hiragana;
   }
-  .square:nth-of-type(3), .square:nth-of-type(6) {
-    margin: 8px 24px 8px 8px;
-  }
-
-.wrong-answer {
-  background: #cc5500;
-  border-top: 1px solid #790000;
-  border-right: 1px solid #da0000;
-  border-bottom: 1px solid #da0000;
-  border-left: 1px solid #790000;
-  -webkit-box-shadow: inset 0px 1px 2px #121212;
-     -moz-box-shadow: inset 0px 1px 2px #121212;
-         -box-shadow: inset 0px 1px 2px #121212;
-}
-
-.active-button {
-  color: #eee;
-  text-shadow: 1px 1px 2px #121212; 
-  background: #ee0000;
-  border-top: 1px solid #980000;
-  border-right: 1px solid #ff7c7c;
-  border-bottom: 1px solid #ff7c7c;
-  border-left: 1px solid #980000;
-}
-
-.inactive-button, .inactive-div {
-  background: #bbb;
-  border-top: 1px solid #eee;
-  border-right: 1px solid #333;
-  border-bottom: 1px solid #333;
-  border-left: 1px solid #eee;
-}
-  .inactive-button:hover {
-    background: #f8f8f8;
-  }
-
-.inactive-div {
-  background: #eee;
-}
-  .inactive-div:hover {
-    background: #fff;
-  }
-
-.gameover-feedback {
-  background: #ffeb3b !important;
-}
-
-.gameover-button {
-  background: #ffeb3b !important;
-  border-top: 1px solid #9c8c00 !important;
-  border-right: 1px solid #fff283 !important;
-  border-bottom: 1px solid #fff283 !important;
-  border-left: 1px solid #9c8c00 !important;
-  -webkit-transition: background 0.125s;
-     -moz-transition: background 0.125s;
-       -o-transition: background 0.125s;
-          transition: background 0.125s;
-}
-
-.expand {
-  -webkit-transform: scale(1.1);
-     -moz-transform: scale(1.1);
-       -o-transform: scale(1.1);
-         -transform: scale(1.1);
-  -webkit-transition-timing-function: ease-out;
-     -moz-transition-timing-function: ease-out;
-       -o-transition-timing-function: ease-out;
-         -transition-timing-function: ease-out;
-}
-
-.contract {
-  -webkit-transform: scale(1);
-     -moz-transform: scale(1);
-       -o-transform: scale(1);
-         -transform: scale(1);
-  -webkit-transition-timing-function: ease-in;
-     -moz-transition-timing-function: ease-in;
-       -o-transition-timing-function: ease-in;
-         -transition-timing-function: ease-in;
-}
-
-@media all and (max-width: 576px) {
-  button {
-    width: 125px;
-    font-size: 14px;
-    padding: 0;
-  }
-  button:nth-of-type(1) {
-    margin: 12px 6px 6px 16px;
-  }
-  button:nth-of-type(2) {
-    margin: 12px 16px 6px 6px;
-  }
-  button:nth-of-type(3) {
-    margin: 6px 6px 12px 16px;
-  }
-  button:nth-of-type(4) {
-    margin: 6px 16px 12px 6px;
-  }
-  #outer {
-    height: 560px;
-    width: 320px;
-    margin: -280px 0 0 -160px;
-  }
-  #inner {
-    height: 540px;
-    width: 300px;
-    margin: -270px 0 0 -150px;
-  }
-  #title {
-    font-size: 22px;
-    line-height: 22px;
-    height: 22px;
-    width: 100%;
-  }
-  #answer {
-    font-size: 50px;
-    line-height: 64px;
-    height: 64px;
-  }
-  #feedback {
-    font-size: 18px;
-    line-height: 18px;
-    height: 18px;
-    padding: 12px 0;
-  }
-  #squares {
-    height: 194px;
-  }
-  #options {
-    height: 95px;
-  }
-  #title, #answer, #squares {
-    padding: 20px 0;
-  }
-  .square {
-    font-size: 28px;
-    line-height: 86px;
-    height: 86px;
-    width: 86px;
-  }
-  .square:nth-of-type(1), .square:nth-of-type(4) {
-    margin: 4px 4px 4px 10px;
-  }
-  .square:nth-of-type(2), .square:nth-of-type(5) {
-    margin: 4px 4px 4px 4px;
-  }
-  .square:nth-of-type(3), .square:nth-of-type(6) {
-    margin: 4px 10px 4px 4px;
+  /* Romaji > Katakana */
+  else {
+    answer.textContent = characters[0].katakana;    
   }
 }
 
-@media all and (max-width: 320px) {
-  button {
-    width: 119px;
-    font-size: 12px;
-    padding: 0;
-  }
-  button:nth-of-type(1) {
-    margin: 6px 4px 4px 14px;
-  }
-  button:nth-of-type(2) {
-    margin: 6px 14px 4px 4px;
-  }
-  button:nth-of-type(3) {
-    margin: 4px 4px 6px 14px;
-  }
-  button:nth-of-type(4) {
-    margin: 4px 14px 6px 4px;
-  } 
-  #outer {
-    height: 460px;
-    width: 300px;
-    margin: -230px 0 0 -150px;
-  }
-  #inner {
-    height: 440px;
-    width: 280px;
-    margin: -220px 0 0 -140px;
-  }
-  #title {
-    font-size: 20px;
-    line-height: 16px;
-    height: 16px;
-    width: 100%;
-  }  
-  #answer {
-    font-size: 46px;
-    line-height: 60px;
-    height: 60px;
-  }
-  #feedback {
-    font-size: 16px;
-    line-height: 16px;
-    height: 16px;
-    padding: 10px 0;
-  }
-  #squares {
-    height: 160px;
-  }
-  #options {
-    height: 80px;
-  }
-  #title, #answer, #squares {
-    padding: 14px 0;
-  }
-  .square {
-    font-size: 26px;
-    line-height: 70px;
-    height: 70px;
-    width: 70px;
-  }
-  .square:nth-of-type(1), .square:nth-of-type(4) {
-    margin: 4px 4px 4px 24px;
-  }
-  .square:nth-of-type(2), .square:nth-of-type(5) {
-    margin: 4px 4px 4px 4px;
-  }
-  .square:nth-of-type(3), .square:nth-of-type(6) {
-    margin: 4px 24px 4px 4px;
+/* Reset Function */
+function reset() {
+  previousAnswer = characters[0];
+  shuffle(characters);
+    /* Consecutive Repetition Killer */
+    for(i = 0; i < characters.length; i++) {
+      if(characters[0] === previousAnswer) {
+        shuffle(characters);
+      }
+    }
+  createAnswer();
+  randomizer(characters);
+  gameOver = false;
+}
+
+/* Change Squares */
+function changeSquares() {
+  for(i = 0; i < squares.length; i++) {
+    squares[i].classList.add("inactive-div");
   }
 }
+
+/* Restore Square Visibility */
+function restoreSquares() {
+  for(i = 0; i < squares.length; i++) {
+    squares[i].classList.remove("wrong-answer");
+  }
+}
+
+/* All Button Operations */
+function allButtons() {
+  for(i = 0; i < squares.length; i++) {
+    squares[i].classList.remove("inactive-div");
+  }
+  restoreSquares();
+  feedback.textContent = "";
+  buttonReset.textContent = "New Character";
+  feedback.classList.remove("gameover-feedback");
+  buttonReset.classList.remove("gameover-button");
+}
+
+/* Correct Answer Transition */
+function correctAnswer() {
+  for(i = 0; i < squares.length; i++) {
+    /* Japanese > Romaji */ 
+    if(jpnToEng === true) {
+      squares[i].textContent = characters[0].romaji;
+    }
+    /* Romaji > Hiragana */
+    else if(displayHiragana === true) {
+      squares[i].textContent = characters[0].hiragana;
+    }
+    /* Romaji > Katakana */
+    else {
+      squares[i].textContent = characters[0].katakana;
+    }
+  }
+}
+
+/* Expand-Contract Animation */
+function animate(i) {
+  i.classList.add("expand");
+  setTimeout(function() {
+    i.classList.add("contract")
+  }, 125);
+  setTimeout(function() {
+    i.classList.remove("expand");
+    i.classList.remove("contract");
+  }, 250);
+}
+
+/* Victory Sequence */
+function victorySequence() {
+  feedback.classList.add("gameover-feedback");
+  buttonReset.classList.add("gameover-button");
+  feedback.textContent = "Correct!";
+  animate(feedback);
+  buttonReset.textContent = "Play Again?";
+  changeSquares();
+  restoreSquares();
+  correctAnswer();
+  gameOver = true;
+}
+
+/*** Events ***/
+
+/* Squares */
+for(i = 0; i < squares.length; i++) {
+  try{throw i}
+  catch(ii) {
+    squares[i].addEventListener("click", function() {
+      /* Correct Answer - Japanese > Romaji */ 
+      if(jpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
+        victorySequence();
+      }
+      /* Correct Answer - Romaji > Hiragana */
+      else if(displayHiragana === true && this.textContent === characters[0].hiragana && gameOver === false) {
+        victorySequence();
+      }
+      /* Correct Answer - Romaji > Katakana */
+      else if(this.textContent === characters[0].katakana && gameOver === false) {
+        victorySequence();
+      }
+      /* Wrong Answer - Hiragana > Romaji */
+      else if(jpnToEng === true && displayHiragana === true && this.textContent !== characters[0].romaji && gameOver === false) {
+        feedback.textContent = "Try Again";
+        if(this.textContent === sixCards[ii].romaji) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].hiragana;
+        }
+        else if(this.textContent === sixCards[ii].hiragana) {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        }        
+      }    
+      /* Wrong Answer - Romaji > Hiragana */
+      else if(displayHiragana === true && this.textContent !== characters[0].hiragana && gameOver === false) {
+        feedback.textContent = "Try Again";
+        if(this.textContent === sixCards[ii].hiragana) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        }
+        else if(this.textContent === sixCards[ii].romaji) {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].hiragana;
+        } 
+      }    
+      /* Wrong Answer - Katakana > Romaji */
+      else if(jpnToEng === true && displayHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
+        feedback.textContent = "Try Again";
+        if(this.textContent === sixCards[ii].romaji) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].katakana;
+        }
+        else if(this.textContent === sixCards[ii].katakana) {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        } 
+      }
+      /* Wrong Answer - Romaji > Katakana */
+      else if(displayHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
+        feedback.textContent = "Try Again";
+        if(this.textContent === sixCards[ii].katakana) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        }
+        else if(this.textContent === sixCards[ii].romaji) {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].katakana;
+        } 
+      }
+      /* Lazy Reset */
+      else {
+        reset();
+        allButtons();
+      }
+  });
+  }
+}
+
+/* Reset Button */
+buttonReset.addEventListener("click", function() {
+  reset();
+  allButtons();
+});
+
+/* Hiragana Button */
+buttonHiragana.addEventListener("click", function() {
+  if(displayHiragana === false) {
+    this.classList.toggle("active-button");
+    this.classList.toggle("inactive-button");
+    buttonKatakana.classList.toggle("active-button");
+    buttonKatakana.classList.toggle("inactive-button");
+    displayHiragana = true;
+  }
+  reset();
+  allButtons();
+});
+
+/* Katakana Button */
+buttonKatakana.addEventListener("click", function() {
+  if(displayHiragana === true) {
+    this.classList.toggle("active-button");
+    this.classList.toggle("inactive-button");
+    buttonHiragana.classList.toggle("active-button");
+    buttonHiragana.classList.toggle("inactive-button");
+    displayHiragana = false;
+  }
+  reset();
+  allButtons();
+});
+
+/* Mode Button */
+buttonMode.addEventListener("click", function() {
+  if(jpnToEng === true) {
+    buttonMode.textContent = "ENG // JPN";
+    jpnToEng = false;
+  }
+  else {
+    buttonMode.textContent = "JPN // ENG";
+    jpnToEng = true;
+  }
+  reset();
+  allButtons();
+});
+
+/*** Initialize ***/
+
+reset();
