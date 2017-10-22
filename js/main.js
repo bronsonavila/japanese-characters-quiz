@@ -238,27 +238,33 @@ buttonReset.addEventListener("click", function() {
 
 /* Hiragana Button */
 buttonHiragana.addEventListener("click", function() {
-  if(displayHiragana === false) {
+  if(gameOver === false && displayHiragana === false) {
     this.classList.toggle("active-button");
     this.classList.toggle("inactive-button");
     buttonKatakana.classList.toggle("active-button");
     buttonKatakana.classList.toggle("inactive-button");
     displayHiragana = true;
+    reset();
   }
-  reset();
+  if(gameOver === true) {
+    reset();
+  }
   allButtons();
 });
 
 /* Katakana Button */
 buttonKatakana.addEventListener("click", function() {
-  if(displayHiragana === true) {
+  if(gameOver === false && displayHiragana === true) {
     this.classList.toggle("active-button");
     this.classList.toggle("inactive-button");
     buttonHiragana.classList.toggle("active-button");
     buttonHiragana.classList.toggle("inactive-button");
     displayHiragana = false;
+    reset();
   }
-  reset();
+  if(gameOver === true) {
+    reset();
+  }
   allButtons();
 });
 
