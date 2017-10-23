@@ -131,14 +131,14 @@ function correctAnswer() {
 }
 
 /* Expand-Contract Animation */
-function animate(i) {
-  i.classList.add("expand");
+function animate(elem) {
+  elem.classList.add("expand");
   setTimeout(function() {
-    i.classList.add("contract")
+    elem.classList.add("contract")
   }, 125);
   setTimeout(function() {
-    i.classList.remove("expand");
-    i.classList.remove("contract");
+    elem.classList.remove("expand");
+    elem.classList.remove("contract");
   }, 250);
 }
 
