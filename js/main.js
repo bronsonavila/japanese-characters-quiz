@@ -1,4 +1,4 @@
-/*** Copyright 2017. Bronson Avila. Free to copy, modify, and distribute with attribution and for non-commercial purposes only. ***/
+/***** Copyright 2017. Bronson Avila. *****/
 
 /*** Variables ***/
 
