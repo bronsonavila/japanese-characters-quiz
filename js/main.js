@@ -34,26 +34,25 @@ function shuffle(arr) {
 
 /* Generate Squares Text Content */
 function randomizer(arr) {
-  var tempArr = [];
+  sixCards = [];
   for(i = 0; i < squares.length; i++) {
-    tempArr.push(arr[i]);
+    sixCards.push(arr[i]);
   }
-  shuffle(tempArr);
+  shuffle(sixCards);
   for(i = 0; i < squares.length; i++) {
     /* Japanese > Romaji */
     if(jpnToEng === true) {
-      squares[i].textContent = tempArr[i].romaji;
+      squares[i].textContent = sixCards[i].romaji;
     }
     /* Romaji > Hiragana */
     else if(displayHiragana === true) {
-      squares[i].textContent = tempArr[i].hiragana;
+      squares[i].textContent = sixCards[i].hiragana;
     }
     /* Romaji > Katakana */
     else {
-      squares[i].textContent = tempArr[i].katakana; 
+      squares[i].textContent = sixCards[i].katakana; 
     }
   }
-  sixCards = tempArr;
 }
 
 /* Create Answer */
