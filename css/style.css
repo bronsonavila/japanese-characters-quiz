@@ -1,3 +1,5 @@
+/* Author: Bronson Avila */
+
 body {
   cursor: default;
   font-family: 'Josefin Sans', sans-serif;
@@ -32,20 +34,14 @@ button {
   #ten-ten-maru {
     margin: 18px 0 6px 14px;
   }
-  #mode {
+  #yoon {
     margin: 6px 0 18px 14px;
   }
   #reset {
-    width: 120px;
-    height: 72.4px;
-    line-height: 20px;
-    margin: 18px 0 18px 2px;
+    margin: 18px 25px 6px 2px;
   }
-  button:focus {
-    outline: none;
-  } 
-  button:hover {
-    border: 1px solid #ee0000;
+  #mode { 
+    margin: 6px 25px 18px 2px;
   }
 
 #outer {
@@ -192,6 +188,17 @@ button {
     background: #fff;
   }
 
+.active-addon {
+  background: #cc5500;
+  border-top: 1px solid #790000;
+  border-right: 1px solid #da0000;
+  border-bottom: 1px solid #da0000;
+  border-left: 1px solid #790000;
+  -webkit-box-shadow: inset 1px 1px 1px #923c00;
+     -moz-box-shadow: inset 1px 1px 1px #923c00;
+          box-shadow: inset 1px 1px 1px #923c00;
+}
+
 .gameover-feedback {
   background: #ffeb3b !important;
 }
@@ -245,15 +252,14 @@ button {
     #ten-ten-maru {
       margin: 13px 0 4px 7px;
     }
-    #mode {
+    #yoon {
       margin: 4px 0 13px 7px;
     }
     #reset {
-      font-size: 13px;
-      width: 86px;
-      height: 68.4px;
-      line-height: 16px;
-      margin: 13px 0 13px 3px;
+      margin: 13px 11px 4px 3px;
+    }
+    #mode {
+      margin: 4px 11px 13px 3px;
     }
   #outer {
     height: 560px;
@@ -329,15 +335,14 @@ button {
     #ten-ten-maru {
       margin: 10px 0 3px 12px;
     }
-    #mode {
+    #yoon {
       margin: 3px 0 10px 12px;
     }
     #reset {
-      font-size: 11px;
-      width: 70px;
-      height: 58.4px;
-      line-height: 14px;
-      margin: 10px 0 13px -1px;
+      margin: 10px 24px 3px -1px;
+    }
+    #mode {
+      margin: 3px 24px 10px -1px;
     }
   #outer {
     height: 460px;
