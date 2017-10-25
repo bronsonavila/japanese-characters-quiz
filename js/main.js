@@ -5,22 +5,18 @@
 //--------------------------------------------------------------------------
 
 var characters = [{romaji:"a",hiragana:"あ",katakana:"ア"},{romaji:"i",hiragana:"い",katakana:"イ"},{romaji:"u",hiragana:"う",katakana:"ウ"},{romaji:"e",hiragana:"え",katakana:"エ"},{romaji:"o",hiragana:"お",katakana:"オ"},{romaji:"ka",hiragana:"か",katakana:"カ"},{romaji:"ki",hiragana:"き",katakana:"キ"},{romaji:"ku",hiragana:"く",katakana:"ク"},{romaji:"ke",hiragana:"け",katakana:"ケ"},{romaji:"ko",hiragana:"こ",katakana:"コ"},{romaji:"sa",hiragana:"さ",katakana:"サ"},{romaji:"shi",hiragana:"し",katakana:"シ"},{romaji:"su",hiragana:"す",katakana:"ス"},{romaji:"se",hiragana:"せ",katakana:"セ"},{romaji:"so",hiragana:"そ",katakana:"ソ"},{romaji:"ta",hiragana:"た",katakana:"タ"},{romaji:"chi",hiragana:"ち",katakana:"チ"},{romaji:"tsu",hiragana:"つ",katakana:"ツ"},{romaji:"te",hiragana:"て",katakana:"テ"},{romaji:"to",hiragana:"と",katakana:"ト"},{romaji:"na",hiragana:"な",katakana:"ナ"},{romaji:"ni",hiragana:"に",katakana:"ニ"},{romaji:"nu",hiragana:"ぬ",katakana:"ヌ"},{romaji:"ne",hiragana:"ね",katakana:"ネ"},{romaji:"no",hiragana:"の",katakana:"ノ"},{romaji:"ha",hiragana:"は",katakana:"ハ"},{romaji:"hi",hiragana:"ひ",katakana:"ヒ"},{romaji:"fu",hiragana:"ふ",katakana:"フ"},{romaji:"he",hiragana:"へ",katakana:"ヘ"},{romaji:"ho",hiragana:"ほ",katakana:"ホ"},{romaji:"ma",hiragana:"ま",katakana:"マ"},{romaji:"mi",hiragana:"み",katakana:"ミ"},{romaji:"mu",hiragana:"む",katakana:"ム"},{romaji:"me",hiragana:"め",katakana:"メ"},{romaji:"mo",hiragana:"も",katakana:"モ"},{romaji:"ya",hiragana:"や",katakana:"ヤ"},{romaji:"yu",hiragana:"ゆ",katakana:"ユ"},{romaji:"yo",hiragana:"よ",katakana:"ヨ"},{romaji:"ra",hiragana:"ら",katakana:"ラ"},{romaji:"ri",hiragana:"り",katakana:"リ"},{romaji:"ru",hiragana:"る",katakana:"ル"},{romaji:"re",hiragana:"れ",katakana:"レ"},{romaji:"ro",hiragana:"ろ",katakana:"ロ"},{romaji:"wa",hiragana:"わ",katakana:"ワ"},{romaji:"wo",hiragana:"を",katakana:"ヲ"},{romaji:"n",hiragana:"ん",katakana:"ン"}];
-var tenTenMaru = [{romaji:"ga",hiragana:"が",katakana:"ガ"},{romaji:"gi",hiragana:"ぎ",katakana:"ギ"},{romaji:"gu",hiragana:"ぐ",katakana:"グ"},{romaji:"ge",hiragana:"げ",katakana:"ゲ"},{romaji:"go",hiragana:"ご",katakana:"ゴ"},{romaji:"za",hiragana:"ざ",katakana:"ザ"},{romaji:"ji",hiragana:"じ",katakana:"ジ"},{romaji:"zu",hiragana:"ず",katakana:"ズ"},{romaji:"ze",hiragana:"ぜ",katakana:"ゼ"},{romaji:"zo",hiragana:"ぞ",katakana:"ゾ"},{romaji:"da",hiragana:"だ",katakana:"ダ"},{romaji:"de",hiragana:"で",katakana:"デ"},{romaji:"do",hiragana:"ど",katakana:"ド"},{romaji:"ba",hiragana:"ば",katakana:"バ"},{romaji:"bi",hiragana:"び",katakana:"ビ"},{romaji:"bu",hiragana:"ぶ",katakana:"ブ"},{romaji:"be",hiragana:"べ",katakana:"ベ"},{romaji:"bo",hiragana:"ぼ",katakana:"ボ"},{romaji:"pa",hiragana:"ぱ",katakana:"パ"},{romaji:"pi",hiragana:"ぴ",katakana:"ピ"},{romaji:"pu",hiragana:"ぷ",katakana:"プ"},{romaji:"pe",hiragana:"ぺ",katakana:"ペ"},{romaji:"po",hiragana:"ぽ",katakana:"ポ"}];
-var yoon = [{romaji:"kya",hiragana:"きゃ",katakana:"キャ"},{romaji:"kyu",hiragana:"きゅ",katakana:"キュ"},{romaji:"kyo",hiragana:"きょ",katakana:"キョ"},{romaji:"sha",hiragana:"しゃ",katakana:"シャ"},{romaji:"shu",hiragana:"しゅ",katakana:"シュ"},{romaji:"sho",hiragana:"しょ",katakana:"ショ"},{romaji:"cha",hiragana:"ちゃ",katakana:"チャ"},{romaji:"chu",hiragana:"ちゅ",katakana:"チュ"},{romaji:"cho",hiragana:"ちょ",katakana:"チョ"},{romaji:"nya",hiragana:"にゃ",katakana:"ニャ"},{romaji:"nyu",hiragana:"にゅ",katakana:"ニュ"},{romaji:"nyo",hiragana:"にょ",katakana:"ニョ"},{romaji:"hya",hiragana:"ひゃ",katakana:"ヒャ"},{romaji:"hyu",hiragana:"ひゅ",katakana:"ヒュ"},{romaji:"hyo",hiragana:"ひょ",katakana:"ヒョ"},{romaji:"mya",hiragana:"みゃ",katakana:"ミャ"},{romaji:"myu",hiragana:"みゅ",katakana:"ミュ"},{romaji:"myo",hiragana:"みょ",katakana:"ミョ"},{romaji:"rya",hiragana:"りゃ",katakana:"リャ"},{romaji:"ryu",hiragana:"りゅ",katakana:"リュ"},{romaji:"ryo",hiragana:"りょ",katakana:"リョ"}];
-var yoonTtm = [{romaji:"gya",hiragana:"ぎゃ",katakana:"ギャ"},{romaji:"gyu",hiragana:"ぎゅ",katakana:"ギュ"},{romaji:"gyo",hiragana:"ぎょ",katakana:"ギョ"},{romaji:"ja",hiragana:"じゃ",katakana:"ジャ"},{romaji:"ju",hiragana:"じゅ",katakana:"ジュ"},{romaji:"jo",hiragana:"じょ",katakana:"ジョ"},{romaji:"bya",hiragana:"びゃ",katakana:"ビャ"},{romaji:"byu",hiragana:"びゅ",katakana:"ビュ"},{romaji:"byo",hiragana:"びょ",katakana:"ビョ"},{romaji:"pya",hiragana:"ぴゃ",katakana:"ピャ"},{romaji:"pyu",hiragana:"ぴゅ",katakana:"ピュ"},{romaji:"pyo",hiragana:"ぴょ",katakana:"ピョ"}];
+var advanced = [{romaji:"kya",hiragana:"きゃ",katakana:"キャ"},{romaji:"kyu",hiragana:"きゅ",katakana:"キュ"},{romaji:"kyo",hiragana:"きょ",katakana:"キョ"},{romaji:"sha",hiragana:"しゃ",katakana:"シャ"},{romaji:"shu",hiragana:"しゅ",katakana:"シュ"},{romaji:"sho",hiragana:"しょ",katakana:"ショ"},{romaji:"cha",hiragana:"ちゃ",katakana:"チャ"},{romaji:"chu",hiragana:"ちゅ",katakana:"チュ"},{romaji:"cho",hiragana:"ちょ",katakana:"チョ"},{romaji:"nya",hiragana:"にゃ",katakana:"ニャ"},{romaji:"nyu",hiragana:"にゅ",katakana:"ニュ"},{romaji:"nyo",hiragana:"にょ",katakana:"ニョ"},{romaji:"hya",hiragana:"ひゃ",katakana:"ヒャ"},{romaji:"hyu",hiragana:"ひゅ",katakana:"ヒュ"},{romaji:"hyo",hiragana:"ひょ",katakana:"ヒョ"},{romaji:"mya",hiragana:"みゃ",katakana:"ミャ"},{romaji:"myu",hiragana:"みゅ",katakana:"ミュ"},{romaji:"myo",hiragana:"みょ",katakana:"ミョ"},{romaji:"rya",hiragana:"りゃ",katakana:"リャ"},{romaji:"ryu",hiragana:"りゅ",katakana:"リュ"},{romaji:"ryo",hiragana:"りょ",katakana:"リョ"},{romaji:"ga",hiragana:"が",katakana:"ガ"},{romaji:"gi",hiragana:"ぎ",katakana:"ギ"},{romaji:"gu",hiragana:"ぐ",katakana:"グ"},{romaji:"ge",hiragana:"げ",katakana:"ゲ"},{romaji:"go",hiragana:"ご",katakana:"ゴ"},{romaji:"za",hiragana:"ざ",katakana:"ザ"},{romaji:"ji",hiragana:"じ",katakana:"ジ"},{romaji:"zu",hiragana:"ず",katakana:"ズ"},{romaji:"ze",hiragana:"ぜ",katakana:"ゼ"},{romaji:"zo",hiragana:"ぞ",katakana:"ゾ"},{romaji:"da",hiragana:"だ",katakana:"ダ"},{romaji:"de",hiragana:"で",katakana:"デ"},{romaji:"do",hiragana:"ど",katakana:"ド"},{romaji:"ba",hiragana:"ば",katakana:"バ"},{romaji:"bi",hiragana:"び",katakana:"ビ"},{romaji:"bu",hiragana:"ぶ",katakana:"ブ"},{romaji:"be",hiragana:"べ",katakana:"ベ"},{romaji:"bo",hiragana:"ぼ",katakana:"ボ"},{romaji:"pa",hiragana:"ぱ",katakana:"パ"},{romaji:"pi",hiragana:"ぴ",katakana:"ピ"},{romaji:"pu",hiragana:"ぷ",katakana:"プ"},{romaji:"pe",hiragana:"ぺ",katakana:"ペ"},{romaji:"po",hiragana:"ぽ",katakana:"ポ"},{romaji:"gya",hiragana:"ぎゃ",katakana:"ギャ"},{romaji:"gyu",hiragana:"ぎゅ",katakana:"ギュ"},{romaji:"gyo",hiragana:"ぎょ",katakana:"ギョ"},{romaji:"ja",hiragana:"じゃ",katakana:"ジャ"},{romaji:"ju",hiragana:"じゅ",katakana:"ジュ"},{romaji:"jo",hiragana:"じょ",katakana:"ジョ"},{romaji:"bya",hiragana:"びゃ",katakana:"ビャ"},{romaji:"byu",hiragana:"びゅ",katakana:"ビュ"},{romaji:"byo",hiragana:"びょ",katakana:"ビョ"},{romaji:"pya",hiragana:"ぴゃ",katakana:"ピャ"},{romaji:"pyu",hiragana:"ぴゅ",katakana:"ピュ"},{romaji:"pyo",hiragana:"ぴょ",katakana:"ピョ"}];
 var answer = document.getElementById("answer");
 var feedback = document.getElementById("feedback");
 var squares = document.getElementsByClassName("square");
 var buttonHiragana = document.getElementById("hiragana");
 var buttonKatakana = document.getElementById("katakana");
-var buttonTenTenMaru = document.getElementById("ten-ten-maru");
-var buttonYoon = document.getElementById("yoon");
-var buttonReset = document.getElementById("reset");
+var buttonSkill = document.getElementById("skill");
 var buttonMode = document.getElementById("mode");
+var buttonReset = document.getElementById("reset");
 var showHiragana = true;
-var showTenTenMaru = false;
-var showYoon = false;
-var jpnToEng = true;
+var showBasic = true;
+var showJpnToEng = true;
 var gameOver = false;
 var previousAnswer;
 var sixCards;
@@ -52,7 +48,7 @@ function randomizer(arr) {
   shuffle(sixCards);
   for(i = 0; i < squares.length; i++) {
     /* Japanese > Romaji */
-    if(jpnToEng === true) {
+    if(showJpnToEng === true) {
       squares[i].textContent = sixCards[i].romaji;
     }
     /* Romaji > Hiragana */
@@ -69,7 +65,7 @@ function randomizer(arr) {
 /* Create Answer */
 function createAnswer() {
   /* Japanese > Romaji */
-  if(jpnToEng === false) {
+  if(showJpnToEng === false) {
     answer.textContent = characters[0].romaji;
   }
   /* Romaji > Hiragana */
@@ -97,74 +93,22 @@ function init() {
   gameOver = false;
 }
 
-/* Toggle Ten-Ten/Maru */
-function toggleTtm() {
-  /* No Add-Ons Active */
-  if(showTenTenMaru === false && showYoon === false) {
-    Array.prototype.push.apply(characters, tenTenMaru);
-    showTenTenMaru = true;
+/* Toggle Skill Level */
+function toggleSkill() {
+  if(showBasic === true) {
+    Array.prototype.push.apply(characters, advanced);
+    buttonSkill.textContent = "Advanced";
+    showBasic = false;
   }
-  /* Only Yoon Active */
-  else if(showTenTenMaru === false && showYoon === true) {
-    Array.prototype.push.apply(characters, tenTenMaru);
-    Array.prototype.push.apply(characters, yoonTtm);
-    showTenTenMaru = true;
-  }
-  /* Only Ten-Ten/Maru Active */
-  else if(showTenTenMaru === true && showYoon === false) {
-    for(i = 0; i < tenTenMaru.length; i++) {
-      var index = characters.indexOf(tenTenMaru[i]);
-      characters.splice(index, 1);
-    }
-    showTenTenMaru = false;
-  }
-  /* Both Add-Ons Active */
   else {
-    for(i = 0; i < tenTenMaru.length; i++) {
-      var index = characters.indexOf(tenTenMaru[i]);
+    for(i = 0; i < (advanced.length); i++) {
+      var index = characters.indexOf(advanced[i]);
       characters.splice(index, 1);
     }
-    for(i = 0; i < yoonTtm.length; i++) {
-      var index = characters.indexOf(yoonTtm[i]);
-      characters.splice(index, 1);
-    }
-    showTenTenMaru = false;
+    buttonSkill.textContent = "Basic";
+    showBasic = true;
   }
-}
-
-/* Toggle Yoon */
-function toggleYoon() {
-  /* No Add-Ons Active */
-  if(showYoon === false && showTenTenMaru === false) {
-    Array.prototype.push.apply(characters, yoon);
-    showYoon = true;
-  }
-  /* Only Ten-Ten/Maru Active */
-  else if(showYoon === false && showTenTenMaru === true) {
-    Array.prototype.push.apply(characters, yoon);
-    Array.prototype.push.apply(characters, yoonTtm);
-    showYoon = true;
-  }
-  /* Only Yoon Active */
-  else if(showYoon === true && showTenTenMaru === false) {
-    for(i = 0; i < yoon.length; i++) {
-      var index = characters.indexOf(yoon[i]);
-      characters.splice(index, 1);
-    }
-    showYoon = false;
-  }
-  /* Both Add-Ons Active */
-  else {
-    for(i = 0; i < yoon.length; i++) {
-      var index = characters.indexOf(yoon[i]);
-      characters.splice(index, 1);
-    }
-    for(i = 0; i < yoonTtm.length; i++) {
-      var index = characters.indexOf(yoonTtm[i]);
-      characters.splice(index, 1);
-    }
-    showYoon = false;
-  }
+  init();
 }
 
 /* Change Squares */
@@ -188,7 +132,7 @@ function allButtons() {
   }
   restoreSquares();
   feedback.textContent = "";
-  buttonReset.textContent = "New Char.";
+  buttonReset.textContent = "New Character";
   feedback.classList.remove("gameover-feedback");
   buttonReset.classList.remove("gameover-button");
 }
@@ -197,7 +141,7 @@ function allButtons() {
 function correctAnswer() {
   for(i = 0; i < squares.length; i++) {
     /* Japanese > Romaji */ 
-    if(jpnToEng === true) {
+    if(showJpnToEng === true) {
       squares[i].textContent = characters[0].romaji;
     }
     /* Romaji > Hiragana */
@@ -246,7 +190,7 @@ for(i = 0; i < squares.length; i++) {
   catch(ii) {
     squares[i].addEventListener("click", function() {
       /* Correct Answer - Japanese > Romaji */ 
-      if(jpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
+      if(showJpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
         victorySequence();
       }
       /* Correct Answer - Romaji > Hiragana */
@@ -258,7 +202,7 @@ for(i = 0; i < squares.length; i++) {
         victorySequence();
       }
       /* Wrong Answer - Hiragana > Romaji */
-      else if(jpnToEng === true && showHiragana === true && this.textContent !== characters[0].romaji && gameOver === false) {
+      else if(showJpnToEng === true && showHiragana === true && this.textContent !== characters[0].romaji && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].romaji) {
           this.classList.add("wrong-answer");
@@ -282,7 +226,7 @@ for(i = 0; i < squares.length; i++) {
         } 
       }    
       /* Wrong Answer - Katakana > Romaji */
-      else if(jpnToEng === true && showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
+      else if(showJpnToEng === true && showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].romaji) {
           this.classList.add("wrong-answer");
@@ -346,40 +290,31 @@ buttonKatakana.addEventListener("click", function() {
   allButtons();
 });
 
-/* Ten-Ten & Maru Button */
-buttonTenTenMaru.addEventListener("click", function() {
-  this.classList.toggle("active-addon");
-  this.classList.toggle("inactive-button");
-  toggleTtm();
-  init();
-  allButtons();
-});
-
-/* Yoon Button */
-buttonYoon.addEventListener("click", function() {
-  this.classList.toggle("active-addon");
-  this.classList.toggle("inactive-button");
-  toggleYoon();
-  init();
-  allButtons();
-});
-
-/* Reset Button */
-buttonReset.addEventListener("click", function() {
+/* Skill Button */
+buttonSkill.addEventListener("click", function() {
+  this.classList.toggle("alternate-mode");
+  toggleSkill();
   init();
   allButtons();
 });
 
 /* Mode Button */
 buttonMode.addEventListener("click", function() {
-  if(jpnToEng === true) {
-    buttonMode.textContent = "ENG // JPN";
-    jpnToEng = false;
+  if(showJpnToEng === true) {
+    buttonMode.textContent = "ENG to JPN";
+    showJpnToEng = false;
   }
   else {
-    buttonMode.textContent = "JPN // ENG";
-    jpnToEng = true;
+    buttonMode.textContent = "JPN to ENG";
+    showJpnToEng = true;
   }
+  this.classList.toggle("alternate-mode");
+  init();
+  allButtons();
+});
+
+/* Reset Button */
+buttonReset.addEventListener("click", function() {
   init();
   allButtons();
 });
