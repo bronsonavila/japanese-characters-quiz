@@ -1,7 +1,7 @@
 # Changelog
 
 ## 1.3.0 - 2017-10-25
-### Added
+### Modified
 - Consolidated ten-ten, maru, and yōon characters into a single "Advanced" mode.
 
 ## 1.2.0 - 2017-10-24
