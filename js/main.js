@@ -78,7 +78,7 @@ function createAnswer() {
   }
 }
 
-/* Initializer */
+/* Initialize */
 function init() {
   previousAnswer = characters[0];
   shuffle(characters);
@@ -111,6 +111,18 @@ function toggleSkill() {
   init();
 }
 
+/* All Button Operations */
+function allButtons() {
+  for(i = 0; i < squares.length; i++) {
+    squares[i].classList.remove("inactive-div");
+  }
+  restoreSquares();
+  feedback.textContent = "";
+  buttonReset.textContent = "New Character";
+  feedback.classList.remove("gameover-feedback");
+  buttonReset.classList.remove("gameover-button");
+}
+
 /* Change Squares */
 function changeSquares() {
   for(i = 0; i < squares.length; i++) {
@@ -123,18 +135,6 @@ function restoreSquares() {
   for(i = 0; i < squares.length; i++) {
     squares[i].classList.remove("wrong-answer");
   }
-}
-
-/* All Button Operations */
-function allButtons() {
-  for(i = 0; i < squares.length; i++) {
-    squares[i].classList.remove("inactive-div");
-  }
-  restoreSquares();
-  feedback.textContent = "";
-  buttonReset.textContent = "New Character";
-  feedback.classList.remove("gameover-feedback");
-  buttonReset.classList.remove("gameover-button");
 }
 
 /* Correct Answer Transition */
@@ -155,7 +155,7 @@ function correctAnswer() {
   }
 }
 
-/* Expand-Contract Animation */
+/* Victory Animation */
 function animate(elem) {
   elem.classList.add("expand");
   setTimeout(function() {
@@ -172,11 +172,11 @@ function victorySequence() {
   feedback.classList.add("gameover-feedback");
   buttonReset.classList.add("gameover-button");
   feedback.textContent = "Correct!";
-  animate(feedback);
   buttonReset.textContent = "Play Again?";
   changeSquares();
   restoreSquares();
   correctAnswer();
+  animate(feedback);
   gameOver = true;
 }
 
