@@ -180,16 +180,10 @@ button {
   border-bottom: 1px solid #333;
   border-left: 1px solid #eee;
 }
-  .inactive-button:hover {
-    background: #f8f8f8;
-  }
 
 .inactive-div {
   background: #eee;
 }
-  .inactive-div:hover {
-    background: #fff;
-  }
 
 .active-addon {
   background: #cc5500;
