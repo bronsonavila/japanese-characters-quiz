@@ -349,6 +349,7 @@ buttonKatakana.addEventListener("click", function() {
 /* Ten-Ten & Maru Button */
 buttonTenTenMaru.addEventListener("click", function() {
   this.classList.toggle("active-addon");
+  this.classList.toggle("inactive-button");
   toggleTtm();
   init();
   allButtons();
@@ -357,6 +358,7 @@ buttonTenTenMaru.addEventListener("click", function() {
 /* Yoon Button */
 buttonYoon.addEventListener("click", function() {
   this.classList.toggle("active-addon");
+  this.classList.toggle("inactive-button");
   toggleYoon();
   init();
   allButtons();
