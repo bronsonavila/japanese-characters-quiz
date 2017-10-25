@@ -165,9 +165,12 @@ button {
   text-shadow: 1px 1px 2px #121212; 
   background: #ee0000;
   border-top: 1px solid #980000;
-  border-right: 1px solid #ff7c7c;
-  border-bottom: 1px solid #ff7c7c;
+  border-right: 1px solid #ff6666;
+  border-bottom: 1px solid #ff6666;
   border-left: 1px solid #980000;
+  -webkit-box-shadow: inset 1px 1px 1px #920000;
+     -moz-box-shadow: inset 1px 1px 1px #920000;
+          box-shadow: inset 1px 1px 1px #920000;
 }
 
 .inactive-button, .inactive-div {
@@ -191,8 +194,8 @@ button {
 .active-addon {
   background: #cc5500;
   border-top: 1px solid #790000;
-  border-right: 1px solid #da0000;
-  border-bottom: 1px solid #da0000;
+  border-right: 1px solid #e76000;
+  border-bottom: 1px solid #e76000;
   border-left: 1px solid #790000;
   -webkit-box-shadow: inset 1px 1px 1px #923c00;
      -moz-box-shadow: inset 1px 1px 1px #923c00;
