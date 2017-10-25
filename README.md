@@ -4,3 +4,5 @@
 + Add or remove "Ten-Ten" (Dakuten) and "Maru" (Handakuten) characters by using the "Ten-Ten/Maru" button.
 + Add or remove "Yōon" characters (e.g., きゃ) by using the "Yōon" (きゃ)" button.
 + Switch between guessing romaji and Japanese characters by using the "JPN // ENG" button.
+
+<a href="https://bronsonavila.github.io/japanese-characters-quiz/">Click here to play.</a>
