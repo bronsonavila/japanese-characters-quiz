@@ -31,17 +31,17 @@ button {
   #katakana {
     margin: 6px 0 18px 25px;
   }
-  #ten-ten-maru {
+  #skill {
     margin: 18px 0 6px 14px;
   }
-  #yoon {
+  #mode {
     margin: 6px 0 18px 14px;
   }
   #reset {
-    margin: 18px 25px 6px 2px;
-  }
-  #mode { 
-    margin: 6px 25px 18px 2px;
+    width: 120px;
+    height: 72.4px;
+    line-height: 20px;
+    margin: 18px 0 18px 2px;
   }
 
 #outer {
@@ -165,8 +165,8 @@ button {
   text-shadow: 1px 1px 2px #121212; 
   background: #ee0000;
   border-top: 1px solid #980000;
-  border-right: 1px solid #ff6666;
-  border-bottom: 1px solid #ff6666;
+  border-right: 1px solid #ff5555;
+  border-bottom: 1px solid #ff5555;
   border-left: 1px solid #980000;
   -webkit-box-shadow: inset 1px 1px 1px #920000;
      -moz-box-shadow: inset 1px 1px 1px #920000;
@@ -185,7 +185,7 @@ button {
   background: #eee;
 }
 
-.active-addon {
+.alternate-mode {
   background: #cc5500;
   border-top: 1px solid #790000;
   border-right: 1px solid #e76000;
@@ -246,17 +246,18 @@ button {
     #katakana {
       margin: 4px 0 13px 11px;
     }
-    #ten-ten-maru {
+    #skill {
       margin: 13px 0 4px 7px;
     }
-    #yoon {
+    #mode {
       margin: 4px 0 13px 7px;
     }
     #reset {
-      margin: 13px 11px 4px 3px;
-    }
-    #mode {
-      margin: 4px 11px 13px 3px;
+      font-size: 13px;
+      width: 86px;
+      height: 68.4px;
+      line-height: 16px;
+      margin: 13px 0 13px 3px;
     }
   #outer {
     height: 560px;
@@ -329,17 +330,18 @@ button {
     #katakana {
       margin: 3px 0 10px 24px;
     }
-    #ten-ten-maru {
+    #skill {
       margin: 10px 0 3px 12px;
     }
-    #yoon {
+    #mode {
       margin: 3px 0 10px 12px;
     }
     #reset {
-      margin: 10px 24px 3px -1px;
-    }
-    #mode {
-      margin: 3px 24px 10px -1px;
+      font-size: 11px;
+      width: 70px;
+      height: 58.4px;
+      line-height: 14px;
+      margin: 10px 0 13px -1px;
     }
   #outer {
     height: 460px;
