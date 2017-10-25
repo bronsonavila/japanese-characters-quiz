@@ -1,9 +1,13 @@
 # Changelog
 
-## 1.1.0 - 2017-10-24
+## 1.3.0 - 2017-10-25
 ### Added
-- Option to include "yōon" characters.
+- Consolidated ten-ten, maru, and yōon characters into a single "Advanced" mode.
+
+## 1.2.0 - 2017-10-24
+### Added
+- Option to include yōon characters.
 
 ## 1.1.0 - 2017-10-23
 ### Added
-- Option to include "dakuten" and "handakuten" characters.
+- Option to include ten-ten and maru characters.
