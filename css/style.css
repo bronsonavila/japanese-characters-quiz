@@ -78,6 +78,18 @@ button {
   text-shadow: 1px 1px 2px #121212; 
 }
 
+#credits, #version {
+  position: absolute;
+  top: 49px;
+  left: 329px;
+  font-size: 11px;
+  color: #cc0000;
+}
+  #version {
+    top: 59px;
+    left: 387px;
+  }
+
 #answer {
   font-size: 56px;
   text-align: center;
@@ -234,168 +246,6 @@ button {
           transition-timing-function: ease-in;
 }
 
-@media all and (max-width: 576px) {
-  button {
-    width: 86px;
-    font-size: 12px;
-    padding: 0;
-  }
-    #hiragana {
-      margin: 13px 0 4px 11px;
-    }
-    #katakana {
-      margin: 4px 0 13px 11px;
-    }
-    #skill {
-      margin: 13px 0 4px 7px;
-    }
-    #mode {
-      margin: 4px 0 13px 7px;
-    }
-    #reset {
-      font-size: 13px;
-      width: 86px;
-      height: 68.4px;
-      line-height: 16px;
-      margin: 13px 0 13px 3px;
-    }
-  #outer {
-    height: 560px;
-    width: 320px;
-    margin: -280px 0 0 -160px;
-  }
-  #inner {
-    height: 540px;
-    width: 300px;
-    margin: -270px 0 0 -150px;
-  }
-  #title {
-    font-size: 22px;
-    line-height: 22px;
-    height: 22px;
-    width: 100%;
-  }
-  #answer {
-    font-size: 50px;
-    line-height: 64px;
-    height: 64px;
-  }
-  #feedback {
-    font-size: 18px;
-    line-height: 18px;
-    height: 18px;
-    padding: 12px 0;
-  }
-  #squares {
-    height: 194px;
-  }
-  #options {
-    height: 95px;
-  }
-    #options > div {
-      float: left;
-      width: 100px;
-    }
-  #title, #answer, #squares {
-    padding: 20px 0;
-  }
-  .square {
-    font-size: 28px;
-    line-height: 86px;
-    height: 86px;
-    width: 86px;
-  }
-  .square:nth-of-type(1), .square:nth-of-type(4) {
-    margin: 4px 4px 4px 10px;
-  }
-  .square:nth-of-type(2), .square:nth-of-type(5) {
-    margin: 4px 4px 4px 4px;
-  }
-  .square:nth-of-type(3), .square:nth-of-type(6) {
-    margin: 4px 10px 4px 4px;
-  }
-}
+@media all and (max-width:576px){button{width:86px;font-size:12px;padding:0}#hiragana{margin:13px 0 4px 11px}#katakana{margin:4px 0 13px 11px}#skill{margin:13px 0 4px 7px}#mode{margin:4px 0 13px 7px}#reset{font-size:13px;width:86px;height:68.4px;line-height:16px;margin:13px 0 13px 3px}#outer{height:560px;width:320px;margin:-280px 0 0 -160px}#inner{height:540px;width:300px;margin:-270px 0 0 -150px}#title{font-size:22px;line-height:22px;height:22px;width:100%}#credits{top:42px;left:218px;font-size:8px}#version{top:50px;left:260px;font-size:8px}#answer{font-size:50px;line-height:64px;height:64px}#feedback{font-size:18px;line-height:18px;height:18px;padding:12px 0}#squares{height:194px}#options{height:95px}#options>div{float:left;width:100px}#answer,#squares,#title{padding:20px 0}.square{font-size:28px;line-height:86px;height:86px;width:86px}.square:nth-of-type(1),.square:nth-of-type(4){margin:4px 4px 4px 10px}.square:nth-of-type(2),.square:nth-of-type(5){margin:4px}.square:nth-of-type(3),.square:nth-of-type(6){margin:4px 10px 4px 4px}}
 
-@media all and (max-width: 320px) {
-  button {
-    width: 70px;
-    height: 26px;
-    line-height: 26px;
-    font-size: 10px;
-    padding: 0;
-  }
-    #hiragana {
-      margin: 10px 0 3px 24px;
-    }
-    #katakana {
-      margin: 3px 0 10px 24px;
-    }
-    #skill {
-      margin: 10px 0 3px 12px;
-    }
-    #mode {
-      margin: 3px 0 10px 12px;
-    }
-    #reset {
-      font-size: 11px;
-      width: 70px;
-      height: 58.4px;
-      line-height: 14px;
-      margin: 10px 0 13px -1px;
-    }
-  #outer {
-    height: 460px;
-    width: 300px;
-    margin: -230px 0 0 -150px;
-  }
-  #inner {
-    height: 440px;
-    width: 280px;
-    margin: -220px 0 0 -140px;
-  }
-  #title {
-    font-size: 20px;
-    line-height: 16px;
-    height: 16px;
-    width: 100%;
-  }  
-  #answer {
-    font-size: 46px;
-    line-height: 60px;
-    height: 60px;
-  }
-  #feedback {
-    font-size: 16px;
-    line-height: 16px;
-    height: 16px;
-    padding: 10px 0;
-  }
-  #squares {
-    height: 160px;
-  }
-  #options {
-    height: 80px;
-  }
-    #options > div {
-      float: left;
-      width: 93.33px;
-    }
-  #title, #answer, #squares {
-    padding: 14px 0;
-  }
-  .square {
-    font-size: 26px;
-    line-height: 70px;
-    height: 70px;
-    width: 70px;
-  }
-  .square:nth-of-type(1), .square:nth-of-type(4) {
-    margin: 4px 4px 4px 24px;
-  }
-  .square:nth-of-type(2), .square:nth-of-type(5) {
-    margin: 4px 4px 4px 4px;
-  }
-  .square:nth-of-type(3), .square:nth-of-type(6) {
-    margin: 4px 24px 4px 4px;
-  }
-}
+@media all and (max-width:320px){#feedback,#title{line-height:16px;height:16px}button{width:70px;height:26px;line-height:26px;font-size:10px;padding:0}#hiragana{margin:10px 0 3px 24px}#katakana{margin:3px 0 10px 24px}#skill{margin:10px 0 3px 12px}#mode{margin:3px 0 10px 12px}#reset{font-size:11px;width:70px;height:58.4px;line-height:14px;margin:10px 0 13px -1px}#outer{height:460px;width:300px;margin:-230px 0 0 -150px}#inner{height:440px;width:280px;margin:-220px 0 0 -140px}#title{font-size:20px;width:100%}#credits{top:31px;left:205px;font-size:7px}#version{top:37px;left:242px;font-size:7px}#answer{font-size:46px;line-height:60px;height:60px}#feedback{font-size:16px;padding:10px 0}#squares{height:160px}#options{height:80px}#options>div{float:left;width:93.33px}#answer,#squares,#title{padding:14px 0}.square{font-size:26px;line-height:70px;height:70px;width:70px}.square:nth-of-type(1),.square:nth-of-type(4){margin:4px 4px 4px 24px}.square:nth-of-type(2),.square:nth-of-type(5){margin:4px}.square:nth-of-type(3),.square:nth-of-type(6){margin:4px 24px 4px 4px}}
