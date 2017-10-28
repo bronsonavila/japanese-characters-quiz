@@ -18,26 +18,27 @@ button {
   height: 30px;
   width: 120px;
   line-height: 30px;
-  border-radius: 0%;
-  border-top: 1px solid #eee;
-  border-right: 1px solid #aaa;
-  border-bottom: 1px solid #aaa;
-  border-left: 1px solid #eee; 
   background: #f8f8f8;
+  border-radius: 0%;
+  border-top:    1px solid #eee;
+  border-right:  1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-left:   1px solid #eee; 
 }
-  #hiragana {
+  #gana-kana {
     margin: 18px 0 6px 25px;
   }
-  #katakana {
+  #invert {
     margin: 6px 0 18px 25px;
   }
   #skill {
     margin: 18px 0 6px 14px;
   }
-  #mode {
+  #game-type {
     margin: 6px 0 18px 14px;
   }
   #reset {
+    font-size: 20px;
     width: 120px;
     height: 72.4px;
     line-height: 20px;
@@ -100,10 +101,10 @@ button {
 }
 
 #feedback {
-  font-size: 22px;
+  font-size: 21px;
   text-align: center;
   line-height: 24px;
-  height: 22px;
+  height: 21px;
   border-top: 1px solid black;
   background: #eee;
   padding: 14px 0;
@@ -134,6 +135,75 @@ button {
   padding: 21px 0;
 }
 
+.inactive, .inactive-button {
+  background: #eee;
+  border-top:    1px solid #eee;
+  border-right:  1px solid #333;
+  border-bottom: 1px solid #333;
+  border-left:   1px solid #eee;
+}
+  .inactive-button {
+    background: #ddd;
+  }
+
+.first-mode {
+  position: absolute;
+  height: 7px;
+  width: 7px;
+  border: 1px solid #121212;
+  border-radius: 50%;
+  background: #ee0000;
+  -webkit-transition: 0.15s;
+     -moz-transition: 0.15s;
+       -o-transition: 0.15s;
+          transition: 0.15s;  
+}
+  #gana-kana ~ .first-mode {
+    bottom: 81px;
+    left: 27px;
+  }
+  #invert ~ .first-mode {
+    bottom: 39px;
+    left: 27px;
+  }
+  #skill ~ .first-mode {
+    bottom: 81px;
+    left: 166px;
+  }
+  #game-type ~ .first-mode {
+    bottom: 39px;
+    left: 166px;
+  }
+
+.second-mode {
+  position: absolute;
+  height: 7px;
+  width: 7px;
+  border: 1px solid #121212;
+  border-radius: 50%;
+  background: #ddd;
+  -webkit-transition: 0.15s;
+     -moz-transition: 0.15s;
+       -o-transition: 0.15s;
+          transition: 0.15s;  
+}
+  #gana-kana ~ .second-mode {
+    bottom: 65px;
+    left: 133px;
+  }
+  #invert ~ .second-mode {
+    bottom: 23px;
+    left: 133px;
+  }
+  #skill ~ .second-mode {
+    bottom: 65px;
+    left: 272px;
+  }
+  #game-type ~ .second-mode {
+    bottom: 23px;
+    left: 272px;
+  }
+
 .square {
   float: left;
   font-size: 34px;
@@ -163,49 +233,34 @@ button {
 
 .wrong-answer {
   background: #cc5500;
-  border-top: 1px solid #790000;
-  border-right: 1px solid #da0000;
+  border-top:    1px solid #790000;
+  border-right:  1px solid #da0000;
   border-bottom: 1px solid #da0000;
-  border-left: 1px solid #790000;
+  border-left:   1px solid #790000;
   -webkit-box-shadow: inset 0px 1px 2px #121212;
      -moz-box-shadow: inset 0px 1px 2px #121212;
           box-shadow: inset 0px 1px 2px #121212;
 }
 
-.active-button {
+.scored-mode {
   color: #eee;
   text-shadow: 1px 1px 2px #121212; 
   background: #ee0000;
-  border-top: 1px solid #980000;
-  border-right: 1px solid #ff5555;
-  border-bottom: 1px solid #ff5555;
-  border-left: 1px solid #980000;
-  -webkit-box-shadow: inset 1px 1px 1px #920000;
-     -moz-box-shadow: inset 1px 1px 1px #920000;
-          box-shadow: inset 1px 1px 1px #920000;
+  border-top:    1px solid #ff5555;
+  border-right:  1px solid #980000;
+  border-bottom: 1px solid #980000;
+  border-left:   1px solid #ff5555;
 }
 
-.inactive-button, .inactive-div {
-  background: #bbb;
-  border-top: 1px solid #eee;
-  border-right: 1px solid #333;
-  border-bottom: 1px solid #333;
-  border-left: 1px solid #eee;
-}
-
-.inactive-div {
-  background: #eee;
-}
-
-.alternate-mode {
-  background: #cc5500;
-  border-top: 1px solid #790000;
-  border-right: 1px solid #e76000;
-  border-bottom: 1px solid #e76000;
-  border-left: 1px solid #790000;
-  -webkit-box-shadow: inset 1px 1px 1px #923c00;
-     -moz-box-shadow: inset 1px 1px 1px #923c00;
-          box-shadow: inset 1px 1px 1px #923c00;
+.locked {
+  border: 1px solid #cc0000;
+  background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-image:    -moz-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-image:     -ms-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-image:         repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  -webkit-background-size: 3px 3px;
+     -moz-background-size: 3px 3px;
+          background-size: 3px 3px;
 }
 
 .gameover-feedback {
@@ -214,10 +269,10 @@ button {
 
 .gameover-button {
   background: #ffeb3b !important;
-  border-top: 1px solid #9c8c00 !important;
-  border-right: 1px solid #fff283 !important;
+  border-top:    1px solid #9c8c00 !important;
+  border-right:  1px solid #fff283 !important;
   border-bottom: 1px solid #fff283 !important;
-  border-left: 1px solid #9c8c00 !important;
+  border-left:   1px solid #9c8c00 !important;
   -webkit-transition: background 0.125s;
      -moz-transition: background 0.125s;
        -o-transition: background 0.125s;
@@ -246,6 +301,268 @@ button {
           transition-timing-function: ease-in;
 }
 
-@media all and (max-width:576px){button{width:86px;font-size:12px;padding:0}#hiragana{margin:13px 0 4px 11px}#katakana{margin:4px 0 13px 11px}#skill{margin:13px 0 4px 7px}#mode{margin:4px 0 13px 7px}#reset{font-size:13px;width:86px;height:68.4px;line-height:16px;margin:13px 0 13px 3px}#outer{height:560px;width:320px;margin:-280px 0 0 -160px}#inner{height:540px;width:300px;margin:-270px 0 0 -150px}#title{font-size:22px;line-height:22px;height:22px;width:100%}#credits{top:42px;left:218px;font-size:8px}#version{top:50px;left:260px;font-size:8px}#answer{font-size:50px;line-height:64px;height:64px}#feedback{font-size:18px;line-height:18px;height:18px;padding:12px 0}#squares{height:194px}#options{height:95px}#options>div{float:left;width:100px}#answer,#squares,#title{padding:20px 0}.square{font-size:28px;line-height:86px;height:86px;width:86px}.square:nth-of-type(1),.square:nth-of-type(4){margin:4px 4px 4px 10px}.square:nth-of-type(2),.square:nth-of-type(5){margin:4px}.square:nth-of-type(3),.square:nth-of-type(6){margin:4px 10px 4px 4px}}
+@media all and (max-width: 576px) {
+  .btn, button {
+    width: 86px;
+    font-size: 12px;
+    padding: 0;
+  }
+    #gana-kana {
+      margin: 13px 0 4px 11px;
+    }
+    #invert {
+      margin: 4px 0 13px 11px;
+    }
+    #skill {
+      margin: 13px 0 4px 7px;
+    }
+    #game-type {
+      margin: 4px 0 13px 7px;
+    }
+    #reset {
+      font-size: 16px;
+      width: 86px;
+      height: 68.4px;
+      line-height: 16px;
+      margin: 13px 0 13px 3px;
+    }
+  #outer {
+    height: 560px;
+    width: 320px;
+    margin: -280px 0 0 -160px;
+  }
+  #inner {
+    height: 540px;
+    width: 300px;
+    margin: -270px 0 0 -150px;
+  }
+  #title {
+    font-size: 22px;
+    line-height: 22px;
+    height: 22px;
+    width: 100%;
+  }
+  #credits {
+    top: 42px;
+    left: 218px;
+    font-size: 8px;
+  }
+    #version {
+      top: 50px;
+      left: 260px;
+      font-size: 8px;
+    }
+  #answer {
+    font-size: 50px;
+    line-height: 64px;
+    height: 64px;
+  }
+  #feedback {
+    font-size: 15px;
+    line-height: 15px;
+    height: 18px;
+    padding: 12px 0;
+  }
+  #squares {
+    height: 194px;
+  }
+  #options {
+    height: 95px;
+  }
+    #options > div {
+      float: left;
+      width: 100px;
+    }
+  #title, #answer, #squares {
+    padding: 20px 0;
+  }
+  .first-mode {
+    height: 5px;
+    width: 5px;
+  }
+    #gana-kana ~ .first-mode {
+      bottom: 72px;
+      left: 13px;
+    }
+    #invert ~ .first-mode {
+      bottom: 34px;
+      left: 13px;
+    }
+    #skill ~ .first-mode {
+      bottom: 72px;
+      left: 109px;
+    }
+    #game-type ~ .first-mode {
+      bottom: 34px;
+      left: 109px;
+    }
+  .second-mode {
+    height: 5px;
+    width: 5px;
+  }
+    #gana-kana ~ .second-mode {
+      bottom: 54px;
+      left: 87px;
+    }
+    #invert ~ .second-mode {
+      bottom: 16px;
+      left: 87px;
+    }
+    #skill ~ .second-mode {
+      bottom: 54px;
+      left: 183px;
+    }
+    #game-type ~ .second-mode {
+      bottom: 16px;
+      left: 183px;
+    }  
+  .square {
+    font-size: 28px;
+    line-height: 86px;
+    height: 86px;
+    width: 86px;
+  }
+  .square:nth-of-type(1), .square:nth-of-type(4) {
+    margin: 4px 4px 4px 10px;
+  }
+  .square:nth-of-type(2), .square:nth-of-type(5) {
+    margin: 4px 4px 4px 4px;
+  }
+  .square:nth-of-type(3), .square:nth-of-type(6) {
+    margin: 4px 10px 4px 4px;
+  }
+}
 
-@media all and (max-width:320px){#feedback,#title{line-height:16px;height:16px}button{width:70px;height:26px;line-height:26px;font-size:10px;padding:0}#hiragana{margin:10px 0 3px 24px}#katakana{margin:3px 0 10px 24px}#skill{margin:10px 0 3px 12px}#mode{margin:3px 0 10px 12px}#reset{font-size:11px;width:70px;height:58.4px;line-height:14px;margin:10px 0 13px -1px}#outer{height:460px;width:300px;margin:-230px 0 0 -150px}#inner{height:440px;width:280px;margin:-220px 0 0 -140px}#title{font-size:20px;width:100%}#credits{top:31px;left:205px;font-size:7px}#version{top:37px;left:242px;font-size:7px}#answer{font-size:46px;line-height:60px;height:60px}#feedback{font-size:16px;padding:10px 0}#squares{height:160px}#options{height:80px}#options>div{float:left;width:93.33px}#answer,#squares,#title{padding:14px 0}.square{font-size:26px;line-height:70px;height:70px;width:70px}.square:nth-of-type(1),.square:nth-of-type(4){margin:4px 4px 4px 24px}.square:nth-of-type(2),.square:nth-of-type(5){margin:4px}.square:nth-of-type(3),.square:nth-of-type(6){margin:4px 24px 4px 4px}}
+@media all and (max-width: 320px) {
+  .btn, button {
+    width: 70px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 10px;
+    padding: 0;
+  }
+    #gana-kana {
+      margin: 10px 0 3px 24px;
+    }
+    #invert {
+      margin: 3px 0 10px 24px;
+    }
+    #skill {
+      margin: 10px 0 3px 12px;
+    }
+    #game-type {
+      margin: 3px 0 10px 12px;
+    }
+    #reset {
+      font-size: 13px;
+      width: 70px;
+      height: 58.4px;
+      line-height: 14px;
+      margin: 10px 0 13px -1px;
+    }
+  #outer {
+    height: 460px;
+    width: 300px;
+    margin: -230px 0 0 -150px;
+  }
+  #inner {
+    height: 440px;
+    width: 280px;
+    margin: -220px 0 0 -140px;
+  }
+  #title {
+    font-size: 20px;
+    line-height: 16px;
+    height: 16px;
+    width: 100%;
+  }  
+  #credits {
+    top: 31px;
+    left: 205px;
+    font-size: 7px;
+  }
+    #version {
+      top: 37px;
+      left: 242px;
+      font-size: 7px;
+    }
+  #answer {
+    font-size: 46px;
+    line-height: 60px;
+    height: 60px;
+  }
+  #feedback {
+    font-size: 14px;
+    line-height: 14px;
+    height: 16px;
+    padding: 10px 0;
+  }
+  #squares {
+    height: 160px;
+  }
+  #options {
+    height: 80px;
+  }
+    #options > div {
+      float: left;
+      width: 93.33px;
+    }
+  #title, #answer, #squares {
+    padding: 14px 0;
+  }
+  .first-mode {
+    height: 3px;
+    width: 3px;
+  }
+    #gana-kana ~ .first-mode {
+      bottom: 63px;
+      left: 26px;
+    }
+    #invert ~ .first-mode {
+      bottom: 31px;
+      left: 26px;
+    }
+    #skill ~ .first-mode {
+      bottom: 63px;
+      left: 107px;
+    }
+    #game-type ~ .first-mode {
+      bottom: 31px;
+      left: 107px;
+    }
+  .second-mode {
+    height: 3px;
+    width: 3px;
+  }
+    #gana-kana ~ .second-mode {
+      bottom: 47px;
+      left: 86px;
+    }
+    #invert ~ .second-mode {
+      bottom: 15px;
+      left: 86px;
+    }
+    #skill ~ .second-mode {
+      bottom: 47px;
+      left: 167px;
+    }
+    #game-type ~ .second-mode {
+      bottom: 15px;
+      left: 167px;
+    }  
+  .square {
+    font-size: 26px;
+    line-height: 70px;
+    height: 70px;
+    width: 70px;
+  }
+  .square:nth-of-type(1), .square:nth-of-type(4) {
+    margin: 4px 4px 4px 24px;
+  }
+  .square:nth-of-type(2), .square:nth-of-type(5) {
+    margin: 4px 4px 4px 4px;
+  }
+  .square:nth-of-type(3), .square:nth-of-type(6) {
+    margin: 4px 24px 4px 4px;
+  }
+}
