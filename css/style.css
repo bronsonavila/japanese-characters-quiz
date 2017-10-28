@@ -188,19 +188,19 @@ button {
           transition: 0.15s;  
 }
   #gana-kana ~ .second-mode {
-    bottom: 65px;
+    bottom: 81px;
     left: 133px;
   }
   #invert ~ .second-mode {
-    bottom: 23px;
+    bottom: 39px;
     left: 133px;
   }
   #skill ~ .second-mode {
-    bottom: 65px;
+    bottom: 81px;
     left: 272px;
   }
   #game-type ~ .second-mode {
-    bottom: 23px;
+    bottom: 39px;
     left: 272px;
   }
 
@@ -401,19 +401,19 @@ button {
     width: 5px;
   }
     #gana-kana ~ .second-mode {
-      bottom: 54px;
+      bottom: 72px;
       left: 87px;
     }
     #invert ~ .second-mode {
-      bottom: 16px;
+      bottom: 34px;
       left: 87px;
     }
     #skill ~ .second-mode {
-      bottom: 54px;
+      bottom: 72px;
       left: 183px;
     }
     #game-type ~ .second-mode {
-      bottom: 16px;
+      bottom: 34px;
       left: 183px;
     }  
   .square {
@@ -535,19 +535,19 @@ button {
     width: 3px;
   }
     #gana-kana ~ .second-mode {
-      bottom: 47px;
+      bottom: 63px;
       left: 86px;
     }
     #invert ~ .second-mode {
-      bottom: 15px;
+      bottom: 31px;
       left: 86px;
     }
     #skill ~ .second-mode {
-      bottom: 47px;
+      bottom: 63px;
       left: 167px;
     }
     #game-type ~ .second-mode {
-      bottom: 15px;
+      bottom: 31px;
       left: 167px;
     }  
   .square {
