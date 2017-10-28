@@ -9,16 +9,23 @@ var advanced = [{romaji:"kya",hiragana:"きゃ",katakana:"キャ"},{romaji:"kyu"
 var answer = document.getElementById("answer");
 var feedback = document.getElementById("feedback");
 var squares = document.getElementsByClassName("square");
-var buttonHiragana = document.getElementById("hiragana");
-var buttonKatakana = document.getElementById("katakana");
+var buttonGanaKana = document.getElementById("gana-kana");
+var buttonGameType = document.getElementById("game-type");
 var buttonSkill = document.getElementById("skill");
-var buttonMode = document.getElementById("mode");
+var buttonInvert = document.getElementById("invert");
 var buttonReset = document.getElementById("reset");
+var firstModes = document.querySelectorAll(".first-mode");
+var secondModes = document.querySelectorAll(".second-mode");
 var showHiragana = true;
-var showBasic = true;
 var showJpnToEng = true;
+var showBasic = true;
+var showFreePlay = true;
 var gameOver = false;
+var quizOver = false;
+var scoredQuizCount = -1;
+var scoredQuizScore = 0;
 var previousAnswer;
+var wrongAnswer;
 var sixCards;
 
 //--------------------------------------------------------------------------
@@ -39,13 +46,8 @@ function shuffle(arr) {
   return arr;
 }
 
-/* Generate Squares Text Content */
-function randomizer(arr) {
-  sixCards = [];
-  for(i = 0; i < squares.length; i++) {
-    sixCards.push(arr[i]);
-  }
-  shuffle(sixCards);
+/* Square Text Content */
+function squareTextContent() {
   for(i = 0; i < squares.length; i++) {
     /* Japanese > Romaji */
     if(showJpnToEng === true) {
@@ -62,8 +64,43 @@ function randomizer(arr) {
   }
 }
 
+/* Create Free Play Squares */
+function createFreePlaySquares() {
+  sixCards = [];
+  for(i = 0; i < squares.length; i++) {
+    sixCards.push(characters[i]);
+  }
+  shuffle(sixCards);
+  squareTextContent();
+}
+
+/* Create Scored Quiz Squares */
+function createScoredQuizSquares() {
+  sixCards = [];
+  sixCards.push(characters[0]);
+  for(i = 0; i < squares.length - 1; i++) {
+    var k = Math.floor(Math.random() * (characters.length));
+    /* Prevent Duplicate Cards */
+    sixCards.indexOf(characters[k]) === -1 ? sixCards.push(characters[k]) : i--;
+  }
+  shuffle(sixCards);
+  squareTextContent();
+}
+
+function changeScoredGameDisplay() {
+  if(showFreePlay === false) {
+    buttonReset.textContent = (scoredQuizCount + 1) + " of " + characters.length;
+  }
+  if(showFreePlay === false && scoredQuizCount > 0) {
+    feedback.textContent = "";
+  }
+}
+
 /* Create Answer */
 function createAnswer() {
+  if(showFreePlay === false) {
+    characters.push(characters.shift());
+  }
   /* Japanese > Romaji */
   if(showJpnToEng === false) {
     answer.textContent = characters[0].romaji;
@@ -80,53 +117,62 @@ function createAnswer() {
 
 /* Initialize */
 function init() {
-  previousAnswer = characters[0];
-  shuffle(characters);
-    /* Consecutive Repetition Killer */
-    for(i = 0; i < characters.length; i++) {
-      if(characters[0] === previousAnswer) {
-        shuffle(characters);
+  scoredQuizCount++;
+  if(quizOver === true) {
+    quizOver = false;
+    scoredQuizCount = -1;
+    scoredQuizScore = 0;
+  }
+  if(showFreePlay === true) {
+    previousAnswer = characters[0];
+    shuffle(characters);
+      /* Consecutive Repetition Killer */
+      for(i = 0; i < characters.length; i++) {
+        if(characters[0] === previousAnswer) {
+          shuffle(characters);
+        }
       }
+    createAnswer();
+    createFreePlaySquares();
+    scoredQuizCount = -1;
+  }
+  else if(showFreePlay === false) {
+    if(scoredQuizCount === 0) {
+      shuffle(characters);
     }
-  createAnswer();
-  randomizer(characters);
+    createAnswer();
+    createScoredQuizSquares();
+  }
   gameOver = false;
-}
-
-/* Toggle Skill Level */
-function toggleSkill() {
-  if(showBasic === true) {
-    Array.prototype.push.apply(characters, advanced);
-    buttonSkill.textContent = "Advanced";
-    showBasic = false;
-  }
-  else {
-    for(i = 0; i < (advanced.length); i++) {
-      var index = characters.indexOf(advanced[i]);
-      characters.splice(index, 1);
-    }
-    buttonSkill.textContent = "Basic";
-    showBasic = true;
-  }
-  init();
+  wrongAnswer = false;
 }
 
 /* All Button Operations */
 function allButtons() {
+  init();
   for(i = 0; i < squares.length; i++) {
-    squares[i].classList.remove("inactive-div");
+    squares[i].classList.remove("inactive");
   }
   restoreSquares();
-  feedback.textContent = "";
-  buttonReset.textContent = "New Character";
+  if(showFreePlay === true) {
+    feedback.textContent = "";
+    buttonReset.textContent = "New Character";
+  }
+  changeScoredGameDisplay();
   feedback.classList.remove("gameover-feedback");
   buttonReset.classList.remove("gameover-button");
+}
+
+/* Change Mode Indicator */
+function changeModeIndicator(x, y, z) {
+  firstModes[x].style.backgroundColor = y;
+  secondModes[x].style.backgroundColor = z;   
 }
 
 /* Change Squares */
 function changeSquares() {
   for(i = 0; i < squares.length; i++) {
-    squares[i].classList.add("inactive-div");
+    squares[i].classList.add("inactive");
   }
 }
 
@@ -155,6 +201,54 @@ function correctAnswer() {
   }
 }
 
+/* Toggle Locked Buttons */
+function toggleLockedButtons() {
+  if(showFreePlay === false) {
+    buttonGanaKana.classList.add("locked");
+    buttonInvert.classList.add("locked");
+    buttonSkill.classList.add("locked");
+    buttonReset.classList.add("locked");    
+  }
+  else {
+    buttonGanaKana.classList.remove("locked");
+    buttonInvert.classList.remove("locked");
+    buttonSkill.classList.remove("locked");
+    buttonReset.classList.remove("locked");        
+  }
+}
+
+/* Begin Scored Quiz */
+function beginScoredQuiz() {
+ if(quizOver === true) {
+    quizOver = false;
+  }
+  scoredQuizCount = -1;
+  scoredQuizScore = 0;
+  showFreePlay = false;
+  feedback.textContent = "Begin Scored Quiz";
+  animate(feedback);
+  buttonReset.textContent = (scoredQuizCount + 1) + " of " + characters.length;
+  buttonGameType.textContent = "Scored Quiz";
+  buttonGameType.classList.add("scored-mode");
+  changeModeIndicator(3, "#ddd", "#ee0000");
+  toggleLockedButtons();
+  allButtons();  
+}
+
+/* Wrong Answer in Scored Quiz */
+function wrongScoredQuiz() {
+  if(showFreePlay === false) {
+    wrongAnswer = true;
+  }
+}
+
+/* Correct Answer in Scored Quiz */
+function correctScoredQuiz() {
+  if(showFreePlay === false && wrongAnswer === false) {
+    scoredQuizScore++;
+  }
+}
+
 /* Victory Animation */
 function animate(elem) {
   elem.classList.add("expand");
@@ -170,14 +264,25 @@ function animate(elem) {
 /* Victory Sequence */
 function victorySequence() {
   feedback.classList.add("gameover-feedback");
-  buttonReset.classList.add("gameover-button");
   feedback.textContent = "Correct!";
-  buttonReset.textContent = "Play Again?";
+  buttonReset.classList.add("gameover-button");
+  if(showFreePlay === true) {
+    buttonReset.textContent = "Play Again?";
+  }
+  else if(showFreePlay === false) {
+    buttonReset.textContent = "Next Character";
+  }
   changeSquares();
   restoreSquares();
   correctAnswer();
   animate(feedback);
+  correctScoredQuiz();
   gameOver = true;
+  if(scoredQuizCount === characters.length - 1) {
+    feedback.textContent = "Quiz Over! Score: " + scoredQuizScore + " out of " + characters.length + " (" + Math.round((scoredQuizScore / characters.length) * 100) + "%)";
+    buttonReset.textContent = "Replay Quiz?";
+    quizOver = true;
+  }
 }
 
 //--------------------------------------------------------------------------
@@ -211,7 +316,8 @@ for(i = 0; i < squares.length; i++) {
         else {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].romaji;
-        }        
+        }   
+        wrongScoredQuiz();
       }    
       /* Wrong Answer - Romaji > Hiragana */
       else if(showHiragana === true && this.textContent !== characters[0].hiragana && gameOver === false) {
@@ -223,7 +329,8 @@ for(i = 0; i < squares.length; i++) {
         else {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].hiragana;
-        } 
+        }
+        wrongScoredQuiz();
       }    
       /* Wrong Answer - Katakana > Romaji */
       else if(showJpnToEng === true && showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
@@ -235,7 +342,8 @@ for(i = 0; i < squares.length; i++) {
         else {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].romaji;
-        } 
+        }
+        wrongScoredQuiz();
       }
       /* Wrong Answer - Romaji > Katakana */
       else if(showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
@@ -247,76 +355,98 @@ for(i = 0; i < squares.length; i++) {
         else {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].katakana;
-        } 
+        }
+        wrongScoredQuiz();
       }
       /* Lazy Reset */
-      else {
-        init();
+      else if(quizOver === false) {
         allButtons();
       }
   });
   }
 }
 
-/* Hiragana Button */
-buttonHiragana.addEventListener("click", function() {
-  if(showHiragana === false) {
-    this.classList.toggle("active-button");
-    this.classList.toggle("inactive-button");
-    buttonKatakana.classList.toggle("active-button");
-    buttonKatakana.classList.toggle("inactive-button");
-    showHiragana = true;
-    init();
+/* Hiragana-Katakana Button */
+buttonGanaKana.addEventListener("click", function() {
+  if(showFreePlay === true) {
+    if(showHiragana === true) {
+      this.textContent = "Katakana";
+      showHiragana = false;
+      changeModeIndicator(0, "#ddd", "#ee0000");    
+    }
+    else {
+      this.textContent = "Hiragana";
+      showHiragana = true;
+      changeModeIndicator(0, "#ee0000", "#ddd");    
+    }
+    allButtons();    
   }
-  else if(gameOver === true) {
-    init();
-  }
-  allButtons();
 });
 
-/* Katakana Button */
-buttonKatakana.addEventListener("click", function() {
-  if(showHiragana === true) {
-    this.classList.toggle("active-button");
-    this.classList.toggle("inactive-button");
-    buttonHiragana.classList.toggle("active-button");
-    buttonHiragana.classList.toggle("inactive-button");
-    showHiragana = false;
-    init();
+/* Invert Button */
+buttonInvert.addEventListener("click", function() {
+  if(showFreePlay === true) {  
+    if(showJpnToEng === true) {
+      this.textContent = "ENG to JPN";
+      showJpnToEng = false;
+      changeModeIndicator(1, "#ddd", "#ee0000");   
+    }
+    else {
+      this.textContent = "JPN to ENG";
+      showJpnToEng = true;
+      changeModeIndicator(1, "#ee0000", "#ddd");  
+    }
+    allButtons();
   }
-  else if(gameOver === true) {
-    init();
-  }
-  allButtons();
 });
 
 /* Skill Button */
 buttonSkill.addEventListener("click", function() {
-  this.classList.toggle("alternate-mode");
-  toggleSkill();
-  init();
-  allButtons();
+  if(showFreePlay === true) {  
+    if(showBasic === true) {
+      Array.prototype.push.apply(characters, advanced);
+      buttonSkill.textContent = "Advanced";
+      showBasic = false;
+      changeModeIndicator(2, "#ddd", "#ee0000");      
+    }
+    else {
+      for(i = 0; i < (advanced.length); i++) {
+        var index = characters.indexOf(advanced[i]);
+        characters.splice(index, 1);
+      }
+      buttonSkill.textContent = "Basic";
+      showBasic = true;
+      changeModeIndicator(2, "#ee0000", "#ddd");         
+    }
+    allButtons();
+  }
 });
 
-/* Mode Button */
-buttonMode.addEventListener("click", function() {
-  if(showJpnToEng === true) {
-    buttonMode.textContent = "ENG to JPN";
-    showJpnToEng = false;
+/* Game-Type Button */
+buttonGameType.addEventListener("click", function() {
+  if(showFreePlay === true) {
+    beginScoredQuiz();
   }
-  else {
-    buttonMode.textContent = "JPN to ENG";
-    showJpnToEng = true;
+  else if(showFreePlay === false) {
+    showFreePlay = true;
+    buttonGameType.textContent = "Free Play";
+    buttonGameType.classList.remove("scored-mode");
+    changeModeIndicator(3, "#ee0000", "#ddd"); 
+    toggleLockedButtons();
+    allButtons();
+    feedback.textContent = "Free Play Resumed";
+    animate(feedback);
   }
-  this.classList.toggle("alternate-mode");
-  init();
-  allButtons();
 });
 
 /* Reset Button */
 buttonReset.addEventListener("click", function() {
-  init();
-  allButtons();
+  if(quizOver === true) {
+    beginScoredQuiz();
+  }
+  else if(showFreePlay === true || gameOver === true) {
+    allButtons();
+  }
 });
 
 //--------------------------------------------------------------------------
