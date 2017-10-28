@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0 - 2017-10-28
+- Added scored quiz mode.
+- Added button toggle light indicators.
+
 ## 1.3.0 - 2017-10-25
 - Consolidated ten-ten, maru, and yōon characters into a single "Advanced" mode.
 
