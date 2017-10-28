@@ -302,7 +302,7 @@ button {
 }
 
 @media all and (max-width: 576px) {
-  .btn, button {
+  button {
     width: 86px;
     font-size: 12px;
     padding: 0;
@@ -434,7 +434,7 @@ button {
 }
 
 @media all and (max-width: 320px) {
-  .btn, button {
+  button {
     width: 70px;
     height: 26px;
     line-height: 26px;
