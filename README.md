@@ -4,7 +4,7 @@
 + Add or remove advanced characters (Ten-Ten, Maru, and Yōon) by using the "Basic" / "Advanced" button.
 + Switch between guessing romaji and Japanese characters by using the "JPN to ENG" / "ENG to JPN" button.
 + Switch between free play or a scored quiz by using the "Free Play" / "Scored Quiz" button.
-- "Free Play" is completely random, while "Scored Quiz" runs through each character exactly once.
-- Quiz conditions must be set prior to entering "Scored Quiz" mode, as all modifier buttons will be disabled during the duration of the quiz.
+  - "Free Play" is completely random, while "Scored Quiz" runs through each character exactly once.
+  - Quiz conditions must be set prior to entering "Scored Quiz" mode, as all modifier buttons will be disabled during the duration of the quiz.
 
 <a href="https://bronsonavila.github.io/japanese-characters-quiz/">Click here to play.</a>
