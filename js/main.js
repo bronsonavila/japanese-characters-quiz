@@ -220,6 +220,18 @@ function toggleLockedButtons() {
   }
 }
 
+/* Feedback Animation */
+function animate() {
+  feedback.classList.add("expand");
+  setTimeout(function() {
+    feedback.classList.add("contract")
+  }, 125);
+  setTimeout(function() {
+    feedback.classList.remove("expand");
+    feedback.classList.remove("contract")
+  }, 250);
+}
+
 /* Begin Scored Quiz */
 function beginScoredQuiz() {
  if(quizOver === true) {
@@ -229,10 +241,10 @@ function beginScoredQuiz() {
   scoredQuizScore = 0;
   showFreePlay = false;
   feedback.textContent = "Begin Scored Quiz";
-  animate(feedback);
   buttonReset.textContent = (scoredQuizCount + 1) + " of " + characters.length;
   buttonGameType.textContent = "Scored Quiz";
   buttonGameType.classList.add("scored-mode");
+  animate();
   changeModeIndicator(3, "#ddd", "#ee0000");
   toggleLockedButtons();
   allButtons();  
@@ -252,18 +264,6 @@ function correctScoredQuiz() {
   }
 }
 
-/* Victory Animation */
-function animate(elem) {
-  elem.classList.add("expand");
-  setTimeout(function() {
-    elem.classList.add("contract")
-  }, 125);
-  setTimeout(function() {
-    elem.classList.remove("expand");
-    elem.classList.remove("contract")
-  }, 250);
-}
-
 /* Victory Sequence */
 function victorySequence() {
   feedback.classList.add("gameover-feedback");
@@ -278,7 +278,7 @@ function victorySequence() {
   changeSquares();
   restoreSquares();
   correctAnswer();
-  animate(feedback);
+  animate();
   correctScoredQuiz();
   gameOver = true;
   if(scoredQuizCount === characters.length - 1) {
@@ -437,8 +437,8 @@ buttonGameType.addEventListener("click", function() {
     changeModeIndicator(3, "#ee0000", "#ddd"); 
     toggleLockedButtons();
     allButtons();
+    animate();
     feedback.textContent = "Free Play Resumed";
-    animate(feedback);
   }
 });
 
