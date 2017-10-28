@@ -87,6 +87,7 @@ function createScoredQuizSquares() {
   squareTextContent();
 }
 
+/* Change Scored Game Display */
 function changeScoredGameDisplay() {
   if(showFreePlay === false) {
     buttonReset.textContent = (scoredQuizCount + 1) + " of " + characters.length;
@@ -259,7 +260,7 @@ function animate(elem) {
   }, 125);
   setTimeout(function() {
     elem.classList.remove("expand");
-    elem.classList.remove("contract");
+    elem.classList.remove("contract")
   }, 250);
 }
 
