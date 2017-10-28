@@ -221,7 +221,7 @@ function toggleLockedButtons() {
 }
 
 /* Feedback Animation */
-function animate() {
+function animateFeedback() {
   feedback.classList.add("expand");
   setTimeout(function() {
     feedback.classList.add("contract")
@@ -244,7 +244,7 @@ function beginScoredQuiz() {
   buttonReset.textContent = (scoredQuizCount + 1) + " of " + characters.length;
   buttonGameType.textContent = "Scored Quiz";
   buttonGameType.classList.add("scored-mode");
-  animate();
+  animateFeedback();
   changeModeIndicator(3, "#ddd", "#ee0000");
   toggleLockedButtons();
   allButtons();  
@@ -278,7 +278,7 @@ function victorySequence() {
   changeSquares();
   restoreSquares();
   correctAnswer();
-  animate();
+  animateFeedback();
   correctScoredQuiz();
   gameOver = true;
   if(scoredQuizCount === characters.length - 1) {
@@ -437,7 +437,7 @@ buttonGameType.addEventListener("click", function() {
     changeModeIndicator(3, "#ee0000", "#ddd"); 
     toggleLockedButtons();
     allButtons();
-    animate();
+    animateFeedback();
     feedback.textContent = "Free Play Resumed";
   }
 });
