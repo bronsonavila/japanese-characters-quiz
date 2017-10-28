@@ -166,7 +166,9 @@ function allButtons() {
 /* Change Mode Indicator */
 function changeModeIndicator(x, y, z) {
   firstModes[x].style.backgroundColor = y;
+  firstModes[x].classList.toggle("light-on");
   secondModes[x].style.backgroundColor = z;   
+  secondModes[x].classList.toggle("light-on");
 }
 
 /* Change Squares */
