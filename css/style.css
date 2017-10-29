@@ -103,7 +103,7 @@ button {
 #feedback {
   font-size: 21px;
   text-align: center;
-  line-height: 24px;
+  line-height: 21px;
   height: 21px;
   border-top: 1px solid black;
   background: #eee;
@@ -365,7 +365,7 @@ button {
   }
   #feedback {
     font-size: 15px;
-    line-height: 15px;
+    line-height: 18px;
     height: 18px;
     padding: 12px 0;
   }
@@ -499,7 +499,7 @@ button {
   }
   #feedback {
     font-size: 14px;
-    line-height: 14px;
+    line-height: 16px;
     height: 16px;
     padding: 10px 0;
   }
