@@ -135,16 +135,21 @@ button {
   padding: 21px 0;
 }
 
-.inactive, .inactive-button {
+.inactive {
   background: #eee !important;
   border-top:    1px solid #eee !important;
   border-right:  1px solid #333 !important;
   border-bottom: 1px solid #333 !important;
   border-left:   1px solid #eee !important;
 }
-  .inactive-button {
-    background: #ddd;
-  }
+
+.inactive-button {
+  background: #ddd;
+  border-top:    1px solid #eee;
+  border-right:  1px solid #333;
+  border-bottom: 1px solid #333;
+  border-left:   1px solid #eee;  
+}
 
 .first-mode {
   position: absolute;
