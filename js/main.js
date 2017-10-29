@@ -137,7 +137,7 @@ function init() {
     createFreePlaySquares();
     scoredQuizCount = -1;
   }
-  else if(showFreePlay === false) {
+  else {
     if(scoredQuizCount === 0) {
       shuffle(characters);
     }
