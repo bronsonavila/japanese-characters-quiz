@@ -32,7 +32,6 @@ var sixCards;
 // Functions
 //--------------------------------------------------------------------------
 
-/* Fisher-Yates Shuffle */
 function shuffle(arr) {
   var i = arr.length,
       j = 0,
@@ -46,48 +45,44 @@ function shuffle(arr) {
   return arr;
 }
 
-/* Square Text Content */
-function squareTextContent() {
+function createSquareTextContent() {
   for(i = 0; i < squares.length; i++) {
-    /* Japanese > Romaji */
+    // Japanese > Romaji
     if(showJpnToEng === true) {
       squares[i].textContent = sixCards[i].romaji;
     }
-    /* Romaji > Hiragana */
+    // Romaji > Hiragana
     else if(showHiragana === true) {
       squares[i].textContent = sixCards[i].hiragana;
     }
-    /* Romaji > Katakana */
+    // Romaji > Katakana
     else {
       squares[i].textContent = sixCards[i].katakana; 
     }
   }
 }
 
-/* Create Free Play Squares */
 function createFreePlaySquares() {
   sixCards = [];
   for(i = 0; i < squares.length; i++) {
     sixCards.push(characters[i]);
   }
   shuffle(sixCards);
-  squareTextContent();
+  createSquareTextContent();
 }
 
-/* Create Scored Quiz Squares */
 function createScoredQuizSquares() {
   sixCards = [];
   sixCards.push(characters[0]);
   for(i = 0; i < squares.length - 1; i++) {
     var k = Math.floor(Math.random() * (characters.length));
-    /* Prevent Duplicate Cards */
+    // Prevent Duplicate Cards
     sixCards.indexOf(characters[k]) === -1 ? sixCards.push(characters[k]) : i--;
   }
   shuffle(sixCards);
-  squareTextContent();
+  createSquareTextContent();
 }
 
-/* Change Scored Game Display */
 function changeScoredGameDisplay() {
   if(showFreePlay === false) {
     buttonReset.textContent = (scoredQuizCount + 1) + " of " + characters.length;
@@ -97,26 +92,24 @@ function changeScoredGameDisplay() {
   }
 }
 
-/* Create Answer */
 function createAnswer() {
   if(showFreePlay === false) {
     characters.push(characters.shift());
   }
-  /* Japanese > Romaji */
+  // Japanese > Romaji
   if(showJpnToEng === false) {
     answer.textContent = characters[0].romaji;
   }
-  /* Romaji > Hiragana */
+  // Romaji > Hiragana
   else if(showHiragana === true) {
     answer.textContent = characters[0].hiragana;
   }
-  /* Romaji > Katakana */
+  // Romaji > Katakana
   else {
     answer.textContent = characters[0].katakana;    
   }
 }
 
-/* Initialize */
 function init() {
   scoredQuizCount++;
   if(quizOver === true) {
@@ -127,7 +120,7 @@ function init() {
   if(showFreePlay === true) {
     previousAnswer = characters[0];
     shuffle(characters);
-      /* Consecutive Repetition Killer */
+      // Mitigate Consecutive Repetition in Free Play Mode
       for(i = 0; i < characters.length; i++) {
         if(characters[0] === previousAnswer) {
           shuffle(characters);
@@ -148,13 +141,24 @@ function init() {
   wrongAnswer = false;
 }
 
-/* All Button Operations */
-function allButtons() {
+function changeSquaresDisplay() {
+  for(i = 0; i < squares.length; i++) {
+    squares[i].classList.add("inactive");
+  }
+}
+
+function restoreSquaresDisplay() {
+  for(i = 0; i < squares.length; i++) {
+    squares[i].classList.remove("wrong-answer");
+  }
+}
+
+function performAllButtonOperations() {
   init();
   for(i = 0; i < squares.length; i++) {
     squares[i].classList.remove("inactive");
   }
-  restoreSquares();
+  restoreSquaresDisplay();
   if(showFreePlay === true) {
     feedback.textContent = "";
     buttonReset.textContent = "New Character";
@@ -164,7 +168,6 @@ function allButtons() {
   buttonReset.classList.remove("gameover-button");
 }
 
-/* Change Mode Indicator */
 function changeModeIndicator(x, y, z) {
   firstModes[x].style.backgroundColor = y;
   firstModes[x].classList.toggle("light-on");
@@ -172,39 +175,23 @@ function changeModeIndicator(x, y, z) {
   secondModes[x].classList.toggle("light-on");
 }
 
-/* Change Squares */
-function changeSquares() {
+function showCorrectAnswerOnSquares() {
   for(i = 0; i < squares.length; i++) {
-    squares[i].classList.add("inactive");
-  }
-}
-
-/* Restore Squares */
-function restoreSquares() {
-  for(i = 0; i < squares.length; i++) {
-    squares[i].classList.remove("wrong-answer");
-  }
-}
-
-/* Correct Answer Transition */
-function correctAnswer() {
-  for(i = 0; i < squares.length; i++) {
-    /* Japanese > Romaji */ 
+    // Japanese > Romaji
     if(showJpnToEng === true) {
       squares[i].textContent = characters[0].romaji;
     }
-    /* Romaji > Hiragana */
+    // Romaji > Hiragana
     else if(showHiragana === true) {
       squares[i].textContent = characters[0].hiragana;
     }
-    /* Romaji > Katakana */
+    // Romaji > Katakana
     else {
       squares[i].textContent = characters[0].katakana;
     }
   }
 }
 
-/* Toggle Locked Buttons */
 function toggleLockedButtons() {
   if(showFreePlay === false) {
     buttonGanaKana.classList.add("locked");
@@ -220,7 +207,6 @@ function toggleLockedButtons() {
   }
 }
 
-/* Feedback Animation */
 function animateFeedback() {
   feedback.classList.add("expand");
   setTimeout(function() {
@@ -232,7 +218,6 @@ function animateFeedback() {
   }, 250);
 }
 
-/* Begin Scored Quiz */
 function beginScoredQuiz() {
  if(quizOver === true) {
     quizOver = false;
@@ -247,25 +232,22 @@ function beginScoredQuiz() {
   animateFeedback();
   changeModeIndicator(3, "#ddd", "#ee0000");
   toggleLockedButtons();
-  allButtons();  
+  performAllButtonOperations();  
 }
 
-/* Wrong Answer in Scored Quiz */
-function wrongScoredQuiz() {
+function setWrongQuizAnswer() {
   if(showFreePlay === false) {
     wrongAnswer = true;
   }
 }
 
-/* Correct Answer in Scored Quiz */
-function correctScoredQuiz() {
+function addToQuizScore() {
   if(showFreePlay === false && wrongAnswer === false) {
     scoredQuizScore++;
   }
 }
 
-/* Victory Sequence */
-function victorySequence() {
+function performVictorySequence() {
   feedback.classList.add("gameover-feedback");
   feedback.textContent = "Correct!";
   buttonReset.classList.add("gameover-button");
@@ -275,11 +257,11 @@ function victorySequence() {
   else if(showFreePlay === false) {
     buttonReset.textContent = "Next Character";
   }
-  changeSquares();
-  restoreSquares();
-  correctAnswer();
+  changeSquaresDisplay();
+  restoreSquaresDisplay();
+  showCorrectAnswerOnSquares();
   animateFeedback();
-  correctScoredQuiz();
+  addToQuizScore();
   gameOver = true;
   if(scoredQuizCount === characters.length - 1) {
     feedback.textContent = "Quiz Over! Score: " + scoredQuizScore + " out of " + characters.length + " (" + Math.round((scoredQuizScore / characters.length) * 100) + "%)";
@@ -292,24 +274,23 @@ function victorySequence() {
 // Events
 //--------------------------------------------------------------------------
 
-/* Squares */
 for(i = 0; i < squares.length; i++) {
   try{throw i}
   catch(ii) {
     squares[i].addEventListener("click", function() {
-      /* Correct Answer - Japanese > Romaji */ 
+      // Correct Answer - Japanese > Romaji 
       if(showJpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
-        victorySequence();
+        performVictorySequence();
       }
-      /* Correct Answer - Romaji > Hiragana */
+      // Correct Answer - Romaji > Hiragana
       else if(showHiragana === true && this.textContent === characters[0].hiragana && gameOver === false) {
-        victorySequence();
+        performVictorySequence();
       }
-      /* Correct Answer - Romaji > Katakana */
+      // Correct Answer - Romaji > Katakana
       else if(this.textContent === characters[0].katakana && gameOver === false) {
-        victorySequence();
+        performVictorySequence();
       }
-      /* Wrong Answer - Hiragana > Romaji */
+      // Wrong Answer - Hiragana > Romaji
       else if(showJpnToEng === true && showHiragana === true && this.textContent !== characters[0].romaji && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].romaji) {
@@ -320,9 +301,9 @@ for(i = 0; i < squares.length; i++) {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].romaji;
         }   
-        wrongScoredQuiz();
+        setWrongQuizAnswer();
       }    
-      /* Wrong Answer - Romaji > Hiragana */
+      // Wrong Answer - Romaji > Hiragana
       else if(showHiragana === true && this.textContent !== characters[0].hiragana && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].hiragana) {
@@ -333,9 +314,9 @@ for(i = 0; i < squares.length; i++) {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].hiragana;
         }
-        wrongScoredQuiz();
+        setWrongQuizAnswer();
       }    
-      /* Wrong Answer - Katakana > Romaji */
+      // Wrong Answer - Katakana > Romaji
       else if(showJpnToEng === true && showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].romaji) {
@@ -346,9 +327,9 @@ for(i = 0; i < squares.length; i++) {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].romaji;
         }
-        wrongScoredQuiz();
+        setWrongQuizAnswer();
       }
-      /* Wrong Answer - Romaji > Katakana */
+      // Wrong Answer - Romaji > Katakana
       else if(showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].katakana) {
@@ -359,17 +340,16 @@ for(i = 0; i < squares.length; i++) {
           this.classList.remove("wrong-answer");
           this.textContent = sixCards[ii].katakana;
         }
-        wrongScoredQuiz();
+        setWrongQuizAnswer();
       }
-      /* Lazy Reset */
+      // Lazy Reset
       else if(quizOver === false) {
-        allButtons();
+        performAllButtonOperations();
       }
   });
   }
 }
 
-/* Hiragana-Katakana Button */
 buttonGanaKana.addEventListener("click", function() {
   if(showFreePlay === true) {
     if(showHiragana === true) {
@@ -382,11 +362,10 @@ buttonGanaKana.addEventListener("click", function() {
       showHiragana = true;
       changeModeIndicator(0, "#ee0000", "#ddd");    
     }
-    allButtons();    
+    performAllButtonOperations();    
   }
 });
 
-/* Invert Button */
 buttonInvert.addEventListener("click", function() {
   if(showFreePlay === true) {  
     if(showJpnToEng === true) {
@@ -399,11 +378,10 @@ buttonInvert.addEventListener("click", function() {
       showJpnToEng = true;
       changeModeIndicator(1, "#ee0000", "#ddd");  
     }
-    allButtons();
+    performAllButtonOperations();
   }
 });
 
-/* Skill Button */
 buttonSkill.addEventListener("click", function() {
   if(showFreePlay === true) {  
     if(showBasic === true) {
@@ -421,11 +399,10 @@ buttonSkill.addEventListener("click", function() {
       showBasic = true;
       changeModeIndicator(2, "#ee0000", "#ddd");         
     }
-    allButtons();
+    performAllButtonOperations();
   }
 });
 
-/* Game-Type Button */
 buttonGameType.addEventListener("click", function() {
   if(showFreePlay === true) {
     beginScoredQuiz();
@@ -436,24 +413,23 @@ buttonGameType.addEventListener("click", function() {
     buttonGameType.classList.remove("scored-mode");
     changeModeIndicator(3, "#ee0000", "#ddd"); 
     toggleLockedButtons();
-    allButtons();
+    performAllButtonOperations();
     animateFeedback();
     feedback.textContent = "Free Play Resumed";
   }
 });
 
-/* Reset Button */
 buttonReset.addEventListener("click", function() {
   if(quizOver === true) {
     beginScoredQuiz();
   }
   else if(showFreePlay === true || gameOver === true) {
-    allButtons();
+    performAllButtonOperations();
   }
 });
 
 //--------------------------------------------------------------------------
-// Let's Go!
+// Start!
 //--------------------------------------------------------------------------
 
 init();
