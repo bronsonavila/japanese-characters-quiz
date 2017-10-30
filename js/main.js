@@ -1,8 +1,6 @@
 // Author: Bronson Avila 
 
-//--------------------------------------------------------------------------
-// Variables
-//--------------------------------------------------------------------------
+/* ----=========================={[ VARIABLES ]}==========================---- */
 
 var characters = [{romaji:"a",hiragana:"あ",katakana:"ア"},{romaji:"i",hiragana:"い",katakana:"イ"},{romaji:"u",hiragana:"う",katakana:"ウ"},{romaji:"e",hiragana:"え",katakana:"エ"},{romaji:"o",hiragana:"お",katakana:"オ"},{romaji:"ka",hiragana:"か",katakana:"カ"},{romaji:"ki",hiragana:"き",katakana:"キ"},{romaji:"ku",hiragana:"く",katakana:"ク"},{romaji:"ke",hiragana:"け",katakana:"ケ"},{romaji:"ko",hiragana:"こ",katakana:"コ"},{romaji:"sa",hiragana:"さ",katakana:"サ"},{romaji:"shi",hiragana:"し",katakana:"シ"},{romaji:"su",hiragana:"す",katakana:"ス"},{romaji:"se",hiragana:"せ",katakana:"セ"},{romaji:"so",hiragana:"そ",katakana:"ソ"},{romaji:"ta",hiragana:"た",katakana:"タ"},{romaji:"chi",hiragana:"ち",katakana:"チ"},{romaji:"tsu",hiragana:"つ",katakana:"ツ"},{romaji:"te",hiragana:"て",katakana:"テ"},{romaji:"to",hiragana:"と",katakana:"ト"},{romaji:"na",hiragana:"な",katakana:"ナ"},{romaji:"ni",hiragana:"に",katakana:"ニ"},{romaji:"nu",hiragana:"ぬ",katakana:"ヌ"},{romaji:"ne",hiragana:"ね",katakana:"ネ"},{romaji:"no",hiragana:"の",katakana:"ノ"},{romaji:"ha",hiragana:"は",katakana:"ハ"},{romaji:"hi",hiragana:"ひ",katakana:"ヒ"},{romaji:"fu",hiragana:"ふ",katakana:"フ"},{romaji:"he",hiragana:"へ",katakana:"ヘ"},{romaji:"ho",hiragana:"ほ",katakana:"ホ"},{romaji:"ma",hiragana:"ま",katakana:"マ"},{romaji:"mi",hiragana:"み",katakana:"ミ"},{romaji:"mu",hiragana:"む",katakana:"ム"},{romaji:"me",hiragana:"め",katakana:"メ"},{romaji:"mo",hiragana:"も",katakana:"モ"},{romaji:"ya",hiragana:"や",katakana:"ヤ"},{romaji:"yu",hiragana:"ゆ",katakana:"ユ"},{romaji:"yo",hiragana:"よ",katakana:"ヨ"},{romaji:"ra",hiragana:"ら",katakana:"ラ"},{romaji:"ri",hiragana:"り",katakana:"リ"},{romaji:"ru",hiragana:"る",katakana:"ル"},{romaji:"re",hiragana:"れ",katakana:"レ"},{romaji:"ro",hiragana:"ろ",katakana:"ロ"},{romaji:"wa",hiragana:"わ",katakana:"ワ"},{romaji:"wo",hiragana:"を",katakana:"ヲ"},{romaji:"n",hiragana:"ん",katakana:"ン"}];
 var advanced = [{romaji:"kya",hiragana:"きゃ",katakana:"キャ"},{romaji:"kyu",hiragana:"きゅ",katakana:"キュ"},{romaji:"kyo",hiragana:"きょ",katakana:"キョ"},{romaji:"sha",hiragana:"しゃ",katakana:"シャ"},{romaji:"shu",hiragana:"しゅ",katakana:"シュ"},{romaji:"sho",hiragana:"しょ",katakana:"ショ"},{romaji:"cha",hiragana:"ちゃ",katakana:"チャ"},{romaji:"chu",hiragana:"ちゅ",katakana:"チュ"},{romaji:"cho",hiragana:"ちょ",katakana:"チョ"},{romaji:"nya",hiragana:"にゃ",katakana:"ニャ"},{romaji:"nyu",hiragana:"にゅ",katakana:"ニュ"},{romaji:"nyo",hiragana:"にょ",katakana:"ニョ"},{romaji:"hya",hiragana:"ひゃ",katakana:"ヒャ"},{romaji:"hyu",hiragana:"ひゅ",katakana:"ヒュ"},{romaji:"hyo",hiragana:"ひょ",katakana:"ヒョ"},{romaji:"mya",hiragana:"みゃ",katakana:"ミャ"},{romaji:"myu",hiragana:"みゅ",katakana:"ミュ"},{romaji:"myo",hiragana:"みょ",katakana:"ミョ"},{romaji:"rya",hiragana:"りゃ",katakana:"リャ"},{romaji:"ryu",hiragana:"りゅ",katakana:"リュ"},{romaji:"ryo",hiragana:"りょ",katakana:"リョ"},{romaji:"ga",hiragana:"が",katakana:"ガ"},{romaji:"gi",hiragana:"ぎ",katakana:"ギ"},{romaji:"gu",hiragana:"ぐ",katakana:"グ"},{romaji:"ge",hiragana:"げ",katakana:"ゲ"},{romaji:"go",hiragana:"ご",katakana:"ゴ"},{romaji:"za",hiragana:"ざ",katakana:"ザ"},{romaji:"ji",hiragana:"じ",katakana:"ジ"},{romaji:"zu",hiragana:"ず",katakana:"ズ"},{romaji:"ze",hiragana:"ぜ",katakana:"ゼ"},{romaji:"zo",hiragana:"ぞ",katakana:"ゾ"},{romaji:"da",hiragana:"だ",katakana:"ダ"},{romaji:"de",hiragana:"で",katakana:"デ"},{romaji:"do",hiragana:"ど",katakana:"ド"},{romaji:"ba",hiragana:"ば",katakana:"バ"},{romaji:"bi",hiragana:"び",katakana:"ビ"},{romaji:"bu",hiragana:"ぶ",katakana:"ブ"},{romaji:"be",hiragana:"べ",katakana:"ベ"},{romaji:"bo",hiragana:"ぼ",katakana:"ボ"},{romaji:"pa",hiragana:"ぱ",katakana:"パ"},{romaji:"pi",hiragana:"ぴ",katakana:"ピ"},{romaji:"pu",hiragana:"ぷ",katakana:"プ"},{romaji:"pe",hiragana:"ぺ",katakana:"ペ"},{romaji:"po",hiragana:"ぽ",katakana:"ポ"},{romaji:"gya",hiragana:"ぎゃ",katakana:"ギャ"},{romaji:"gyu",hiragana:"ぎゅ",katakana:"ギュ"},{romaji:"gyo",hiragana:"ぎょ",katakana:"ギョ"},{romaji:"ja",hiragana:"じゃ",katakana:"ジャ"},{romaji:"ju",hiragana:"じゅ",katakana:"ジュ"},{romaji:"jo",hiragana:"じょ",katakana:"ジョ"},{romaji:"bya",hiragana:"びゃ",katakana:"ビャ"},{romaji:"byu",hiragana:"びゅ",katakana:"ビュ"},{romaji:"byo",hiragana:"びょ",katakana:"ビョ"},{romaji:"pya",hiragana:"ぴゃ",katakana:"ピャ"},{romaji:"pyu",hiragana:"ぴゅ",katakana:"ピュ"},{romaji:"pyo",hiragana:"ぴょ",katakana:"ピョ"}];
@@ -28,9 +26,7 @@ var previousAnswer;
 var wrongAnswer;
 var sixCards;
 
-//--------------------------------------------------------------------------
-// Functions
-//--------------------------------------------------------------------------
+/* ----=========================={[ FUNCTIONS ]}==========================---- */
 
 function shuffle(arr) {
   var i = arr.length,
@@ -47,15 +43,15 @@ function shuffle(arr) {
 
 function createSquareTextContent() {
   for(i = 0; i < squares.length; i++) {
-    // Japanese > Romaji
+    // Japanese to Romaji:
     if(showJpnToEng === true) {
       squares[i].textContent = sixCards[i].romaji;
     }
-    // Romaji > Hiragana
+    // Romaji to Hiragana:
     else if(showHiragana === true) {
       squares[i].textContent = sixCards[i].hiragana;
     }
-    // Romaji > Katakana
+    // Romaji to Katakana:
     else {
       squares[i].textContent = sixCards[i].katakana; 
     }
@@ -76,14 +72,14 @@ function createScoredQuizSquares() {
   sixCards.push(characters[0]);
   for(i = 0; i < squares.length - 1; i++) {
     var k = Math.floor(Math.random() * (characters.length));
-    // Prevent Duplicate Cards
+    // Following line prevents the occurence of duplicate cards in the array:
     sixCards.indexOf(characters[k]) === -1 ? sixCards.push(characters[k]) : i--;
   }
   shuffle(sixCards);
   createSquareTextContent();
 }
 
-function changeScoredGameDisplay() {
+function changeScoredQuizDisplay() {
   if(showFreePlay === false) {
     buttonReset.textContent = (scoredQuizCount + 1) + " of " + characters.length;
   }
@@ -96,17 +92,25 @@ function createAnswer() {
   if(showFreePlay === false) {
     characters.push(characters.shift());
   }
-  // Japanese > Romaji
+  // Japanese to Romaji:
   if(showJpnToEng === false) {
     answer.textContent = characters[0].romaji;
   }
-  // Romaji > Hiragana
+  // Romaji to Hiragana:
   else if(showHiragana === true) {
     answer.textContent = characters[0].hiragana;
   }
-  // Romaji > Katakana
+  // Romaji to Katakana:
   else {
     answer.textContent = characters[0].katakana;    
+  }
+}
+
+function mitigateConsecutiveRepetition() {
+  for(i = 0; i < characters.length; i++) {
+    if(characters[0] === previousAnswer) {
+      shuffle(characters);
+    }
   }
 }
 
@@ -120,12 +124,7 @@ function init() {
   if(showFreePlay === true) {
     previousAnswer = characters[0];
     shuffle(characters);
-      // Mitigate Consecutive Repetition in Free Play Mode
-      for(i = 0; i < characters.length; i++) {
-        if(characters[0] === previousAnswer) {
-          shuffle(characters);
-        }
-      }
+    mitigateConsecutiveRepetition();
     createAnswer();
     createFreePlaySquares();
     scoredQuizCount = -1;
@@ -163,7 +162,7 @@ function performAllButtonOperations() {
     feedback.textContent = "";
     buttonReset.textContent = "New Character";
   }
-  changeScoredGameDisplay();
+  changeScoredQuizDisplay();
   feedback.classList.remove("gameover-feedback");
   buttonReset.classList.remove("gameover-button");
 }
@@ -177,15 +176,15 @@ function changeModeIndicator(x, y, z) {
 
 function showCorrectAnswerOnSquares() {
   for(i = 0; i < squares.length; i++) {
-    // Japanese > Romaji
+    // Japanese to Romaji:
     if(showJpnToEng === true) {
       squares[i].textContent = characters[0].romaji;
     }
-    // Romaji > Hiragana
+    // Romaji to Hiragana:
     else if(showHiragana === true) {
       squares[i].textContent = characters[0].hiragana;
     }
-    // Romaji > Katakana
+    // Romaji to Katakana:
     else {
       squares[i].textContent = characters[0].katakana;
     }
@@ -248,15 +247,15 @@ function addToQuizScore() {
 }
 
 function performVictorySequence() {
-  feedback.classList.add("gameover-feedback");
-  feedback.textContent = "Correct!";
-  buttonReset.classList.add("gameover-button");
   if(showFreePlay === true) {
     buttonReset.textContent = "Play Again?";
   }
-  else if(showFreePlay === false) {
+  else {
     buttonReset.textContent = "Next Character";
   }
+  feedback.classList.add("gameover-feedback");
+  feedback.textContent = "Correct!";
+  buttonReset.classList.add("gameover-button");
   changeSquaresDisplay();
   restoreSquaresDisplay();
   showCorrectAnswerOnSquares();
@@ -270,27 +269,25 @@ function performVictorySequence() {
   }
 }
 
-//--------------------------------------------------------------------------
-// Events
-//--------------------------------------------------------------------------
+/* ----=========================={[ EVENTS ]}==========================---- */
 
 for(i = 0; i < squares.length; i++) {
   try{throw i}
   catch(ii) {
     squares[i].addEventListener("click", function() {
-      // Correct Answer - Japanese > Romaji 
+      // Correct Answer - Japanese to Romaji:
       if(showJpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
         performVictorySequence();
       }
-      // Correct Answer - Romaji > Hiragana
+      // Correct Answer - Romaji to Hiragana:
       else if(showHiragana === true && this.textContent === characters[0].hiragana && gameOver === false) {
         performVictorySequence();
       }
-      // Correct Answer - Romaji > Katakana
+      // Correct Answer - Romaji to Katakana:
       else if(this.textContent === characters[0].katakana && gameOver === false) {
         performVictorySequence();
       }
-      // Wrong Answer - Hiragana > Romaji
+      // Wrong Answer - Hiragana to Romaji:
       else if(showJpnToEng === true && showHiragana === true && this.textContent !== characters[0].romaji && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].romaji) {
@@ -303,7 +300,7 @@ for(i = 0; i < squares.length; i++) {
         }   
         setWrongQuizAnswer();
       }    
-      // Wrong Answer - Romaji > Hiragana
+      // Wrong Answer - Romaji to Hiragana:
       else if(showHiragana === true && this.textContent !== characters[0].hiragana && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].hiragana) {
@@ -316,7 +313,7 @@ for(i = 0; i < squares.length; i++) {
         }
         setWrongQuizAnswer();
       }    
-      // Wrong Answer - Katakana > Romaji
+      // Wrong Answer - Katakana to Romaji:
       else if(showJpnToEng === true && showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].romaji) {
@@ -329,7 +326,7 @@ for(i = 0; i < squares.length; i++) {
         }
         setWrongQuizAnswer();
       }
-      // Wrong Answer - Romaji > Katakana
+      // Wrong Answer - Romaji to Katakana:
       else if(showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
         feedback.textContent = "Try Again";
         if(this.textContent === sixCards[ii].katakana) {
@@ -342,7 +339,7 @@ for(i = 0; i < squares.length; i++) {
         }
         setWrongQuizAnswer();
       }
-      // Lazy Reset
+      // "Lazy Reset" allows for faster and more comfortable play:
       else if(quizOver === false) {
         performAllButtonOperations();
       }
@@ -391,7 +388,7 @@ buttonSkill.addEventListener("click", function() {
       changeModeIndicator(2, "#ddd", "#ee0000");      
     }
     else {
-      for(i = 0; i < (advanced.length); i++) {
+      for(i = 0; i < advanced.length; i++) {
         var index = characters.indexOf(advanced[i]);
         characters.splice(index, 1);
       }
@@ -415,6 +412,7 @@ buttonGameType.addEventListener("click", function() {
     toggleLockedButtons();
     performAllButtonOperations();
     animateFeedback();
+    // Following line must go at bottom to overwrite performAllButtonOperations():
     feedback.textContent = "Free Play Resumed";
   }
 });
@@ -428,8 +426,6 @@ buttonReset.addEventListener("click", function() {
   }
 });
 
-//--------------------------------------------------------------------------
-// Start!
-//--------------------------------------------------------------------------
+/* ----=========================={[ START ]}==========================---- */
 
 init();
