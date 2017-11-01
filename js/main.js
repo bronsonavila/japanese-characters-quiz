@@ -42,13 +42,13 @@ function shuffle(arr) {
 }
 
 function createSquareTextContent() {
-  for(i = 0; i < squares.length; i++) {
+  for (i = 0; i < squares.length; i++) {
     // Japanese to Romaji:
-    if(showJpnToEng === true) {
+    if (showJpnToEng === true) {
       squares[i].textContent = sixCards[i].romaji;
     }
     // Romaji to Hiragana:
-    else if(showHiragana === true) {
+    else if (showHiragana === true) {
       squares[i].textContent = sixCards[i].hiragana;
     }
     // Romaji to Katakana:
@@ -60,7 +60,7 @@ function createSquareTextContent() {
 
 function createFreePlaySquares() {
   sixCards = [];
-  for(i = 0; i < squares.length; i++) {
+  for (i = 0; i < squares.length; i++) {
     sixCards.push(characters[i]);
   }
   shuffle(sixCards);
@@ -70,7 +70,7 @@ function createFreePlaySquares() {
 function createScoredQuizSquares() {
   sixCards = [];
   sixCards.push(characters[0]);
-  for(i = 0; i < squares.length - 1; i++) {
+  for (i = 0; i < squares.length - 1; i++) {
     var k = Math.floor(Math.random() * (characters.length));
     // Following line prevents the occurence of duplicate cards in the array:
     sixCards.indexOf(characters[k]) === -1 ? sixCards.push(characters[k]) : i--;
@@ -80,24 +80,24 @@ function createScoredQuizSquares() {
 }
 
 function changeScoredQuizDisplay() {
-  if(showFreePlay === false) {
+  if (showFreePlay === false) {
     buttonReset.textContent = (scoredQuizCount + 1) + " of " + characters.length;
   }
-  if(showFreePlay === false && scoredQuizCount > 0) {
+  if (showFreePlay === false && scoredQuizCount > 0) {
     feedback.textContent = "";
   }
 }
 
 function createAnswer() {
-  if(showFreePlay === false) {
+  if (showFreePlay === false) {
     characters.push(characters.shift());
   }
   // Japanese to Romaji:
-  if(showJpnToEng === false) {
+  if (showJpnToEng === false) {
     answer.textContent = characters[0].romaji;
   }
   // Romaji to Hiragana:
-  else if(showHiragana === true) {
+  else if (showHiragana === true) {
     answer.textContent = characters[0].hiragana;
   }
   // Romaji to Katakana:
@@ -107,8 +107,8 @@ function createAnswer() {
 }
 
 function mitigateConsecutiveRepetition() {
-  for(i = 0; i < characters.length; i++) {
-    if(characters[0] === previousAnswer) {
+  for (i = 0; i < characters.length; i++) {
+    if (characters[0] === previousAnswer) {
       shuffle(characters);
     }
   }
@@ -116,12 +116,12 @@ function mitigateConsecutiveRepetition() {
 
 function init() {
   scoredQuizCount++;
-  if(quizOver === true) {
+  if (quizOver === true) {
     quizOver = false;
     scoredQuizCount = -1;
     scoredQuizScore = 0;
   }
-  if(showFreePlay === true) {
+  if (showFreePlay === true) {
     previousAnswer = characters[0];
     shuffle(characters);
     mitigateConsecutiveRepetition();
@@ -130,7 +130,7 @@ function init() {
     scoredQuizCount = -1;
   }
   else {
-    if(scoredQuizCount === 0) {
+    if (scoredQuizCount === 0) {
       shuffle(characters);
     }
     createAnswer();
@@ -141,24 +141,24 @@ function init() {
 }
 
 function changeSquaresDisplay() {
-  for(i = 0; i < squares.length; i++) {
+  for (i = 0; i < squares.length; i++) {
     squares[i].classList.add("inactive");
   }
 }
 
 function restoreSquaresDisplay() {
-  for(i = 0; i < squares.length; i++) {
+  for (i = 0; i < squares.length; i++) {
     squares[i].classList.remove("wrong-answer");
   }
 }
 
 function performAllButtonOperations() {
   init();
-  for(i = 0; i < squares.length; i++) {
+  for (i = 0; i < squares.length; i++) {
     squares[i].classList.remove("inactive");
   }
   restoreSquaresDisplay();
-  if(showFreePlay === true) {
+  if (showFreePlay === true) {
     feedback.textContent = "";
     buttonReset.textContent = "New Character";
   }
@@ -175,13 +175,13 @@ function changeModeIndicator(x, y, z) {
 }
 
 function showCorrectAnswerOnSquares() {
-  for(i = 0; i < squares.length; i++) {
+  for (i = 0; i < squares.length; i++) {
     // Japanese to Romaji:
-    if(showJpnToEng === true) {
+    if (showJpnToEng === true) {
       squares[i].textContent = characters[0].romaji;
     }
     // Romaji to Hiragana:
-    else if(showHiragana === true) {
+    else if (showHiragana === true) {
       squares[i].textContent = characters[0].hiragana;
     }
     // Romaji to Katakana:
@@ -192,7 +192,7 @@ function showCorrectAnswerOnSquares() {
 }
 
 function toggleLockedButtons() {
-  if(showFreePlay === false) {
+  if (showFreePlay === false) {
     buttonGanaKana.classList.add("locked");
     buttonInvert.classList.add("locked");
     buttonSkill.classList.add("locked");
@@ -218,7 +218,7 @@ function animateFeedback() {
 }
 
 function beginScoredQuiz() {
- if(quizOver === true) {
+ if (quizOver === true) {
     quizOver = false;
   }
   scoredQuizCount = -1;
@@ -235,19 +235,19 @@ function beginScoredQuiz() {
 }
 
 function setWrongQuizAnswer() {
-  if(showFreePlay === false) {
+  if (showFreePlay === false) {
     wrongAnswer = true;
   }
 }
 
 function addToQuizScore() {
-  if(showFreePlay === false && wrongAnswer === false) {
+  if (showFreePlay === false && wrongAnswer === false) {
     scoredQuizScore++;
   }
 }
 
 function performVictorySequence() {
-  if(showFreePlay === true) {
+  if (showFreePlay === true) {
     buttonReset.textContent = "Play Again?";
   }
   else {
@@ -262,7 +262,7 @@ function performVictorySequence() {
   animateFeedback();
   addToQuizScore();
   gameOver = true;
-  if(scoredQuizCount === characters.length - 1) {
+  if (scoredQuizCount === characters.length - 1) {
     feedback.textContent = "Quiz Over! Score: " + scoredQuizScore + " out of " + characters.length + " (" + Math.round((scoredQuizScore / characters.length) * 100) + "%)";
     buttonReset.textContent = "Replay Quiz?";
     quizOver = true;
@@ -271,26 +271,26 @@ function performVictorySequence() {
 
 /* ----=========================={[ EVENTS ]}==========================---- */
 
-for(i = 0; i < squares.length; i++) {
-  try{throw i}
-  catch(ii) {
+for (i = 0; i < squares.length; i++) {
+  try {throw i}
+  catch (ii) {
     squares[i].addEventListener("click", function() {
       // Correct Answer - Japanese to Romaji:
-      if(showJpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
+      if (showJpnToEng === true && this.textContent === characters[0].romaji && gameOver === false) {
         performVictorySequence();
       }
       // Correct Answer - Romaji to Hiragana:
-      else if(showHiragana === true && this.textContent === characters[0].hiragana && gameOver === false) {
+      else if (showHiragana === true && this.textContent === characters[0].hiragana && gameOver === false) {
         performVictorySequence();
       }
       // Correct Answer - Romaji to Katakana:
-      else if(this.textContent === characters[0].katakana && gameOver === false) {
+      else if (this.textContent === characters[0].katakana && gameOver === false) {
         performVictorySequence();
       }
       // Wrong Answer - Hiragana to Romaji:
-      else if(showJpnToEng === true && showHiragana === true && this.textContent !== characters[0].romaji && gameOver === false) {
+      else if (showJpnToEng === true && showHiragana === true && this.textContent !== characters[0].romaji && gameOver === false) {
         feedback.textContent = "Try Again";
-        if(this.textContent === sixCards[ii].romaji) {
+        if (this.textContent === sixCards[ii].romaji) {
           this.classList.add("wrong-answer");
           this.textContent = sixCards[ii].hiragana;
         }
@@ -301,9 +301,9 @@ for(i = 0; i < squares.length; i++) {
         setWrongQuizAnswer();
       }    
       // Wrong Answer - Romaji to Hiragana:
-      else if(showHiragana === true && this.textContent !== characters[0].hiragana && gameOver === false) {
+      else if (showHiragana === true && this.textContent !== characters[0].hiragana && gameOver === false) {
         feedback.textContent = "Try Again";
-        if(this.textContent === sixCards[ii].hiragana) {
+        if (this.textContent === sixCards[ii].hiragana) {
           this.classList.add("wrong-answer");
           this.textContent = sixCards[ii].romaji;
         }
@@ -314,9 +314,9 @@ for(i = 0; i < squares.length; i++) {
         setWrongQuizAnswer();
       }    
       // Wrong Answer - Katakana to Romaji:
-      else if(showJpnToEng === true && showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
+      else if (showJpnToEng === true && showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
         feedback.textContent = "Try Again";
-        if(this.textContent === sixCards[ii].romaji) {
+        if (this.textContent === sixCards[ii].romaji) {
           this.classList.add("wrong-answer");
           this.textContent = sixCards[ii].katakana;
         }
@@ -327,9 +327,9 @@ for(i = 0; i < squares.length; i++) {
         setWrongQuizAnswer();
       }
       // Wrong Answer - Romaji to Katakana:
-      else if(showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
+      else if (showHiragana === false && this.textContent !== characters[0].katakana && gameOver === false) {
         feedback.textContent = "Try Again";
-        if(this.textContent === sixCards[ii].katakana) {
+        if (this.textContent === sixCards[ii].katakana) {
           this.classList.add("wrong-answer");
           this.textContent = sixCards[ii].romaji;
         }
@@ -340,7 +340,7 @@ for(i = 0; i < squares.length; i++) {
         setWrongQuizAnswer();
       }
       // "Lazy Reset" allows for faster and more comfortable play:
-      else if(quizOver === false) {
+      else if (quizOver === false) {
         performAllButtonOperations();
       }
   });
@@ -348,8 +348,8 @@ for(i = 0; i < squares.length; i++) {
 }
 
 buttonGanaKana.addEventListener("click", function() {
-  if(showFreePlay === true) {
-    if(showHiragana === true) {
+  if (showFreePlay === true) {
+    if (showHiragana === true) {
       this.textContent = "Katakana";
       showHiragana = false;
       changeModeIndicator(0, "#ddd", "#ee0000");    
@@ -364,8 +364,8 @@ buttonGanaKana.addEventListener("click", function() {
 });
 
 buttonInvert.addEventListener("click", function() {
-  if(showFreePlay === true) {  
-    if(showJpnToEng === true) {
+  if (showFreePlay === true) {  
+    if (showJpnToEng === true) {
       this.textContent = "ENG to JPN";
       showJpnToEng = false;
       changeModeIndicator(1, "#ddd", "#ee0000");   
@@ -380,15 +380,15 @@ buttonInvert.addEventListener("click", function() {
 });
 
 buttonSkill.addEventListener("click", function() {
-  if(showFreePlay === true) {  
-    if(showBasic === true) {
+  if (showFreePlay === true) {  
+    if (showBasic === true) {
       Array.prototype.push.apply(characters, advanced);
       buttonSkill.textContent = "Advanced";
       showBasic = false;
       changeModeIndicator(2, "#ddd", "#ee0000");      
     }
     else {
-      for(i = 0; i < advanced.length; i++) {
+      for (i = 0; i < advanced.length; i++) {
         var index = characters.indexOf(advanced[i]);
         characters.splice(index, 1);
       }
@@ -401,10 +401,10 @@ buttonSkill.addEventListener("click", function() {
 });
 
 buttonGameType.addEventListener("click", function() {
-  if(showFreePlay === true) {
+  if (showFreePlay === true) {
     beginScoredQuiz();
   }
-  else if(showFreePlay === false) {
+  else if (showFreePlay === false) {
     showFreePlay = true;
     buttonGameType.textContent = "Free Play";
     buttonGameType.classList.remove("scored-mode");
@@ -418,10 +418,10 @@ buttonGameType.addEventListener("click", function() {
 });
 
 buttonReset.addEventListener("click", function() {
-  if(quizOver === true) {
+  if (quizOver === true) {
     beginScoredQuiz();
   }
-  else if(showFreePlay === true || gameOver === true) {
+  else if (showFreePlay === true || gameOver === true) {
     performAllButtonOperations();
   }
 });
