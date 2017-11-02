@@ -343,7 +343,7 @@ for (i = 0; i < squares.length; i++) {
       else if (quizOver === false) {
         performAllButtonOperations();
       }
-  });
+    });
   }
 }
 
