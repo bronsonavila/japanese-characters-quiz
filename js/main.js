@@ -218,7 +218,7 @@ function animateFeedback() {
 }
 
 function beginScoredQuiz() {
- if (quizOver === true) {
+  if (quizOver === true) {
     quizOver = false;
   }
   scoredQuizCount = -1;
