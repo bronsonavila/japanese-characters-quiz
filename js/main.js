@@ -29,14 +29,14 @@ var sixCards;
 /* ----=========================={[ FUNCTIONS ]}==========================---- */
 
 function shuffle(arr) {
-  var i = arr.length,
-      j = 0,
-      temp;
+  var i = arr.length;
+  var j = 0;
+  var temp;
   while (i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
+    j = Math.floor(Math.random() * (i + 1));
+    temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
   }
   return arr;
 }
