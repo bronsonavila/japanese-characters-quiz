@@ -376,32 +376,32 @@ function performVictorySequence() {
 for (let i = 0; i < squares.length; i++) {
   squares[i].addEventListener("click", function() {
     if (
+      // Correct Answer - Japanese to Romaji:      
       showJpnToEng === true &&
       this.textContent === characters[0].romaji &&
       gameOver === false
     ) {
-      // Correct Answer - Japanese to Romaji:
       performVictorySequence();
     } else if (
+      // Correct Answer - Romaji to Hiragana:      
       showHiragana === true &&
       this.textContent === characters[0].hiragana &&
       gameOver === false
     ) {
-      // Correct Answer - Romaji to Hiragana:
       performVictorySequence();
     } else if (
+      // Correct Answer - Romaji to Katakana:      
       this.textContent === characters[0].katakana &&
       gameOver === false
     ) {
-      // Correct Answer - Romaji to Katakana:
       performVictorySequence();
     } else if (
+      // Wrong Answer - Hiragana to Romaji:      
       showJpnToEng === true &&
       showHiragana === true &&
       this.textContent !== characters[0].romaji &&
       gameOver === false
     ) {
-      // Wrong Answer - Hiragana to Romaji:
       feedback.textContent = "Try Again";
       if (this.textContent === sixCards[i].romaji) {
         this.classList.add("wrong-answer");
@@ -412,11 +412,11 @@ for (let i = 0; i < squares.length; i++) {
       }
       setWrongQuizAnswer();
     } else if (
+      // Wrong Answer - Romaji to Hiragana:      
       showHiragana === true &&
       this.textContent !== characters[0].hiragana &&
       gameOver === false
     ) {
-      // Wrong Answer - Romaji to Hiragana:
       feedback.textContent = "Try Again";
       if (this.textContent === sixCards[i].hiragana) {
         this.classList.add("wrong-answer");
@@ -427,12 +427,12 @@ for (let i = 0; i < squares.length; i++) {
       }
       setWrongQuizAnswer();
     } else if (
+      // Wrong Answer - Katakana to Romaji:      
       showJpnToEng === true &&
       showHiragana === false &&
       this.textContent !== characters[0].katakana &&
       gameOver === false
     ) {
-      // Wrong Answer - Katakana to Romaji:
       feedback.textContent = "Try Again";
       if (this.textContent === sixCards[i].romaji) {
         this.classList.add("wrong-answer");
@@ -443,11 +443,11 @@ for (let i = 0; i < squares.length; i++) {
       }
       setWrongQuizAnswer();
     } else if (
+      // Wrong Answer - Romaji to Katakana:      
       showHiragana === false &&
       this.textContent !== characters[0].katakana &&
       gameOver === false
     ) {
-      // Wrong Answer - Romaji to Katakana:
       feedback.textContent = "Try Again";
       if (this.textContent === sixCards[i].katakana) {
         this.classList.add("wrong-answer");
