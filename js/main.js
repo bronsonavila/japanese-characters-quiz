@@ -1,6 +1,6 @@
 // Author: Bronson Avila
 
-/* ----========================={[ VARIABLES ]}=========================---- */
+/* ----========================{[  VARIABLES  ]}========================---- */
 
 var characters = [
   { romaji: "a", hiragana: "あ", katakana: "ア" },
@@ -130,7 +130,7 @@ var previousAnswer;
 var wrongAnswer;
 var sixCards;
 
-/* ----========================={[ FUNCTIONS ]}=========================---- */
+/* ----========================{[  FUNCTIONS  ]}========================---- */
 
 function shuffle(arr) {
   var i = arr.length;
@@ -371,7 +371,7 @@ function performVictorySequence() {
   }
 }
 
-/* ----========================={[ EVENTS ]}=========================---- */
+/* ----========================{[  EVENTS  ]}========================---- */
 
 for (let i = 0; i < squares.length; i++) {
   squares[i].addEventListener("click", function() {
@@ -538,6 +538,6 @@ buttonReset.addEventListener("click", function() {
   }
 });
 
-/* ----========================={[ START ]}=========================---- */
+/* ----========================{[  START  ]}========================---- */
 
 init();
