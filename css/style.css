@@ -1,3 +1,5 @@
+/* Author: Bronson Avila */
+
 body {
   cursor: default;
   font-family: 'Josefin Sans', sans-serif;
@@ -310,7 +312,7 @@ button {
           transition-timing-function: ease-in;
 }
 
-@media all and (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 679.4px) {
   button {
     width: 86px;
     font-size: 12px;
@@ -442,7 +444,7 @@ button {
   }
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 320px), all and (max-height: 540px) {
   button {
     width: 70px;
     height: 26px;
