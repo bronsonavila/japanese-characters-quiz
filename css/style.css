@@ -310,7 +310,7 @@ button {
           transition-timing-function: ease-in;
 }
 
-@media all and (max-width: 576px), all and (max-height: 679.4px) {
+@media all and (max-width: 576px), all and (max-height: 700px) {
   button {
     width: 86px;
     font-size: 12px;
@@ -442,7 +442,7 @@ button {
   }
 }
 
-@media all and (max-width: 320px), all and (max-height: 540px) {
+@media all and (max-width: 320px), all and (max-height: 560px) {
   button {
     width: 70px;
     height: 26px;
