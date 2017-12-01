@@ -373,95 +373,98 @@ function performVictorySequence() {
 
 /* ----========================{[  EVENTS  ]}========================---- */
 
-for (let i = 0; i < squares.length; i++) {
-  squares[i].addEventListener("click", function() {
-    if (
-      // Correct Answer - Japanese to Romaji:      
-      showJpnToEng === true &&
-      this.textContent === characters[0].romaji &&
-      gameOver === false
-    ) {
-      performVictorySequence();
-    } else if (
-      // Correct Answer - Romaji to Hiragana:      
-      showHiragana === true &&
-      this.textContent === characters[0].hiragana &&
-      gameOver === false
-    ) {
-      performVictorySequence();
-    } else if (
-      // Correct Answer - Romaji to Katakana:      
-      this.textContent === characters[0].katakana &&
-      gameOver === false
-    ) {
-      performVictorySequence();
-    } else if (
-      // Wrong Answer - Hiragana to Romaji:      
-      showJpnToEng === true &&
-      showHiragana === true &&
-      this.textContent !== characters[0].romaji &&
-      gameOver === false
-    ) {
-      feedback.textContent = "Try Again";
-      if (this.textContent === sixCards[i].romaji) {
-        this.classList.add("wrong-answer");
-        this.textContent = sixCards[i].hiragana;
-      } else {
-        this.classList.remove("wrong-answer");
-        this.textContent = sixCards[i].romaji;
+for (var i = 0; i < squares.length; i++) {
+  try{throw i}
+  catch(ii) {
+    squares[i].addEventListener("click", function() {
+      if (
+        // Correct Answer - Japanese to Romaji:      
+        showJpnToEng === true &&
+        this.textContent === characters[0].romaji &&
+        gameOver === false
+      ) {
+        performVictorySequence();
+      } else if (
+        // Correct Answer - Romaji to Hiragana:      
+        showHiragana === true &&
+        this.textContent === characters[0].hiragana &&
+        gameOver === false
+      ) {
+        performVictorySequence();
+      } else if (
+        // Correct Answer - Romaji to Katakana:      
+        this.textContent === characters[0].katakana &&
+        gameOver === false
+      ) {
+        performVictorySequence();
+      } else if (
+        // Wrong Answer - Hiragana to Romaji:      
+        showJpnToEng === true &&
+        showHiragana === true &&
+        this.textContent !== characters[0].romaji &&
+        gameOver === false
+      ) {
+        feedback.textContent = "Try Again";
+        if (this.textContent === sixCards[ii].romaji) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].hiragana;
+        } else {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        }
+        setWrongQuizAnswer();
+      } else if (
+        // Wrong Answer - Romaji to Hiragana:      
+        showHiragana === true &&
+        this.textContent !== characters[0].hiragana &&
+        gameOver === false
+      ) {
+        feedback.textContent = "Try Again";
+        if (this.textContent === sixCards[ii].hiragana) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        } else {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].hiragana;
+        }
+        setWrongQuizAnswer();
+      } else if (
+        // Wrong Answer - Katakana to Romaji:      
+        showJpnToEng === true &&
+        showHiragana === false &&
+        this.textContent !== characters[0].katakana &&
+        gameOver === false
+      ) {
+        feedback.textContent = "Try Again";
+        if (this.textContent === sixCards[ii].romaji) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].katakana;
+        } else {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        }
+        setWrongQuizAnswer();
+      } else if (
+        // Wrong Answer - Romaji to Katakana:      
+        showHiragana === false &&
+        this.textContent !== characters[0].katakana &&
+        gameOver === false
+      ) {
+        feedback.textContent = "Try Again";
+        if (this.textContent === sixCards[ii].katakana) {
+          this.classList.add("wrong-answer");
+          this.textContent = sixCards[ii].romaji;
+        } else {
+          this.classList.remove("wrong-answer");
+          this.textContent = sixCards[ii].katakana;
+        }
+        setWrongQuizAnswer();
+      } else if (quizOver === false) {
+        // "Lazy Reset" allows for faster and more comfortable play:
+        performAllButtonOperations();
       }
-      setWrongQuizAnswer();
-    } else if (
-      // Wrong Answer - Romaji to Hiragana:      
-      showHiragana === true &&
-      this.textContent !== characters[0].hiragana &&
-      gameOver === false
-    ) {
-      feedback.textContent = "Try Again";
-      if (this.textContent === sixCards[i].hiragana) {
-        this.classList.add("wrong-answer");
-        this.textContent = sixCards[i].romaji;
-      } else {
-        this.classList.remove("wrong-answer");
-        this.textContent = sixCards[i].hiragana;
-      }
-      setWrongQuizAnswer();
-    } else if (
-      // Wrong Answer - Katakana to Romaji:      
-      showJpnToEng === true &&
-      showHiragana === false &&
-      this.textContent !== characters[0].katakana &&
-      gameOver === false
-    ) {
-      feedback.textContent = "Try Again";
-      if (this.textContent === sixCards[i].romaji) {
-        this.classList.add("wrong-answer");
-        this.textContent = sixCards[i].katakana;
-      } else {
-        this.classList.remove("wrong-answer");
-        this.textContent = sixCards[i].romaji;
-      }
-      setWrongQuizAnswer();
-    } else if (
-      // Wrong Answer - Romaji to Katakana:      
-      showHiragana === false &&
-      this.textContent !== characters[0].katakana &&
-      gameOver === false
-    ) {
-      feedback.textContent = "Try Again";
-      if (this.textContent === sixCards[i].katakana) {
-        this.classList.add("wrong-answer");
-        this.textContent = sixCards[i].romaji;
-      } else {
-        this.classList.remove("wrong-answer");
-        this.textContent = sixCards[i].katakana;
-      }
-      setWrongQuizAnswer();
-    } else if (quizOver === false) {
-      // "Lazy Reset" allows for faster and more comfortable play:
-      performAllButtonOperations();
-    }
-  });
+    });
+  }
 }
 
 buttonGanaKana.addEventListener("click", function() {
