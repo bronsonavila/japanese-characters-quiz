@@ -374,31 +374,32 @@ function performVictorySequence() {
 /* ----========================{[  EVENTS  ]}========================---- */
 
 for (var i = 0; i < squares.length; i++) {
+  // Try/Catch method used instead of "let" to maximize browser compatibility.
   try{throw i}
   catch(ii) {
     squares[i].addEventListener("click", function() {
       if (
-        // Correct Answer - Japanese to Romaji:      
+        // Correct Answer - Japanese to Romaji:
         showJpnToEng === true &&
         this.textContent === characters[0].romaji &&
         gameOver === false
       ) {
         performVictorySequence();
       } else if (
-        // Correct Answer - Romaji to Hiragana:      
+        // Correct Answer - Romaji to Hiragana:
         showHiragana === true &&
         this.textContent === characters[0].hiragana &&
         gameOver === false
       ) {
         performVictorySequence();
       } else if (
-        // Correct Answer - Romaji to Katakana:      
+        // Correct Answer - Romaji to Katakana:
         this.textContent === characters[0].katakana &&
         gameOver === false
       ) {
         performVictorySequence();
       } else if (
-        // Wrong Answer - Hiragana to Romaji:      
+        // Wrong Answer - Hiragana to Romaji:
         showJpnToEng === true &&
         showHiragana === true &&
         this.textContent !== characters[0].romaji &&
@@ -414,7 +415,7 @@ for (var i = 0; i < squares.length; i++) {
         }
         setWrongQuizAnswer();
       } else if (
-        // Wrong Answer - Romaji to Hiragana:      
+        // Wrong Answer - Romaji to Hiragana:
         showHiragana === true &&
         this.textContent !== characters[0].hiragana &&
         gameOver === false
@@ -429,7 +430,7 @@ for (var i = 0; i < squares.length; i++) {
         }
         setWrongQuizAnswer();
       } else if (
-        // Wrong Answer - Katakana to Romaji:      
+        // Wrong Answer - Katakana to Romaji:
         showJpnToEng === true &&
         showHiragana === false &&
         this.textContent !== characters[0].katakana &&
@@ -445,7 +446,7 @@ for (var i = 0; i < squares.length; i++) {
         }
         setWrongQuizAnswer();
       } else if (
-        // Wrong Answer - Romaji to Katakana:      
+        // Wrong Answer - Romaji to Katakana:
         showHiragana === false &&
         this.textContent !== characters[0].katakana &&
         gameOver === false
