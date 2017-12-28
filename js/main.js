@@ -343,11 +343,7 @@ function addToQuizScore() {
 }
 
 function performVictorySequence() {
-  if (showFreePlay === true) {
-    buttonReset.textContent = "Play Again?";
-  } else {
-    buttonReset.textContent = "Next Character";
-  }
+  buttonReset.textContent = "New Character";
   feedback.classList.add("gameover-feedback");
   feedback.textContent = "Correct!";
   buttonReset.classList.add("gameover-button");
