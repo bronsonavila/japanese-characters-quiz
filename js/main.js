@@ -343,10 +343,10 @@ function addToQuizScore() {
 }
 
 function performVictorySequence() {
-  buttonReset.textContent = "New Character";
   feedback.classList.add("gameover-feedback");
   feedback.textContent = "Correct!";
   buttonReset.classList.add("gameover-button");
+  buttonReset.textContent = "New Character";  
   changeSquaresDisplay();
   restoreSquaresDisplay();
   showCorrectAnswerOnSquares();
