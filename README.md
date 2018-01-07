@@ -3,8 +3,8 @@
 + Choose the square that matches the displayed romaji or Japanese character (either "Hiragana" or "Katakana").
 + Add or remove advanced characters (Ten-Ten, Maru, and Yōon) by using the "Basic" / "Advanced" button.
 + Switch between guessing romaji and Japanese characters by using the "JPN to ENG" / "ENG to JPN" button.
-+ Switch between free play or a scored quiz by using the "Free Play" / "Scored Quiz" button.
-  - "Free Play" is completely random, while "Scored Quiz" runs through each character exactly once.
++ Switch between random mode or a scored quiz by using the "Random" / "Scored Quiz" button.
+  - "Random" is completely random, while "Scored Quiz" runs through each character exactly once.
   - Quiz conditions must be set prior to entering "Scored Quiz" mode, as all modifier buttons will be disabled during the duration of the quiz.
 
-<a href="http://www.jcharquiz.com/">Click here to play.</a>
+<a href="http://www.jcharquiz.com/">Click here to take the quiz.</a>
