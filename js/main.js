@@ -121,7 +121,7 @@ var secondModes = document.querySelectorAll(".second-mode");
 var showHiragana = true;
 var showJpnToEng = true;
 var showBasic = true;
-var showFreePlay = true;
+var showRandom = true;
 var gameOver = false;
 var quizOver = false;
 var scoredQuizCount = -1;
@@ -160,7 +160,7 @@ function createSquareTextContent() {
   }
 }
 
-function createFreePlaySquares() {
+function createRandomSquares() {
   sixCards = [];
   for (var i = 0; i < squares.length; i++) {
     sixCards.push(characters[i]);
@@ -182,16 +182,16 @@ function createScoredQuizSquares() {
 }
 
 function changeScoredQuizDisplay() {
-  if (showFreePlay === false) {
+  if (showRandom === false) {
     buttonReset.textContent = scoredQuizCount + 1 + " of " + characters.length;
   }
-  if (showFreePlay === false && scoredQuizCount > 0) {
+  if (showRandom === false && scoredQuizCount > 0) {
     feedback.textContent = "";
   }
 }
 
 function createAnswer() {
-  if (showFreePlay === false) {
+  if (showRandom === false) {
     characters.push(characters.shift());
   }
   if (showJpnToEng === false) {
@@ -221,12 +221,12 @@ function init() {
     scoredQuizCount = -1;
     scoredQuizScore = 0;
   }
-  if (showFreePlay === true) {
+  if (showRandom === true) {
     previousAnswer = characters[0];
     shuffle(characters);
     mitigateConsecutiveRepetition();
     createAnswer();
-    createFreePlaySquares();
+    createRandomSquares();
     scoredQuizCount = -1;
   } else {
     if (scoredQuizCount === 0) {
@@ -257,7 +257,7 @@ function performAllButtonOperations() {
     squares[i].classList.remove("inactive");
   }
   restoreSquaresDisplay();
-  if (showFreePlay === true) {
+  if (showRandom === true) {
     feedback.textContent = "";
     buttonReset.textContent = "New Character";
   }
@@ -289,7 +289,7 @@ function showCorrectAnswerOnSquares() {
 }
 
 function toggleLockedButtons() {
-  if (showFreePlay === false) {
+  if (showRandom === false) {
     buttonGanaKana.classList.add("locked");
     buttonInvert.classList.add("locked");
     buttonSkill.classList.add("locked");
@@ -319,8 +319,8 @@ function beginScoredQuiz() {
   }
   scoredQuizCount = -1;
   scoredQuizScore = 0;
-  showFreePlay = false;
-  feedback.textContent = "Begin Scored Quiz";
+  showRandom = false;
+  feedback.textContent = "Scored Quiz";
   buttonReset.textContent = scoredQuizCount + 1 + " of " + characters.length;
   buttonGameType.textContent = "Scored Quiz";
   buttonGameType.classList.add("scored-mode");
@@ -331,13 +331,13 @@ function beginScoredQuiz() {
 }
 
 function setWrongQuizAnswer() {
-  if (showFreePlay === false) {
+  if (showRandom === false) {
     wrongAnswer = true;
   }
 }
 
 function addToQuizScore() {
-  if (showFreePlay === false && wrongAnswer === false) {
+  if (showRandom === false && wrongAnswer === false) {
     scoredQuizScore++;
   }
 }
@@ -346,7 +346,7 @@ function performVictorySequence() {
   feedback.classList.add("gameover-feedback");
   feedback.textContent = "Correct!";
   buttonReset.classList.add("gameover-button");
-  buttonReset.textContent = "New Character";  
+  buttonReset.textContent = "New Character";
   changeSquaresDisplay();
   restoreSquaresDisplay();
   showCorrectAnswerOnSquares();
@@ -362,7 +362,7 @@ function performVictorySequence() {
       " (" +
       Math.round(scoredQuizScore / characters.length * 100) +
       "%)";
-    buttonReset.textContent = "Replay Quiz?";
+    buttonReset.textContent = "New Quiz";
     quizOver = true;
   }
 }
@@ -370,9 +370,10 @@ function performVictorySequence() {
 /* ----========================{[  EVENTS  ]}========================---- */
 
 for (var i = 0; i < squares.length; i++) {
-  // Try/Catch method used instead of "let" to maximize browser compatibility.
-  try{throw i}
-  catch(ii) {
+  // "try...catch" used instead of "let" to maximize browser compatibility.
+  try {
+    throw i;
+  } catch (ii) {
     squares[i].addEventListener("click", function() {
       if (
         // Correct Answer - Japanese to Romaji:
@@ -465,7 +466,7 @@ for (var i = 0; i < squares.length; i++) {
 }
 
 buttonGanaKana.addEventListener("click", function() {
-  if (showFreePlay === true) {
+  if (showRandom === true) {
     if (showHiragana === true) {
       this.textContent = "Katakana";
       showHiragana = false;
@@ -480,7 +481,7 @@ buttonGanaKana.addEventListener("click", function() {
 });
 
 buttonInvert.addEventListener("click", function() {
-  if (showFreePlay === true) {
+  if (showRandom === true) {
     if (showJpnToEng === true) {
       this.textContent = "ENG to JPN";
       showJpnToEng = false;
@@ -495,7 +496,7 @@ buttonInvert.addEventListener("click", function() {
 });
 
 buttonSkill.addEventListener("click", function() {
-  if (showFreePlay === true) {
+  if (showRandom === true) {
     if (showBasic === true) {
       Array.prototype.push.apply(characters, advanced);
       buttonSkill.textContent = "Advanced";
@@ -515,25 +516,25 @@ buttonSkill.addEventListener("click", function() {
 });
 
 buttonGameType.addEventListener("click", function() {
-  if (showFreePlay === true) {
+  if (showRandom === true) {
     beginScoredQuiz();
-  } else if (showFreePlay === false) {
-    showFreePlay = true;
-    buttonGameType.textContent = "Free Play";
+  } else if (showRandom === false) {
+    showRandom = true;
+    buttonGameType.textContent = "Random";
     buttonGameType.classList.remove("scored-mode");
     changeModeIndicator(3, "#ee0000", "#ddd");
     toggleLockedButtons();
     performAllButtonOperations();
     animateFeedback();
     // Following line must go after performAllButtonOperations() to overwrite:
-    feedback.textContent = "Free Play Resumed";
+    feedback.textContent = "Random Mode";
   }
 });
 
 buttonReset.addEventListener("click", function() {
   if (quizOver === true) {
     beginScoredQuiz();
-  } else if (showFreePlay === true || gameOver === true) {
+  } else if (showRandom === true || gameOver === true) {
     performAllButtonOperations();
   }
 });
