@@ -356,11 +356,11 @@ button {
     left: 218px;
     font-size: 8px;
   }
-    #version {
-      top: 50px;
-      left: 260px;
-      font-size: 8px;
-    }
+  #version {
+    top: 50px;
+    left: 260px;
+    font-size: 8px;
+  }
   #answer {
     font-size: 50px;
     line-height: 64px;
@@ -431,15 +431,15 @@ button {
     height: 86px;
     width: 86px;
   }
-  .square:nth-of-type(1), .square:nth-of-type(4) {
-    margin: 4px 4px 4px 10px;
-  }
-  .square:nth-of-type(2), .square:nth-of-type(5) {
-    margin: 4px 4px 4px 4px;
-  }
-  .square:nth-of-type(3), .square:nth-of-type(6) {
-    margin: 4px 10px 4px 4px;
-  }
+    .square:nth-of-type(1), .square:nth-of-type(4) {
+      margin: 4px 4px 4px 10px;
+    }
+    .square:nth-of-type(2), .square:nth-of-type(5) {
+      margin: 4px 4px 4px 4px;
+    }
+    .square:nth-of-type(3), .square:nth-of-type(6) {
+      margin: 4px 10px 4px 4px;
+    }
 }
 
 @media all and (max-width: 320px), all and (max-height: 540px) {
@@ -490,11 +490,11 @@ button {
     left: 205px;
     font-size: 7px;
   }
-    #version {
-      top: 37px;
-      left: 242px;
-      font-size: 7px;
-    }
+  #version {
+    top: 37px;
+    left: 242px;
+    font-size: 7px;
+  }
   #answer {
     font-size: 46px;
     line-height: 60px;
@@ -565,13 +565,13 @@ button {
     height: 70px;
     width: 70px;
   }
-  .square:nth-of-type(1), .square:nth-of-type(4) {
-    margin: 4px 4px 4px 24px;
-  }
-  .square:nth-of-type(2), .square:nth-of-type(5) {
-    margin: 4px 4px 4px 4px;
-  }
-  .square:nth-of-type(3), .square:nth-of-type(6) {
-    margin: 4px 24px 4px 4px;
-  }
+    .square:nth-of-type(1), .square:nth-of-type(4) {
+      margin: 4px 4px 4px 24px;
+    }
+    .square:nth-of-type(2), .square:nth-of-type(5) {
+      margin: 4px 4px 4px 4px;
+    }
+    .square:nth-of-type(3), .square:nth-of-type(6) {
+      margin: 4px 24px 4px 4px;
+    }
 }
