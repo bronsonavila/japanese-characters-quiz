@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.4.1 - 2018-04-07
+- Added feedback notification: "Click any square below to continue."
+
 ## 1.4.0 - 2017-10-28
 - Added scored quiz mode.
 - Added button toggle light indicators.
