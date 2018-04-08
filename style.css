@@ -334,12 +334,6 @@ button {
           transition: background 0.125s;
 }
 
-.center-safari-9 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .expand {
   -webkit-transform: scale(1.1);
      -moz-transform: scale(1.1);
