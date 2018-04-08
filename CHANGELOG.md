@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.5.0 - 2018-04-07
+- Added option to automatically advance to next character after picking a correct answer.
+
 ## 1.4.1 - 2018-04-07
 - Added feedback notification: "Click any square below to continue."
 
