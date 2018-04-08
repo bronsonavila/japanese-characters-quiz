@@ -369,8 +369,8 @@ function changeFeedbackOnVictory() {
   feedback.textContent = 'Correct!';
   if (scoredQuizCount !== characters.length - 1) {
     feedbackTimer = setTimeout(function() {
-      feedback.textContent = 'Click any square below to continue.';
-    }, 2000);
+      feedback.textContent = 'TIP: Click any square below to continue.';
+    }, 2250);
   }
   buttonReset.classList.add('gameover-button');
   buttonReset.textContent = 'New Character';
