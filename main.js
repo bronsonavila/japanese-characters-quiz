@@ -590,6 +590,7 @@ buttonAutoOff.addEventListener('click', function() {
     buttonAutoOn.classList.add('inactive-auto');
   }
   autoNext = false;
+  clearTimeout(autoTimer);
 });
 
 // ===============================[  START  ]============================== //
