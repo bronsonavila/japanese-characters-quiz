@@ -127,6 +127,7 @@ var showRandom = true;
 var gameOver = false;
 var quizOver = false;
 var autoNext = false;
+var tipDisplayed = false;
 var scoredQuizCount = -1;
 var scoredQuizScore = 0;
 var previousAnswer;
@@ -367,10 +368,11 @@ function showFinalScore() {
 function changeFeedbackOnVictory() {
   feedback.classList.add('gameover-feedback');
   feedback.textContent = 'Correct!';
-  if (scoredQuizCount !== characters.length - 1) {
+  if (tipDisplayed === false && scoredQuizCount !== characters.length - 1) {
     feedbackTimer = setTimeout(function() {
       feedback.textContent = 'TIP: Click any square below to continue.';
-    }, 2250);
+      tipDisplayed = true;
+    }, 1700);
   }
   buttonReset.classList.add('gameover-button');
   buttonReset.textContent = 'New Character';
@@ -379,7 +381,7 @@ function changeFeedbackOnVictory() {
 function proceedAutomatically() {
   autoTimer = setTimeout(function() {
     performAllButtonOperations();
-  }, 1250);
+  }, 1200);
 }
 
 function performVictorySequence() {
