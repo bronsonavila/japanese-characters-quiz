@@ -107,7 +107,8 @@ button {
   text-shadow: 1px 1px 2px #121212; 
 }
 
-#credits, #version {
+#credits, 
+#version {
   position: absolute;
   top: 49px;
   left: 329px;
@@ -159,7 +160,9 @@ button {
     width: 150px;
   }
 
-#title, #answer, #squares {
+#title, 
+#answer, 
+#squares {
   padding: 21px 0;
 }
 
@@ -280,13 +283,16 @@ button {
        -o-transition: 0.25s;
           transition: 0.25s;
 }
-  .square:nth-of-type(1), .square:nth-of-type(4) {
+  .square:nth-of-type(1), 
+  .square:nth-of-type(4) {
     margin: 9px 8px 9px 24px;
   }
-  .square:nth-of-type(2), .square:nth-of-type(5) {
+  .square:nth-of-type(2), 
+  .square:nth-of-type(5) {
     margin: 9px 8px 9px 8px;
   }
-  .square:nth-of-type(3), .square:nth-of-type(6) {
+  .square:nth-of-type(3), 
+  .square:nth-of-type(6) {
     margin: 9px 24px 9px 8px;
   }
 
@@ -452,7 +458,9 @@ button {
       float: left;
       width: 100px;
     }
-  #title, #answer, #squares {
+  #title, 
+  #answer, 
+  #squares {
     padding: 20px 0;
   }
   .first-mode {
@@ -501,13 +509,16 @@ button {
     height: 86px;
     width: 86px;
   }
-    .square:nth-of-type(1), .square:nth-of-type(4) {
+    .square:nth-of-type(1), 
+    .square:nth-of-type(4) {
       margin: 4px 4px 4px 10px;
     }
-    .square:nth-of-type(2), .square:nth-of-type(5) {
+    .square:nth-of-type(2), 
+    .square:nth-of-type(5) {
       margin: 4px 4px 4px 4px;
     }
-    .square:nth-of-type(3), .square:nth-of-type(6) {
+    .square:nth-of-type(3), 
+    .square:nth-of-type(6) {
       margin: 4px 10px 4px 4px;
     }
 }
@@ -606,7 +617,9 @@ button {
       float: left;
       width: 93.33px;
     }
-  #title, #answer, #squares {
+  #title, 
+  #answer, 
+  #squares {
     padding: 14px 0;
   }
   .first-mode {
@@ -655,13 +668,16 @@ button {
     height: 70px;
     width: 70px;
   }
-    .square:nth-of-type(1), .square:nth-of-type(4) {
+    .square:nth-of-type(1), 
+    .square:nth-of-type(4) {
       margin: 4px 4px 4px 24px;
     }
-    .square:nth-of-type(2), .square:nth-of-type(5) {
+    .square:nth-of-type(2), 
+    .square:nth-of-type(5) {
       margin: 4px 4px 4px 4px;
     }
-    .square:nth-of-type(3), .square:nth-of-type(6) {
+    .square:nth-of-type(3), 
+    .square:nth-of-type(6) {
       margin: 4px 24px 4px 4px;
     }
 }
