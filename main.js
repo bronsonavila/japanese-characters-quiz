@@ -379,7 +379,7 @@ function changeFeedbackOnVictory() {
 function proceedAutomatically() {
   autoTimer = setTimeout(function() {
     performAllButtonOperations();
-  }, 1500);
+  }, 1250);
 }
 
 function performVictorySequence() {
