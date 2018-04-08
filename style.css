@@ -45,7 +45,6 @@ button {
   #auto-on,
   #auto-off {
     float: left;
-    display: inline-block;
     font-size: 9px;
     line-height: 14px;
     width: 33px;
