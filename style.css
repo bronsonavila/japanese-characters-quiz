@@ -538,13 +538,13 @@ button {
     #auto-on,
     #auto-off {
       font-size: 6px;
-      line-height: 13px;
-      width: 20px;
-      height: 13px;
-      margin: 2px 1px 0 4px;
+      line-height: 12px;
+      width: 21px;
+      height: 12px;
+      margin: 3px 1px 0 3px;
     }
     #auto-off {
-      margin: 2px 0 0 1px;
+      margin: 3px 0 0 1px;
     }
   #auto-text {
     font-size: 7px;
