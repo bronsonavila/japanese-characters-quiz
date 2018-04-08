@@ -116,6 +116,8 @@ var buttonGameType = document.getElementById('game-type');
 var buttonSkill = document.getElementById('skill');
 var buttonInvert = document.getElementById('invert');
 var buttonReset = document.getElementById('reset');
+var buttonAutoOn = document.getElementById('auto-on');
+var buttonAutoOff = document.getElementById('auto-off');
 var firstModes = document.querySelectorAll('.first-mode');
 var secondModes = document.querySelectorAll('.second-mode');
 var showHiragana = true;
@@ -124,12 +126,14 @@ var showBasic = true;
 var showRandom = true;
 var gameOver = false;
 var quizOver = false;
+var autoNext = false;
 var scoredQuizCount = -1;
 var scoredQuizScore = 0;
 var previousAnswer;
 var wrongAnswer;
 var sixSquares;
-var timer;
+var feedbackTimer;
+var autoTimer;
 
 // =============================[  FUNCTIONS  ]============================ //
 
@@ -265,16 +269,17 @@ function performAllButtonOperations() {
     buttonReset.textContent = 'New Character';
   }
   changeScoredQuizDisplay();
-  clearTimeout(timer);
+  clearTimeout(feedbackTimer);
+  clearTimeout(autoTimer);
   feedback.classList.remove('gameover-feedback');
   buttonReset.classList.remove('gameover-button');
 }
 
-function changeModeIndicator(x, y, z) {
-  firstModes[x].style.backgroundColor = y;
-  firstModes[x].classList.toggle('light-on');
-  secondModes[x].style.backgroundColor = z;
-  secondModes[x].classList.toggle('light-on');
+function changeModeIndicator(indexNum, firstColor, secondColor) {
+  firstModes[indexNum].style.backgroundColor = firstColor;
+  firstModes[indexNum].classList.toggle('light-on');
+  secondModes[indexNum].style.backgroundColor = secondColor;
+  secondModes[indexNum].classList.toggle('light-on');
 }
 
 function showCorrectAnswerOnSquares() {
@@ -363,12 +368,18 @@ function changeFeedbackOnVictory() {
   feedback.classList.add('gameover-feedback');
   feedback.textContent = 'Correct!';
   if (scoredQuizCount !== characters.length - 1) {
-    timer = setTimeout(function() {
+    feedbackTimer = setTimeout(function() {
       feedback.textContent = 'Click any square below to continue.';
     }, 2000);
   }
   buttonReset.classList.add('gameover-button');
   buttonReset.textContent = 'New Character';
+}
+
+function proceedAutomatically() {
+  autoTimer = setTimeout(function() {
+    performAllButtonOperations();
+  }, 1500);
 }
 
 function performVictorySequence() {
@@ -379,6 +390,9 @@ function performVictorySequence() {
   showCorrectAnswerOnSquares();
   addToQuizScore();
   gameOver = true;
+  if (autoNext === true && scoredQuizCount !== characters.length - 1) {
+    proceedAutomatically();
+  }
   if (scoredQuizCount === characters.length - 1) {
     showFinalScore();
   }
@@ -516,7 +530,7 @@ buttonSkill.addEventListener('click', function() {
   if (showRandom === true) {
     if (showBasic === true) {
       Array.prototype.push.apply(characters, advanced);
-      buttonSkill.textContent = 'Advanced';
+      this.textContent = 'Advanced';
       showBasic = false;
       changeModeIndicator(2, '#ddd', '#ee0000');
     } else {
@@ -524,7 +538,7 @@ buttonSkill.addEventListener('click', function() {
         var index = characters.indexOf(advanced[i]);
         characters.splice(index, 1);
       }
-      buttonSkill.textContent = 'Basic';
+      this.textContent = 'Basic';
       showBasic = true;
       changeModeIndicator(2, '#ee0000', '#ddd');
     }
@@ -537,8 +551,8 @@ buttonGameType.addEventListener('click', function() {
     beginScoredQuiz();
   } else if (showRandom === false) {
     showRandom = true;
-    buttonGameType.textContent = 'Random';
-    buttonGameType.classList.remove('scored-mode');
+    this.textContent = 'Random';
+    this.classList.remove('scored-mode');
     changeModeIndicator(3, '#ee0000', '#ddd');
     toggleLockedButtons();
     performAllButtonOperations();
@@ -554,6 +568,26 @@ buttonReset.addEventListener('click', function() {
   } else if (showRandom === true || gameOver === true) {
     performAllButtonOperations();
   }
+});
+
+buttonAutoOn.addEventListener('click', function() {
+  if (autoNext === false) {
+    this.classList.remove('inactive-auto');
+    this.classList.add('active-auto');
+    buttonAutoOff.classList.remove('active-auto');
+    buttonAutoOff.classList.add('inactive-auto');
+  }
+  autoNext = true;
+});
+
+buttonAutoOff.addEventListener('click', function() {
+  if (autoNext === true) {
+    this.classList.remove('inactive-auto');
+    this.classList.add('active-auto');
+    buttonAutoOn.classList.remove('active-auto');
+    buttonAutoOn.classList.add('inactive-auto');
+  }
+  autoNext = false;
 });
 
 // ===============================[  START  ]============================== //
