@@ -38,10 +38,36 @@ button {
   #reset {
     font-size: 20px;
     width: 120px;
-    height: 72.4px;
+    height: 54.3px;
     line-height: 20px;
-    margin: 18px 0 18px 2px;
+    margin: 18px 0 0 2px;
   }
+  #auto-on,
+  #auto-off {
+    float: left;
+    font-size: 9px;
+    line-height: 14px;
+    width: 33px;
+    height: 15px;
+    margin: 3px 2px 0 4px;
+  }
+  #auto-off {
+    margin: 3px 0 0 2px;
+  }
+
+#auto-text {
+  font-size: 15px;
+  line-height: 21px;
+  float: left;
+  margin-left: 2px;
+  height: 18px;
+  color: #fff;
+  background: #121212;
+}
+
+#colon {
+  font-size: 23px;
+}
 
 #outer {
   height: 700px;
@@ -213,6 +239,26 @@ button {
           box-shadow: rgba(238, 0, 0, .25) 0px 0px 4px;
 }
 
+.active-auto {
+  color: #fff;
+  background: #ee0000;
+  border-top:    1px solid #a50000;
+  border-right:  1px solid #790000;
+  border-bottom: 1px solid #790000;
+  border-left:   1px solid #a50000;  
+  -webkit-box-shadow: inset 0px 1px 2px #980000;
+     -moz-box-shadow: inset 0px 1px 2px #980000;
+          box-shadow: inset 0px 1px 2px #980000;
+}
+
+.inactive-auto {
+  color: #999;
+  background: #ddd;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
 .square {
   float: left;
   font-size: 34px;
@@ -278,10 +324,10 @@ button {
 
 .gameover-button {
   background: #ffeb3b !important;
-  border-top:    1px solid #9c8c00 !important;
-  border-right:  1px solid #fff283 !important;
-  border-bottom: 1px solid #fff283 !important;
-  border-left:   1px solid #9c8c00 !important;
+  border-top:    1px solid #fff283 !important;
+  border-right:  1px solid #9c8c00 !important;
+  border-bottom: 1px solid #9c8c00 !important;
+  border-left:   1px solid #fff283 !important;
   -webkit-transition: background 0.125s;
      -moz-transition: background 0.125s;
        -o-transition: background 0.125s;
@@ -331,10 +377,30 @@ button {
     #reset {
       font-size: 16px;
       width: 86px;
-      height: 68.4px;
+      height: 51.3px;
       line-height: 16px;
-      margin: 13px 0 13px 3px;
+      margin: 13px 0 0 3px;
     }
+    #auto-on,
+    #auto-off {
+      font-size: 9px;
+      line-height: 15px;
+      width: 25px;
+      height: 15px;
+      margin: 2px 1px 0 3px;
+    }
+    #auto-off {
+      margin: 2px 0 0 1px;
+    }
+  #auto-text {
+    font-size: 10px;
+    line-height: 21px;
+    margin-left: 3px;
+    height: 17px;
+  }
+  #colon {
+    font-size: 15px;
+  }
   #outer {
     height: 560px;
     width: 320px;
@@ -465,10 +531,30 @@ button {
     #reset {
       font-size: 13px;
       width: 70px;
-      height: 58.4px;
+      height: 43.8px;
       line-height: 14px;
-      margin: 10px 0 13px -1px;
+      margin: 10px 0 0 -1px;
     }
+    #auto-on,
+    #auto-off {
+      font-size: 6px;
+      line-height: 13px;
+      width: 20px;
+      height: 14px;
+      margin: 1px 1px 0 3px;
+    }
+    #auto-off {
+      margin: 1px 0 0 1px;
+    }
+  #auto-text {
+    font-size: 7px;
+    line-height: 15px;
+    margin-left: 0;
+    height: 13px;
+  }
+  #colon {
+    font-size: 13px;
+  }
   #outer {
     height: 460px;
     width: 300px;
