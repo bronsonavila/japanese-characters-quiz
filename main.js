@@ -491,7 +491,7 @@ for (var i = 0; i < squares.length; i++) {
         }
         setWrongQuizAnswer();
       } else if (quizOver === false) {
-        // "Lazy Reset" allows for faster and more comfortable play:
+        // Tap any square to reset; allows for faster and more comfortable use:
         performAllButtonOperations();
       }
     });
