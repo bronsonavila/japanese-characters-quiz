@@ -6,5 +6,6 @@
 + Switch between random mode or a scored quiz by using the "Random" / "Scored Quiz" button.
   - "Random" displays a random character (subject to repetition), while "Scored Quiz" runs through each character only once during the duration of the quiz.
   - Quiz conditions must be set prior to entering "Scored Quiz" mode, as all modifier buttons will be disabled during the duration of the quiz.
++ Use the "ON"/"OFF" AUTO buttons to change between automatic and manual character advancement.
 
 <strong><a href="http://www.jcharquiz.com/">Click here to take the quiz.</a></strong>
