@@ -372,7 +372,7 @@ function changeFeedbackOnVictory() {
     feedbackTimer = setTimeout(function() {
       feedback.textContent = 'TIP: Click any square below to continue.';
       tipDisplayed = true;
-    }, 1700);
+    }, 1500);
   }
   buttonReset.classList.add('gameover-button');
   buttonReset.textContent = 'New Character';
@@ -381,7 +381,7 @@ function changeFeedbackOnVictory() {
 function proceedAutomatically() {
   autoTimer = setTimeout(function() {
     performAllButtonOperations();
-  }, 1200);
+  }, 1150);
 }
 
 function performVictorySequence() {
