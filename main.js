@@ -118,8 +118,8 @@ var buttonInvert = document.getElementById('invert');
 var buttonReset = document.getElementById('reset');
 var buttonAutoOn = document.getElementById('auto-on');
 var buttonAutoOff = document.getElementById('auto-off');
-var firstModes = document.querySelectorAll('.first-mode');
-var secondModes = document.querySelectorAll('.second-mode');
+var firstModes = document.getElementsByClassName('first-mode');
+var secondModes = document.getElementsByClassName('second-mode');
 var showHiragana = true;
 var showJpnToEng = true;
 var showBasic = true;
@@ -375,7 +375,11 @@ function changeFeedbackOnVictory() {
     }, 1500);
   }
   buttonReset.classList.add('gameover-button');
-  buttonReset.textContent = 'New Character';
+  if (showRandom === true) {
+    buttonReset.textContent = 'New Character';
+  } else {
+    buttonReset.textContent = 'Next Character';
+  }
 }
 
 function proceedAutomatically() {
