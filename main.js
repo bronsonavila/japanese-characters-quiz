@@ -1,5 +1,3 @@
-// Author: Bronson Avila
-
 // =============================[  VARIABLES  ]============================ //
 
 var characters = [
