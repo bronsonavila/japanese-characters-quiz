@@ -1,5 +1,5 @@
 <a href="http://www.jcharquiz.com/">Japanese Characters Quiz</a>
-===============================================================================================
+===
 + Choose the square that matches the displayed romaji or Japanese character (either "Hiragana" or "Katakana").
 + Add or remove advanced characters (Ten-Ten, Maru, and Yōon) by using the "Basic" / "Advanced" button.
 + Switch between guessing romaji and Japanese characters by using the "JPN to ENG" / "ENG to JPN" button.
@@ -9,3 +9,9 @@
 + Use the "ON"/"OFF" AUTO buttons to change between automatic and manual character advancement.
 
 <strong><a href="http://www.jcharquiz.com/">Click here to take the quiz.</a></strong>
+
+## Credits
+
+"Josefin Sans" is licensed under the SIL Open Font License, Version 1.1.
+
+Special thanks to Cheryl Fraine for the inspiration.
