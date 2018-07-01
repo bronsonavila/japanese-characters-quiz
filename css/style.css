@@ -175,14 +175,6 @@ button {
   border-left:   1px solid #eee !important;
 }
 
-.inactive-button {
-  background: #ddd;
-  border-top:    1px solid #eee;
-  border-right:  1px solid #333;
-  border-bottom: 1px solid #333;
-  border-left:   1px solid #eee;  
-}
-
 .first-mode {
   position: absolute;
   height: 7px;
