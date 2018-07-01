@@ -75,7 +75,7 @@ button {
   top: 50%;
   left: 50%;
   margin: -340px 0 0 -225px;
-  border: 1px solid black;
+  border: 1px solid #1a1a1a;
   overflow: hidden;
   -webkit-box-shadow: 2px 4px 16px #bbb;
      -moz-box-shadow: 2px 4px 16px #bbb;
@@ -90,7 +90,7 @@ button {
   line-height: 30px;
   background: #ee0000;
   color: #f8f8f8;
-  text-shadow: 1px 1px 2px #121212; 
+  text-shadow: 1px 1px 2px #2b2b2b; 
 }
 
 #credits, 
@@ -111,8 +111,8 @@ button {
   text-align: center;
   height: 80px;
   line-height: 80px;  
-  border-top: 1px solid black;
-  background: #fff;
+  border-top: 1px solid #1a1a1a;
+  background: #fbfbfb;
 }
 
 #feedback {
@@ -120,7 +120,7 @@ button {
   text-align: center;
   line-height: 21px;
   height: 21px;
-  border-top: 1px solid black;
+  border-top: 1px solid #1a1a1a;
   background: #eee;
   padding: 14px 0;
   -webkit-transition: background 0.125s, transform 0.25s;
@@ -132,14 +132,14 @@ button {
 #squares {
   height: 280px;
   position: relative;
-  border-top: 1px solid black;
+  border-top: 1px solid #1a1a1a;
   background: #cc0000;
 }
 
 #options {
   height: 110px;
-  border-top: 1px solid black;
-  background: #121212;
+  border-top: 1px solid #1a1a1a;
+  background: #2b2b2b;
 }
   #options > div {
     float: left;
@@ -158,8 +158,8 @@ button {
   float: left;
   margin-left: 2px;
   height: 18px;
-  color: #fff;
-  background: #121212;
+  color: #fbfbfb;
+  background: #2b2b2b;
 }
 
 #colon {
@@ -186,7 +186,7 @@ button {
   position: absolute;
   height: 7px;
   width: 7px;
-  border: 1px solid #121212;
+  border: 1px solid #2b2b2b;
   border-radius: 50%;
   background: #ee0000;
   -webkit-transition: 0.15s;
@@ -215,7 +215,7 @@ button {
   position: absolute;
   height: 7px;
   width: 7px;
-  border: 1px solid #121212;
+  border: 1px solid #2b2b2b;
   border-radius: 50%;
   background: #ddd;
   -webkit-transition: 0.15s;
@@ -247,7 +247,7 @@ button {
 }
 
 .active-auto {
-  color: #fff;
+  color: #fbfbfb;
   background: #ee0000;
   border-top:    1px solid #a50000;
   border-right:  1px solid #790000;
@@ -273,11 +273,11 @@ button {
   text-align: center;
   height: 120px;
   width: 120px;
-  border: 1px solid #121212;
-  background: #fff;
-  -webkit-box-shadow: 1px 2px 4px #121212;
-     -moz-box-shadow: 1px 2px 4px #121212;
-          box-shadow: 1px 2px 4px #121212;
+  border: 1px solid #2b2b2b;
+  background: #fbfbfb;
+  -webkit-box-shadow: 1px 2px 4px #2b2b2b;
+     -moz-box-shadow: 1px 2px 4px #2b2b2b;
+          box-shadow: 1px 2px 4px #2b2b2b;
   -webkit-transition: 0.25s;
      -moz-transition: 0.25s;
        -o-transition: 0.25s;
@@ -302,14 +302,14 @@ button {
   border-right:  1px solid #da0000;
   border-bottom: 1px solid #da0000;
   border-left:   1px solid #790000;
-  -webkit-box-shadow: inset 0px 1px 2px #121212;
-     -moz-box-shadow: inset 0px 1px 2px #121212;
-          box-shadow: inset 0px 1px 2px #121212;
+  -webkit-box-shadow: inset 0px 1px 2px #2b2b2b;
+     -moz-box-shadow: inset 0px 1px 2px #2b2b2b;
+          box-shadow: inset 0px 1px 2px #2b2b2b;
 }
 
 .scored-mode {
   color: #eee;
-  text-shadow: 1px 1px 2px #121212; 
+  text-shadow: 1px 1px 2px #2b2b2b; 
   background: #ee0000;
   border-top:    1px solid #ff5555;
   border-right:  1px solid #980000;
