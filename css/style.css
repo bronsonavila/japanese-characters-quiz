@@ -17,7 +17,7 @@ button {
   width: 120px;
   line-height: 30px;
   background: #f8f8f8;
-  border-radius: 0%;
+  border-radius: 2px;
   outline: none;
   border-top:    1px solid #eee;
   border-right:  1px solid #aaa;
@@ -275,6 +275,7 @@ button {
   height: 120px;
   width: 120px;
   border: 1px solid #2b2b2b;
+  border-radius: 2px;
   background: #fbfbfb;
   -webkit-box-shadow: 1px 2px 4px #2b2b2b;
      -moz-box-shadow: 1px 2px 4px #2b2b2b;
