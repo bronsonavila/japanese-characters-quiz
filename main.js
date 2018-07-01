@@ -405,10 +405,7 @@ function performVictorySequence() {
 // ==============================[  EVENTS  ]============================= //
 
 for (var i = 0; i < squares.length; i++) {
-  // "try...catch" used instead of "let" to maximize browser compatibility.
-  try {
-    throw i;
-  } catch (ii) {
+  (function(i) {
     squares[i].addEventListener('click', function() {
       if (
         // Correct Answer - Japanese to Romaji:
@@ -438,12 +435,12 @@ for (var i = 0; i < squares.length; i++) {
         gameOver === false
       ) {
         feedback.textContent = 'Try Again';
-        if (this.textContent === sixSquares[ii].romaji) {
+        if (this.textContent === sixSquares[i].romaji) {
           this.classList.add('wrong-answer');
-          this.textContent = sixSquares[ii].hiragana;
+          this.textContent = sixSquares[i].hiragana;
         } else {
           this.classList.remove('wrong-answer');
-          this.textContent = sixSquares[ii].romaji;
+          this.textContent = sixSquares[i].romaji;
         }
         setWrongQuizAnswer();
       } else if (
@@ -453,12 +450,12 @@ for (var i = 0; i < squares.length; i++) {
         gameOver === false
       ) {
         feedback.textContent = 'Try Again';
-        if (this.textContent === sixSquares[ii].hiragana) {
+        if (this.textContent === sixSquares[i].hiragana) {
           this.classList.add('wrong-answer');
-          this.textContent = sixSquares[ii].romaji;
+          this.textContent = sixSquares[i].romaji;
         } else {
           this.classList.remove('wrong-answer');
-          this.textContent = sixSquares[ii].hiragana;
+          this.textContent = sixSquares[i].hiragana;
         }
         setWrongQuizAnswer();
       } else if (
@@ -469,12 +466,12 @@ for (var i = 0; i < squares.length; i++) {
         gameOver === false
       ) {
         feedback.textContent = 'Try Again';
-        if (this.textContent === sixSquares[ii].romaji) {
+        if (this.textContent === sixSquares[i].romaji) {
           this.classList.add('wrong-answer');
-          this.textContent = sixSquares[ii].katakana;
+          this.textContent = sixSquares[i].katakana;
         } else {
           this.classList.remove('wrong-answer');
-          this.textContent = sixSquares[ii].romaji;
+          this.textContent = sixSquares[i].romaji;
         }
         setWrongQuizAnswer();
       } else if (
@@ -484,12 +481,12 @@ for (var i = 0; i < squares.length; i++) {
         gameOver === false
       ) {
         feedback.textContent = 'Try Again';
-        if (this.textContent === sixSquares[ii].katakana) {
+        if (this.textContent === sixSquares[i].katakana) {
           this.classList.add('wrong-answer');
-          this.textContent = sixSquares[ii].romaji;
+          this.textContent = sixSquares[i].romaji;
         } else {
           this.classList.remove('wrong-answer');
-          this.textContent = sixSquares[ii].katakana;
+          this.textContent = sixSquares[i].katakana;
         }
         setWrongQuizAnswer();
       } else if (quizOver === false) {
@@ -497,7 +494,7 @@ for (var i = 0; i < squares.length; i++) {
         performAllButtonOperations();
       }
     });
-  }
+  })(i);
 }
 
 buttonGanaKana.addEventListener('click', function() {
