@@ -1,0 +1,707 @@
+body {
+  cursor: default;
+  font-family: 'Josefin Sans', sans-serif;
+  background: #eee;
+  margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+button {
+  font-size: 15px;
+  font-family: 'Josefin Sans', sans-serif;
+  height: 30px;
+  width: 120px;
+  line-height: 30px;
+  background: #f8f8f8;
+  border-radius: 2px;
+  outline: none;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-left: 1px solid #eee;
+}
+#gana-kana {
+  margin: 18px 0 6px 25px;
+}
+#invert {
+  margin: 6px 0 18px 25px;
+}
+#skill {
+  margin: 18px 0 6px 14px;
+}
+#game-type {
+  margin: 6px 0 18px 14px;
+}
+#reset {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  width: 120px;
+  height: 54.3px;
+  line-height: 20px;
+  margin: 18px 0 0 2px;
+}
+#auto-on,
+#auto-off {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  float: left;
+  font-size: 9px;
+  line-height: 14px;
+  width: 33px;
+  height: 15px;
+  margin: 3px 2px 0 4px;
+}
+#auto-off {
+  margin: 3px 0 0 2px;
+}
+
+#outer {
+  height: 700px;
+  width: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -350px 0 0 -240px;
+}
+
+#inner {
+  height: 679.4px;
+  width: 450px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin: -340px 0 0 -225px;
+  border: 1px solid #1a1a1a;
+  overflow: hidden;
+  -webkit-box-shadow: 2px 4px 16px #bbb;
+  -moz-box-shadow: 2px 4px 16px #bbb;
+  box-shadow: 2px 4px 16px #bbb;
+}
+
+#title {
+  font-size: 32px;
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background: #ee0000;
+  color: #f8f8f8;
+  text-shadow: 1px 1px 2px #2b2b2b;
+}
+
+#credits,
+#version {
+  position: absolute;
+  top: 49px;
+  left: 329px;
+  font-size: 11px;
+  color: #cc0000;
+}
+#version {
+  top: 59px;
+  left: 387px;
+}
+
+#answer {
+  font-size: 56px;
+  text-align: center;
+  height: 80px;
+  line-height: 80px;
+  border-top: 1px solid #1a1a1a;
+  background: #fbfbfb;
+}
+
+#feedback {
+  font-size: 21px;
+  text-align: center;
+  line-height: 21px;
+  height: 21px;
+  border-top: 1px solid #1a1a1a;
+  background: #eee;
+  padding: 14px 0;
+  -webkit-transition: background 0.125s, transform 0.25s;
+  -moz-transition: background 0.125s, transform 0.25s;
+  -o-transition: background 0.125s, transform 0.25s;
+  transition: background 0.125s, transform 0.25s;
+}
+
+#cards {
+  height: 280px;
+  position: relative;
+  border-top: 1px solid #1a1a1a;
+  background: #cc0000;
+}
+
+#options {
+  height: 111px;
+  border-top: 1px solid #1a1a1a;
+  background: #2b2b2b;
+}
+#options > div {
+  float: left;
+  width: 150px;
+}
+
+#title,
+#answer,
+#cards {
+  padding: 21px 0;
+}
+
+#auto-text {
+  font-size: 15px;
+  line-height: 21px;
+  float: left;
+  margin-left: 2px;
+  height: 18px;
+  color: #fbfbfb;
+  background: #2b2b2b;
+}
+
+#colon {
+  font-size: 23px;
+}
+
+.inactive {
+  background: #eee !important;
+  border-top: 1px solid #eee !important;
+  border-right: 1px solid #333 !important;
+  border-bottom: 1px solid #333 !important;
+  border-left: 1px solid #eee !important;
+}
+
+.primary-mode {
+  position: absolute;
+  height: 7px;
+  width: 7px;
+  border: 1px solid #2b2b2b;
+  border-radius: 50%;
+  background: #ee0000;
+  -webkit-transition: 0.15s;
+  -moz-transition: 0.15s;
+  -o-transition: 0.15s;
+  transition: 0.15s;
+}
+#gana-kana ~ .primary-mode {
+  bottom: 81px;
+  left: 27px;
+}
+#invert ~ .primary-mode {
+  bottom: 39px;
+  left: 27px;
+}
+#skill ~ .primary-mode {
+  bottom: 81px;
+  left: 166px;
+}
+#game-type ~ .primary-mode {
+  bottom: 39px;
+  left: 166px;
+}
+
+.secondary-mode {
+  position: absolute;
+  height: 7px;
+  width: 7px;
+  border: 1px solid #2b2b2b;
+  border-radius: 50%;
+  background: #ddd;
+  -webkit-transition: 0.15s;
+  -moz-transition: 0.15s;
+  -o-transition: 0.15s;
+  transition: 0.15s;
+}
+#gana-kana ~ .secondary-mode {
+  bottom: 81px;
+  left: 133px;
+}
+#invert ~ .secondary-mode {
+  bottom: 39px;
+  left: 133px;
+}
+#skill ~ .secondary-mode {
+  bottom: 81px;
+  left: 272px;
+}
+#game-type ~ .secondary-mode {
+  bottom: 39px;
+  left: 272px;
+}
+
+.light-on {
+  -webkit-box-shadow: rgba(238, 0, 0, 0.25) 0px 0px 4px;
+  -moz-box-shadow: rgba(238, 0, 0, 0.25) 0px 0px 4px;
+  box-shadow: rgba(238, 0, 0, 0.25) 0px 0px 4px;
+}
+
+.active-auto {
+  color: #fbfbfb;
+  background: #ee0000;
+  border-top: 1px solid #a50000;
+  border-right: 1px solid #790000;
+  border-bottom: 1px solid #790000;
+  border-left: 1px solid #a50000;
+  -webkit-box-shadow: inset 0px 1px 2px #980000;
+  -moz-box-shadow: inset 0px 1px 2px #980000;
+  box-shadow: inset 0px 1px 2px #980000;
+}
+
+.inactive-auto {
+  color: #999;
+  background: #ddd;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.card {
+  float: left;
+  font-size: 34px;
+  line-height: 120px;
+  text-align: center;
+  height: 120px;
+  width: 120px;
+  border: 1px solid #2b2b2b;
+  border-radius: 2px;
+  background: #fbfbfb;
+  -webkit-box-shadow: 1px 2px 4px #2b2b2b;
+  -moz-box-shadow: 1px 2px 4px #2b2b2b;
+  box-shadow: 1px 2px 4px #2b2b2b;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+.card:nth-of-type(1),
+.card:nth-of-type(4) {
+  margin: 9px 8px 9px 24px;
+}
+.card:nth-of-type(2),
+.card:nth-of-type(5) {
+  margin: 9px 8px 9px 8px;
+}
+.card:nth-of-type(3),
+.card:nth-of-type(6) {
+  margin: 9px 24px 9px 8px;
+}
+
+.wrong-answer {
+  background: #cc5500;
+  border-top: 1px solid #790000;
+  border-right: 1px solid #da0000;
+  border-bottom: 1px solid #da0000;
+  border-left: 1px solid #790000;
+  -webkit-box-shadow: inset 0px 1px 2px #2b2b2b;
+  -moz-box-shadow: inset 0px 1px 2px #2b2b2b;
+  box-shadow: inset 0px 1px 2px #2b2b2b;
+}
+
+.scored-mode {
+  color: #eee;
+  text-shadow: 1px 1px 2px #2b2b2b;
+  background: #ee0000;
+  border-top: 1px solid #ff5555;
+  border-right: 1px solid #980000;
+  border-bottom: 1px solid #980000;
+  border-left: 1px solid #ff5555;
+}
+
+.locked {
+  border: 1px solid #cc0000;
+  background-image: -webkit-repeating-linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.3) 1px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 5px
+  );
+  background-image: -moz-repeating-linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.3) 1px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 5px
+  );
+  background-image: -o-repeating-linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.3) 1px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 5px
+  );
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.3) 1px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 5px
+  );
+  -webkit-background-size: 3px 3px;
+  -moz-background-size: 3px 3px;
+  background-size: 3px 3px;
+}
+
+.gameover-feedback {
+  background: #ffeb3b !important;
+}
+
+.gameover-button {
+  background: #ffeb3b !important;
+  border-top: 1px solid #fff283 !important;
+  border-right: 1px solid #9c8c00 !important;
+  border-bottom: 1px solid #9c8c00 !important;
+  border-left: 1px solid #fff283 !important;
+  -webkit-transition: background 0.125s;
+  -moz-transition: background 0.125s;
+  -o-transition: background 0.125s;
+  transition: background 0.125s;
+}
+
+.expand {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.contract {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+}
+
+@media all and (max-width: 576px), all and (max-height: 679.4px) {
+  button {
+    width: 86px;
+    font-size: 12px;
+    padding: 0;
+  }
+  #gana-kana {
+    margin: 13px 0 4px 11px;
+  }
+  #invert {
+    margin: 4px 0 13px 11px;
+  }
+  #skill {
+    margin: 13px 0 4px 7px;
+  }
+  #game-type {
+    margin: 4px 0 13px 7px;
+  }
+  #reset {
+    font-size: 16px;
+    width: 86px;
+    height: 51.3px;
+    line-height: 16px;
+    margin: 13px 0 0 3px;
+  }
+  #auto-on,
+  #auto-off {
+    font-size: 9px;
+    line-height: 15px;
+    width: 25px;
+    height: 15px;
+    margin: 2px 1px 0 3px;
+  }
+  #auto-off {
+    margin: 2px 0 0 1px;
+  }
+  #outer {
+    height: 560px;
+    width: 320px;
+    margin: -280px 0 0 -160px;
+  }
+  #inner {
+    height: 540px;
+    width: 300px;
+    margin: -270px 0 0 -150px;
+  }
+  #title {
+    font-size: 22px;
+    line-height: 22px;
+    height: 22px;
+    width: 100%;
+  }
+  #credits {
+    top: 42px;
+    left: 218px;
+    font-size: 8px;
+  }
+  #version {
+    top: 50px;
+    left: 260px;
+    font-size: 8px;
+  }
+  #answer {
+    font-size: 50px;
+    line-height: 64px;
+    height: 64px;
+  }
+  #feedback {
+    font-size: 15px;
+    line-height: 18px;
+    height: 18px;
+    padding: 12px 0;
+  }
+  #cards {
+    height: 194px;
+  }
+  #options {
+    height: 96px;
+  }
+  #options > div {
+    float: left;
+    width: 100px;
+  }
+  #title,
+  #answer,
+  #cards {
+    padding: 20px 0;
+  }
+  #auto-text {
+    font-size: 10px;
+    line-height: 21px;
+    margin-left: 3px;
+    height: 17px;
+  }
+  #colon {
+    font-size: 15px;
+  }
+  .primary-mode {
+    height: 5px;
+    width: 5px;
+  }
+  #gana-kana ~ .primary-mode {
+    bottom: 72px;
+    left: 13px;
+  }
+  #invert ~ .primary-mode {
+    bottom: 34px;
+    left: 13px;
+  }
+  #skill ~ .primary-mode {
+    bottom: 72px;
+    left: 109px;
+  }
+  #game-type ~ .primary-mode {
+    bottom: 34px;
+    left: 109px;
+  }
+  .secondary-mode {
+    height: 5px;
+    width: 5px;
+  }
+  #gana-kana ~ .secondary-mode {
+    bottom: 72px;
+    left: 87px;
+  }
+  #invert ~ .secondary-mode {
+    bottom: 34px;
+    left: 87px;
+  }
+  #skill ~ .secondary-mode {
+    bottom: 72px;
+    left: 183px;
+  }
+  #game-type ~ .secondary-mode {
+    bottom: 34px;
+    left: 183px;
+  }
+  .card {
+    font-size: 28px;
+    line-height: 86px;
+    height: 86px;
+    width: 86px;
+  }
+  .card:nth-of-type(1),
+  .card:nth-of-type(4) {
+    margin: 4px 4px 4px 10px;
+  }
+  .card:nth-of-type(2),
+  .card:nth-of-type(5) {
+    margin: 4px 4px 4px 4px;
+  }
+  .card:nth-of-type(3),
+  .card:nth-of-type(6) {
+    margin: 4px 10px 4px 4px;
+  }
+}
+
+@media all and (max-width: 320px), all and (max-height: 540px) {
+  button {
+    width: 70px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 10px;
+    padding: 0;
+  }
+  #gana-kana {
+    margin: 10px 0 3px 24px;
+  }
+  #invert {
+    margin: 3px 0 10px 24px;
+  }
+  #skill {
+    margin: 10px 0 3px 12px;
+  }
+  #game-type {
+    margin: 3px 0 10px 12px;
+  }
+  #reset {
+    font-size: 13px;
+    width: 70px;
+    height: 43.8px;
+    line-height: 14px;
+    margin: 10px 0 0 -1px;
+  }
+  #auto-on,
+  #auto-off {
+    font-size: 6px;
+    line-height: 12px;
+    width: 21px;
+    height: 12px;
+    margin: 3px 1px 0 3px;
+  }
+  #auto-off {
+    margin: 3px 0 0 1px;
+  }
+  #outer {
+    height: 460px;
+    width: 300px;
+    margin: -230px 0 0 -150px;
+  }
+  #inner {
+    height: 440px;
+    width: 280px;
+    margin: -220px 0 0 -140px;
+  }
+  #title {
+    font-size: 20px;
+    line-height: 16px;
+    height: 16px;
+    width: 100%;
+  }
+  #credits {
+    top: 31px;
+    left: 205px;
+    font-size: 7px;
+  }
+  #version {
+    top: 37px;
+    left: 242px;
+    font-size: 7px;
+  }
+  #answer {
+    font-size: 46px;
+    line-height: 60px;
+    height: 60px;
+  }
+  #feedback {
+    font-size: 14px;
+    line-height: 16px;
+    height: 16px;
+    padding: 10px 0;
+  }
+  #cards {
+    height: 160px;
+  }
+  #options {
+    height: 81px;
+  }
+  #options > div {
+    float: left;
+    width: 93.33px;
+  }
+  #title,
+  #answer,
+  #cards {
+    padding: 14px 0;
+  }
+  #auto-text {
+    font-size: 7px;
+    line-height: 17px;
+    margin-left: 0;
+    height: 13px;
+  }
+  #colon {
+    font-size: 13px;
+  }
+  .primary-mode {
+    height: 3px;
+    width: 3px;
+  }
+  #gana-kana ~ .primary-mode {
+    bottom: 63px;
+    left: 26px;
+  }
+  #invert ~ .primary-mode {
+    bottom: 31px;
+    left: 26px;
+  }
+  #skill ~ .primary-mode {
+    bottom: 63px;
+    left: 107px;
+  }
+  #game-type ~ .primary-mode {
+    bottom: 31px;
+    left: 107px;
+  }
+  .secondary-mode {
+    height: 3px;
+    width: 3px;
+  }
+  #gana-kana ~ .secondary-mode {
+    bottom: 63px;
+    left: 86px;
+  }
+  #invert ~ .secondary-mode {
+    bottom: 31px;
+    left: 86px;
+  }
+  #skill ~ .secondary-mode {
+    bottom: 63px;
+    left: 167px;
+  }
+  #game-type ~ .secondary-mode {
+    bottom: 31px;
+    left: 167px;
+  }
+  .card {
+    font-size: 26px;
+    line-height: 70px;
+    height: 70px;
+    width: 70px;
+  }
+  .card:nth-of-type(1),
+  .card:nth-of-type(4) {
+    margin: 4px 4px 4px 24px;
+  }
+  .card:nth-of-type(2),
+  .card:nth-of-type(5) {
+    margin: 4px 4px 4px 4px;
+  }
+  .card:nth-of-type(3),
+  .card:nth-of-type(6) {
+    margin: 4px 24px 4px 4px;
+  }
+}
